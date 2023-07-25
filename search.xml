@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2D游戏开发（2）</title>
-    <url>/wang666-bot.github.io/post/a08d4f59.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="11-使用UI-Toolkit-和-UIBuilder制作物品编辑器"><a href="#11-使用UI-Toolkit-和-UIBuilder制作物品编辑器" class="headerlink" title="11.使用UI Toolkit 和 UIBuilder制作物品编辑器"></a>11.使用UI Toolkit 和 UIBuilder制作物品编辑器</h2><p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710155649772.png" alt="image-20230710155649772"></p>
-<p>文件夹下三个文件分别对应c# USS 和 Visual Tree Assert</p>
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710160931443.png" alt="image-20230710160931443"></p>
-<p>UI Builder</p>
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710160837229.png" alt="image-20230710160837229"></p>
-<p>在UI Builder中设置（类似于前端  flex设置grow为1， VisualBasic做Container）</p>
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710163023556.png" alt="image-20230710163023556"></p>
-<p>初步设计完成</p>
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710172503940.png"></p>
-<h2 id="12-创建ListView中的ItemTemplate"><a href="#12-创建ListView中的ItemTemplate" class="headerlink" title="12.创建ListView中的ItemTemplate"></a>12.创建ListView中的ItemTemplate</h2><p>在UI Builder文件夹中创建UI 文档</p>
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710202527373.png" alt="image-20230710202527373"></p>
-<h2 id="13-生成ListView列表"><a href="#13-生成ListView列表" class="headerlink" title="13.生成ListView列表"></a>13.生成ListView列表</h2><p>拿到数据的ID</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UIElements;</span><br><span class="line"><span class="keyword">using</span> UnityEditor.UIElements;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ItemEditor</span> : <span class="title">EditorWindow</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> ItemDataList_SO dataBase;</span><br><span class="line">    <span class="keyword">private</span> List&lt;ItemDetails&gt; itemList = <span class="keyword">new</span> List&lt;ItemDetails&gt;();</span><br><span class="line"></span><br><span class="line">    [<span class="meta">MenuItem(<span class="string">&quot;W STUDIO/ItemEditor&quot;</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShowExample</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ItemEditor wnd = GetWindow&lt;ItemEditor&gt;();</span><br><span class="line">        wnd.titleContent = <span class="keyword">new</span> GUIContent(<span class="string">&quot;ItemEditor&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CreateGUI</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Each editor window contains a root VisualElement object</span></span><br><span class="line">        VisualElement root = rootVisualElement;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// VisualElements objects can contain other VisualElement following a tree hierarchy.</span></span><br><span class="line">        <span class="comment">//VisualElement label = new Label(&quot;Hello World! From C#&quot;);</span></span><br><span class="line">        <span class="comment">//root.Add(label);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Import UXML</span></span><br><span class="line">        <span class="keyword">var</span> visualTree = AssetDatabase.LoadAssetAtPath&lt;VisualTreeAsset&gt;(<span class="string">&quot;Assets/Editor/UI Builder/ItemEditor.uxml&quot;</span>);</span><br><span class="line">        VisualElement labelFromUXML = visualTree.Instantiate();</span><br><span class="line">        root.Add(labelFromUXML);</span><br><span class="line"></span><br><span class="line">        LoadDataBase();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadDataBase</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> dataArray = AssetDatabase.FindAssets(<span class="string">&quot;ItemDataList_SO&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(dataArray.Length &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> path = AssetDatabase.GUIDToAssetPath(dataArray[<span class="number">0</span>]);</span><br><span class="line">            dataBase = AssetDatabase.LoadAssetAtPath(path, <span class="keyword">typeof</span>(ItemDataList_SO)) <span class="keyword">as</span> ItemDataList_SO;</span><br><span class="line">        &#125;</span><br><span class="line">        itemList = dataBase.itemDetails;</span><br><span class="line">        <span class="comment">//如果不标注则无法保存数据</span></span><br><span class="line">        EditorUtility.SetDirty(dataBase);</span><br><span class="line">        Debug.Log(itemList[<span class="number">0</span>].itemID);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710204307450.png" alt="image-20230710204307450"></p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UIElements;</span><br><span class="line"><span class="keyword">using</span> UnityEditor.UIElements;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ItemEditor</span> : <span class="title">EditorWindow</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> ItemDataList_SO dataBase;</span><br><span class="line">    <span class="keyword">private</span> List&lt;ItemDetails&gt; itemList = <span class="keyword">new</span> List&lt;ItemDetails&gt;();</span><br><span class="line">    <span class="keyword">private</span> VisualTreeAsset itemRowTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得VisualElement</span></span><br><span class="line">    <span class="keyword">private</span> ListView itemListView;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">MenuItem(<span class="string">&quot;W STUDIO/ItemEditor&quot;</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShowExample</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ItemEditor wnd = GetWindow&lt;ItemEditor&gt;();</span><br><span class="line">        wnd.titleContent = <span class="keyword">new</span> GUIContent(<span class="string">&quot;ItemEditor&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CreateGUI</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Each editor window contains a root VisualElement object</span></span><br><span class="line">        VisualElement root = rootVisualElement;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// VisualElements objects can contain other VisualElement following a tree hierarchy.</span></span><br><span class="line">        <span class="comment">//VisualElement label = new Label(&quot;Hello World! From C#&quot;);</span></span><br><span class="line">        <span class="comment">//root.Add(label);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Import UXML</span></span><br><span class="line">        <span class="keyword">var</span> visualTree = AssetDatabase.LoadAssetAtPath&lt;VisualTreeAsset&gt;(<span class="string">&quot;Assets/Editor/UI Builder/ItemEditor.uxml&quot;</span>);</span><br><span class="line">        VisualElement labelFromUXML = visualTree.Instantiate();</span><br><span class="line">        root.Add(labelFromUXML);</span><br><span class="line">        <span class="comment">//拿到模板数据</span></span><br><span class="line">        itemRowTemplate = AssetDatabase.LoadAssetAtPath&lt;VisualTreeAsset&gt;(<span class="string">&quot;Assets/Editor/UI Builder/ItemRowTemplate.uxml&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//变量赋值</span></span><br><span class="line">        itemListView = root.Q&lt;VisualElement&gt;(<span class="string">&quot;ItemList&quot;</span>).Q&lt;ListView&gt;(<span class="string">&quot;ListView&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//加载数据</span></span><br><span class="line">        LoadDataBase();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//生成ListView</span></span><br><span class="line">        GenerateListView();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadDataBase</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> dataArray = AssetDatabase.FindAssets(<span class="string">&quot;ItemDataList_SO&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(dataArray.Length &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> path = AssetDatabase.GUIDToAssetPath(dataArray[<span class="number">0</span>]);</span><br><span class="line">            dataBase = AssetDatabase.LoadAssetAtPath(path, <span class="keyword">typeof</span>(ItemDataList_SO)) <span class="keyword">as</span> ItemDataList_SO;</span><br><span class="line">        &#125;</span><br><span class="line">        itemList = dataBase.itemDetails;</span><br><span class="line">        <span class="comment">//如果不标注则无法保存数据</span></span><br><span class="line">        EditorUtility.SetDirty(dataBase);</span><br><span class="line">        <span class="comment">//Debug.Log(itemList[0].itemID);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">GenerateListView</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Func&lt;VisualElement&gt; makeItem = () =&gt; itemRowTemplate.CloneTree();</span><br><span class="line">        Action&lt;VisualElement, <span class="built_in">int</span>&gt; bindItem = (e, i) =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; itemList.Count)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(itemList[i].itemIcon != <span class="literal">null</span>)</span><br><span class="line">                    e.Q&lt;VisualElement&gt;(<span class="string">&quot;Icon&quot;</span>).style.backgroundImage = itemList[i].itemIcon.texture;</span><br><span class="line">                e.Q&lt;Label&gt;(<span class="string">&quot;Name&quot;</span>).text = itemList[i] == <span class="literal">null</span> ? <span class="string">&quot;NO ITEM&quot;</span> : itemList[i].itemName;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        itemListView.fixedItemHeight = <span class="number">60</span>;</span><br><span class="line">        itemListView.itemsSource = itemList;</span><br><span class="line">        itemListView.makeItem = makeItem;</span><br><span class="line">        itemListView.bindItem = bindItem;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710210835803.png" alt="image-20230710210835803"></p>
-<h2 id="14-绑定Editor-Window中的参数变量"><a href="#14-绑定Editor-Window中的参数变量" class="headerlink" title="14.绑定Editor Window中的参数变量"></a>14.绑定Editor Window中的参数变量</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UIElements;</span><br><span class="line"><span class="keyword">using</span> UnityEditor.UIElements;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ItemEditor</span> : <span class="title">EditorWindow</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> ItemDataList_SO dataBase;</span><br><span class="line">    <span class="keyword">private</span> List&lt;ItemDetails&gt; itemList = <span class="keyword">new</span> List&lt;ItemDetails&gt;();</span><br><span class="line">    <span class="keyword">private</span> VisualTreeAsset itemRowTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ScrollView itemDetailSection;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ItemDetails activeItem;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//默认预览图片</span></span><br><span class="line">    <span class="keyword">private</span> Sprite defaultIcon;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> VisualElement iconPreview;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//获得VisualElement</span></span><br><span class="line">    <span class="keyword">private</span> ListView itemListView;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    [<span class="meta">MenuItem(<span class="string">&quot;W STUDIO/ItemEditor&quot;</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShowExample</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ItemEditor wnd = GetWindow&lt;ItemEditor&gt;();</span><br><span class="line">        wnd.titleContent = <span class="keyword">new</span> GUIContent(<span class="string">&quot;ItemEditor&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CreateGUI</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Each editor window contains a root VisualElement object</span></span><br><span class="line">        VisualElement root = rootVisualElement;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// VisualElements objects can contain other VisualElement following a tree hierarchy.</span></span><br><span class="line">        <span class="comment">//VisualElement label = new Label(&quot;Hello World! From C#&quot;);</span></span><br><span class="line">        <span class="comment">//root.Add(label);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Import UXML</span></span><br><span class="line">        <span class="keyword">var</span> visualTree = AssetDatabase.LoadAssetAtPath&lt;VisualTreeAsset&gt;(<span class="string">&quot;Assets/Editor/UI Builder/ItemEditor.uxml&quot;</span>);</span><br><span class="line">        VisualElement labelFromUXML = visualTree.Instantiate();</span><br><span class="line">        root.Add(labelFromUXML);</span><br><span class="line">        <span class="comment">//拿到模板数据</span></span><br><span class="line">        itemRowTemplate = AssetDatabase.LoadAssetAtPath&lt;VisualTreeAsset&gt;(<span class="string">&quot;Assets/Editor/UI Builder/ItemRowTemplate.uxml&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//拿到默认Icon图片</span></span><br><span class="line">        defaultIcon = AssetDatabase.LoadAssetAtPath&lt;Sprite&gt;(<span class="string">&quot;Assets/M Studio/Art/Items/Icons/icon_M.png&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//变量赋值</span></span><br><span class="line">        itemListView = root.Q&lt;VisualElement&gt;(<span class="string">&quot;ItemList&quot;</span>).Q&lt;ListView&gt;(<span class="string">&quot;ListView&quot;</span>);</span><br><span class="line">        itemDetailSection = root.Q&lt;ScrollView&gt;(<span class="string">&quot;ItemDetails&quot;</span>);</span><br><span class="line">        iconPreview = itemDetailSection.Q&lt;VisualElement&gt;(<span class="string">&quot;icon&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//加载数据</span></span><br><span class="line">        LoadDataBase();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//生成ListView</span></span><br><span class="line">        GenerateListView();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadDataBase</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> dataArray = AssetDatabase.FindAssets(<span class="string">&quot;ItemDataList_SO&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(dataArray.Length &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> path = AssetDatabase.GUIDToAssetPath(dataArray[<span class="number">0</span>]);</span><br><span class="line">            dataBase = AssetDatabase.LoadAssetAtPath(path, <span class="keyword">typeof</span>(ItemDataList_SO)) <span class="keyword">as</span> ItemDataList_SO;</span><br><span class="line">        &#125;</span><br><span class="line">        itemList = dataBase.itemDetails;</span><br><span class="line">        <span class="comment">//如果不标注则无法保存数据</span></span><br><span class="line">        EditorUtility.SetDirty(dataBase);</span><br><span class="line">        <span class="comment">//Debug.Log(itemList[0].itemID);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">GenerateListView</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Func&lt;VisualElement&gt; makeItem = () =&gt; itemRowTemplate.CloneTree();</span><br><span class="line">        Action&lt;VisualElement, <span class="built_in">int</span>&gt; bindItem = (e, i) =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; itemList.Count)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(itemList[i].itemIcon != <span class="literal">null</span>)</span><br><span class="line">                    e.Q&lt;VisualElement&gt;(<span class="string">&quot;Icon&quot;</span>).style.backgroundImage = itemList[i].itemIcon.texture;</span><br><span class="line">                e.Q&lt;Label&gt;(<span class="string">&quot;Name&quot;</span>).text = itemList[i] == <span class="literal">null</span> ? <span class="string">&quot;NO ITEM&quot;</span> : itemList[i].itemName;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        itemListView.fixedItemHeight = <span class="number">60</span>;</span><br><span class="line">        itemListView.itemsSource = itemList;</span><br><span class="line">        itemListView.makeItem = makeItem;</span><br><span class="line">        itemListView.bindItem = bindItem;</span><br><span class="line"></span><br><span class="line">        itemListView.onSelectionChange += OnListSelectionChange;</span><br><span class="line"></span><br><span class="line">        itemDetailSection.visible = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnListSelectionChange</span>(<span class="params">IEnumerable&lt;<span class="built_in">object</span>&gt; selectedItem</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        activeItem = (ItemDetails)selectedItem.First();</span><br><span class="line">        GetItemDetails();</span><br><span class="line">        itemDetailSection.visible = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">GetItemDetails</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        itemDetailSection.MarkDirtyRepaint();</span><br><span class="line">        itemDetailSection.Q&lt;IntegerField&gt;(<span class="string">&quot;ItemID&quot;</span>).<span class="keyword">value</span> = activeItem.itemID;</span><br><span class="line">        itemDetailSection.Q&lt;IntegerField&gt;(<span class="string">&quot;ItemID&quot;</span>).RegisterValueChangedCallback(evt =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            activeItem.itemID = evt.newValue;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        itemDetailSection.Q&lt;TextField&gt;(<span class="string">&quot;ItemName&quot;</span>).<span class="keyword">value</span> = activeItem.itemName;</span><br><span class="line">        itemDetailSection.Q&lt;TextField&gt;(<span class="string">&quot;ItemName&quot;</span>).RegisterValueChangedCallback(evt =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            activeItem.itemName = evt.newValue;</span><br><span class="line">            itemListView.Rebuild();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        iconPreview.style.backgroundImage = activeItem.itemIcon == <span class="literal">null</span> ? defaultIcon.texture : activeItem.itemIcon.texture;</span><br><span class="line">        itemDetailSection.Q&lt;ObjectField&gt;(<span class="string">&quot;ItemIcon&quot;</span>).<span class="keyword">value</span> = activeItem.itemIcon;</span><br><span class="line">        itemDetailSection.Q&lt;ObjectField&gt;(<span class="string">&quot;ItemIcon&quot;</span>).RegisterValueChangedCallback(evt =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Sprite newIcon = evt.newValue <span class="keyword">as</span> Sprite;</span><br><span class="line">            activeItem.itemIcon = newIcon;</span><br><span class="line">           </span><br><span class="line">            </span><br><span class="line">           iconPreview.style.backgroundImage = newIcon == <span class="literal">null</span> ? defaultIcon.texture : newIcon.texture;</span><br><span class="line">            </span><br><span class="line">            itemListView.Rebuild();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710212637616.png" alt="image-20230710212637616"></p>
-<h2 id="15-实现ListView添加删除同步信息功能"><a href="#15-实现ListView添加删除同步信息功能" class="headerlink" title="15.实现ListView添加删除同步信息功能"></a>15.实现ListView添加删除同步信息功能</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">region</span> 按键事件</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnDeleteClicked</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        itemList.Remove(activeItem);</span><br><span class="line">        itemListView.Rebuild();</span><br><span class="line">        itemDetailSection.visible = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnAddItemClicked</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ItemDetails newItem = <span class="keyword">new</span> ItemDetails();</span><br><span class="line">        newItem.itemName = <span class="string">&quot;NEW ITEM&quot;</span>;</span><br><span class="line">        newItem.itemID = <span class="number">1000</span> + itemList.Count;</span><br><span class="line">        itemList.Add(newItem);</span><br><span class="line">        itemListView.Rebuild();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
     <title>2D游戏开发（1）</title>
     <url>/wang666-bot.github.io/post/b238e0b7.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1.创建项目"></a>1.创建项目</h2><p>选择Unity版本2021.3.20</p>
@@ -120,9 +88,36 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hexo+阿里云+github搭建博客</title>
-    <url>/wang666-bot.github.io/post/a6f5b56e.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <title>2D游戏开发（2）</title>
+    <url>/wang666-bot.github.io/post/a08d4f59.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="11-使用UI-Toolkit-和-UIBuilder制作物品编辑器"><a href="#11-使用UI-Toolkit-和-UIBuilder制作物品编辑器" class="headerlink" title="11.使用UI Toolkit 和 UIBuilder制作物品编辑器"></a>11.使用UI Toolkit 和 UIBuilder制作物品编辑器</h2><p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710155649772.png" alt="image-20230710155649772"></p>
+<p>文件夹下三个文件分别对应c# USS 和 Visual Tree Assert</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710160931443.png" alt="image-20230710160931443"></p>
+<p>UI Builder</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710160837229.png" alt="image-20230710160837229"></p>
+<p>在UI Builder中设置（类似于前端  flex设置grow为1， VisualBasic做Container）</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710163023556.png" alt="image-20230710163023556"></p>
+<p>初步设计完成</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710172503940.png"></p>
+<h2 id="12-创建ListView中的ItemTemplate"><a href="#12-创建ListView中的ItemTemplate" class="headerlink" title="12.创建ListView中的ItemTemplate"></a>12.创建ListView中的ItemTemplate</h2><p>在UI Builder文件夹中创建UI 文档</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710202527373.png" alt="image-20230710202527373"></p>
+<h2 id="13-生成ListView列表"><a href="#13-生成ListView列表" class="headerlink" title="13.生成ListView列表"></a>13.生成ListView列表</h2><p>拿到数据的ID</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UIElements;</span><br><span class="line"><span class="keyword">using</span> UnityEditor.UIElements;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ItemEditor</span> : <span class="title">EditorWindow</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> ItemDataList_SO dataBase;</span><br><span class="line">    <span class="keyword">private</span> List&lt;ItemDetails&gt; itemList = <span class="keyword">new</span> List&lt;ItemDetails&gt;();</span><br><span class="line"></span><br><span class="line">    [<span class="meta">MenuItem(<span class="string">&quot;W STUDIO/ItemEditor&quot;</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShowExample</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ItemEditor wnd = GetWindow&lt;ItemEditor&gt;();</span><br><span class="line">        wnd.titleContent = <span class="keyword">new</span> GUIContent(<span class="string">&quot;ItemEditor&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CreateGUI</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Each editor window contains a root VisualElement object</span></span><br><span class="line">        VisualElement root = rootVisualElement;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// VisualElements objects can contain other VisualElement following a tree hierarchy.</span></span><br><span class="line">        <span class="comment">//VisualElement label = new Label(&quot;Hello World! From C#&quot;);</span></span><br><span class="line">        <span class="comment">//root.Add(label);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Import UXML</span></span><br><span class="line">        <span class="keyword">var</span> visualTree = AssetDatabase.LoadAssetAtPath&lt;VisualTreeAsset&gt;(<span class="string">&quot;Assets/Editor/UI Builder/ItemEditor.uxml&quot;</span>);</span><br><span class="line">        VisualElement labelFromUXML = visualTree.Instantiate();</span><br><span class="line">        root.Add(labelFromUXML);</span><br><span class="line"></span><br><span class="line">        LoadDataBase();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadDataBase</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> dataArray = AssetDatabase.FindAssets(<span class="string">&quot;ItemDataList_SO&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(dataArray.Length &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> path = AssetDatabase.GUIDToAssetPath(dataArray[<span class="number">0</span>]);</span><br><span class="line">            dataBase = AssetDatabase.LoadAssetAtPath(path, <span class="keyword">typeof</span>(ItemDataList_SO)) <span class="keyword">as</span> ItemDataList_SO;</span><br><span class="line">        &#125;</span><br><span class="line">        itemList = dataBase.itemDetails;</span><br><span class="line">        <span class="comment">//如果不标注则无法保存数据</span></span><br><span class="line">        EditorUtility.SetDirty(dataBase);</span><br><span class="line">        Debug.Log(itemList[<span class="number">0</span>].itemID);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710204307450.png" alt="image-20230710204307450"></p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UIElements;</span><br><span class="line"><span class="keyword">using</span> UnityEditor.UIElements;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ItemEditor</span> : <span class="title">EditorWindow</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> ItemDataList_SO dataBase;</span><br><span class="line">    <span class="keyword">private</span> List&lt;ItemDetails&gt; itemList = <span class="keyword">new</span> List&lt;ItemDetails&gt;();</span><br><span class="line">    <span class="keyword">private</span> VisualTreeAsset itemRowTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得VisualElement</span></span><br><span class="line">    <span class="keyword">private</span> ListView itemListView;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">MenuItem(<span class="string">&quot;W STUDIO/ItemEditor&quot;</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShowExample</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ItemEditor wnd = GetWindow&lt;ItemEditor&gt;();</span><br><span class="line">        wnd.titleContent = <span class="keyword">new</span> GUIContent(<span class="string">&quot;ItemEditor&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CreateGUI</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Each editor window contains a root VisualElement object</span></span><br><span class="line">        VisualElement root = rootVisualElement;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// VisualElements objects can contain other VisualElement following a tree hierarchy.</span></span><br><span class="line">        <span class="comment">//VisualElement label = new Label(&quot;Hello World! From C#&quot;);</span></span><br><span class="line">        <span class="comment">//root.Add(label);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Import UXML</span></span><br><span class="line">        <span class="keyword">var</span> visualTree = AssetDatabase.LoadAssetAtPath&lt;VisualTreeAsset&gt;(<span class="string">&quot;Assets/Editor/UI Builder/ItemEditor.uxml&quot;</span>);</span><br><span class="line">        VisualElement labelFromUXML = visualTree.Instantiate();</span><br><span class="line">        root.Add(labelFromUXML);</span><br><span class="line">        <span class="comment">//拿到模板数据</span></span><br><span class="line">        itemRowTemplate = AssetDatabase.LoadAssetAtPath&lt;VisualTreeAsset&gt;(<span class="string">&quot;Assets/Editor/UI Builder/ItemRowTemplate.uxml&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//变量赋值</span></span><br><span class="line">        itemListView = root.Q&lt;VisualElement&gt;(<span class="string">&quot;ItemList&quot;</span>).Q&lt;ListView&gt;(<span class="string">&quot;ListView&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//加载数据</span></span><br><span class="line">        LoadDataBase();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//生成ListView</span></span><br><span class="line">        GenerateListView();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadDataBase</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> dataArray = AssetDatabase.FindAssets(<span class="string">&quot;ItemDataList_SO&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(dataArray.Length &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> path = AssetDatabase.GUIDToAssetPath(dataArray[<span class="number">0</span>]);</span><br><span class="line">            dataBase = AssetDatabase.LoadAssetAtPath(path, <span class="keyword">typeof</span>(ItemDataList_SO)) <span class="keyword">as</span> ItemDataList_SO;</span><br><span class="line">        &#125;</span><br><span class="line">        itemList = dataBase.itemDetails;</span><br><span class="line">        <span class="comment">//如果不标注则无法保存数据</span></span><br><span class="line">        EditorUtility.SetDirty(dataBase);</span><br><span class="line">        <span class="comment">//Debug.Log(itemList[0].itemID);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">GenerateListView</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Func&lt;VisualElement&gt; makeItem = () =&gt; itemRowTemplate.CloneTree();</span><br><span class="line">        Action&lt;VisualElement, <span class="built_in">int</span>&gt; bindItem = (e, i) =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; itemList.Count)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(itemList[i].itemIcon != <span class="literal">null</span>)</span><br><span class="line">                    e.Q&lt;VisualElement&gt;(<span class="string">&quot;Icon&quot;</span>).style.backgroundImage = itemList[i].itemIcon.texture;</span><br><span class="line">                e.Q&lt;Label&gt;(<span class="string">&quot;Name&quot;</span>).text = itemList[i] == <span class="literal">null</span> ? <span class="string">&quot;NO ITEM&quot;</span> : itemList[i].itemName;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        itemListView.fixedItemHeight = <span class="number">60</span>;</span><br><span class="line">        itemListView.itemsSource = itemList;</span><br><span class="line">        itemListView.makeItem = makeItem;</span><br><span class="line">        itemListView.bindItem = bindItem;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710210835803.png" alt="image-20230710210835803"></p>
+<h2 id="14-绑定Editor-Window中的参数变量"><a href="#14-绑定Editor-Window中的参数变量" class="headerlink" title="14.绑定Editor Window中的参数变量"></a>14.绑定Editor Window中的参数变量</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UIElements;</span><br><span class="line"><span class="keyword">using</span> UnityEditor.UIElements;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ItemEditor</span> : <span class="title">EditorWindow</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> ItemDataList_SO dataBase;</span><br><span class="line">    <span class="keyword">private</span> List&lt;ItemDetails&gt; itemList = <span class="keyword">new</span> List&lt;ItemDetails&gt;();</span><br><span class="line">    <span class="keyword">private</span> VisualTreeAsset itemRowTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ScrollView itemDetailSection;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ItemDetails activeItem;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//默认预览图片</span></span><br><span class="line">    <span class="keyword">private</span> Sprite defaultIcon;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> VisualElement iconPreview;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//获得VisualElement</span></span><br><span class="line">    <span class="keyword">private</span> ListView itemListView;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    [<span class="meta">MenuItem(<span class="string">&quot;W STUDIO/ItemEditor&quot;</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShowExample</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ItemEditor wnd = GetWindow&lt;ItemEditor&gt;();</span><br><span class="line">        wnd.titleContent = <span class="keyword">new</span> GUIContent(<span class="string">&quot;ItemEditor&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CreateGUI</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Each editor window contains a root VisualElement object</span></span><br><span class="line">        VisualElement root = rootVisualElement;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// VisualElements objects can contain other VisualElement following a tree hierarchy.</span></span><br><span class="line">        <span class="comment">//VisualElement label = new Label(&quot;Hello World! From C#&quot;);</span></span><br><span class="line">        <span class="comment">//root.Add(label);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Import UXML</span></span><br><span class="line">        <span class="keyword">var</span> visualTree = AssetDatabase.LoadAssetAtPath&lt;VisualTreeAsset&gt;(<span class="string">&quot;Assets/Editor/UI Builder/ItemEditor.uxml&quot;</span>);</span><br><span class="line">        VisualElement labelFromUXML = visualTree.Instantiate();</span><br><span class="line">        root.Add(labelFromUXML);</span><br><span class="line">        <span class="comment">//拿到模板数据</span></span><br><span class="line">        itemRowTemplate = AssetDatabase.LoadAssetAtPath&lt;VisualTreeAsset&gt;(<span class="string">&quot;Assets/Editor/UI Builder/ItemRowTemplate.uxml&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//拿到默认Icon图片</span></span><br><span class="line">        defaultIcon = AssetDatabase.LoadAssetAtPath&lt;Sprite&gt;(<span class="string">&quot;Assets/M Studio/Art/Items/Icons/icon_M.png&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//变量赋值</span></span><br><span class="line">        itemListView = root.Q&lt;VisualElement&gt;(<span class="string">&quot;ItemList&quot;</span>).Q&lt;ListView&gt;(<span class="string">&quot;ListView&quot;</span>);</span><br><span class="line">        itemDetailSection = root.Q&lt;ScrollView&gt;(<span class="string">&quot;ItemDetails&quot;</span>);</span><br><span class="line">        iconPreview = itemDetailSection.Q&lt;VisualElement&gt;(<span class="string">&quot;icon&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//加载数据</span></span><br><span class="line">        LoadDataBase();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//生成ListView</span></span><br><span class="line">        GenerateListView();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadDataBase</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> dataArray = AssetDatabase.FindAssets(<span class="string">&quot;ItemDataList_SO&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(dataArray.Length &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> path = AssetDatabase.GUIDToAssetPath(dataArray[<span class="number">0</span>]);</span><br><span class="line">            dataBase = AssetDatabase.LoadAssetAtPath(path, <span class="keyword">typeof</span>(ItemDataList_SO)) <span class="keyword">as</span> ItemDataList_SO;</span><br><span class="line">        &#125;</span><br><span class="line">        itemList = dataBase.itemDetails;</span><br><span class="line">        <span class="comment">//如果不标注则无法保存数据</span></span><br><span class="line">        EditorUtility.SetDirty(dataBase);</span><br><span class="line">        <span class="comment">//Debug.Log(itemList[0].itemID);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">GenerateListView</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Func&lt;VisualElement&gt; makeItem = () =&gt; itemRowTemplate.CloneTree();</span><br><span class="line">        Action&lt;VisualElement, <span class="built_in">int</span>&gt; bindItem = (e, i) =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; itemList.Count)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(itemList[i].itemIcon != <span class="literal">null</span>)</span><br><span class="line">                    e.Q&lt;VisualElement&gt;(<span class="string">&quot;Icon&quot;</span>).style.backgroundImage = itemList[i].itemIcon.texture;</span><br><span class="line">                e.Q&lt;Label&gt;(<span class="string">&quot;Name&quot;</span>).text = itemList[i] == <span class="literal">null</span> ? <span class="string">&quot;NO ITEM&quot;</span> : itemList[i].itemName;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        itemListView.fixedItemHeight = <span class="number">60</span>;</span><br><span class="line">        itemListView.itemsSource = itemList;</span><br><span class="line">        itemListView.makeItem = makeItem;</span><br><span class="line">        itemListView.bindItem = bindItem;</span><br><span class="line"></span><br><span class="line">        itemListView.onSelectionChange += OnListSelectionChange;</span><br><span class="line"></span><br><span class="line">        itemDetailSection.visible = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnListSelectionChange</span>(<span class="params">IEnumerable&lt;<span class="built_in">object</span>&gt; selectedItem</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        activeItem = (ItemDetails)selectedItem.First();</span><br><span class="line">        GetItemDetails();</span><br><span class="line">        itemDetailSection.visible = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">GetItemDetails</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        itemDetailSection.MarkDirtyRepaint();</span><br><span class="line">        itemDetailSection.Q&lt;IntegerField&gt;(<span class="string">&quot;ItemID&quot;</span>).<span class="keyword">value</span> = activeItem.itemID;</span><br><span class="line">        itemDetailSection.Q&lt;IntegerField&gt;(<span class="string">&quot;ItemID&quot;</span>).RegisterValueChangedCallback(evt =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            activeItem.itemID = evt.newValue;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        itemDetailSection.Q&lt;TextField&gt;(<span class="string">&quot;ItemName&quot;</span>).<span class="keyword">value</span> = activeItem.itemName;</span><br><span class="line">        itemDetailSection.Q&lt;TextField&gt;(<span class="string">&quot;ItemName&quot;</span>).RegisterValueChangedCallback(evt =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            activeItem.itemName = evt.newValue;</span><br><span class="line">            itemListView.Rebuild();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        iconPreview.style.backgroundImage = activeItem.itemIcon == <span class="literal">null</span> ? defaultIcon.texture : activeItem.itemIcon.texture;</span><br><span class="line">        itemDetailSection.Q&lt;ObjectField&gt;(<span class="string">&quot;ItemIcon&quot;</span>).<span class="keyword">value</span> = activeItem.itemIcon;</span><br><span class="line">        itemDetailSection.Q&lt;ObjectField&gt;(<span class="string">&quot;ItemIcon&quot;</span>).RegisterValueChangedCallback(evt =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Sprite newIcon = evt.newValue <span class="keyword">as</span> Sprite;</span><br><span class="line">            activeItem.itemIcon = newIcon;</span><br><span class="line">           </span><br><span class="line">            </span><br><span class="line">           iconPreview.style.backgroundImage = newIcon == <span class="literal">null</span> ? defaultIcon.texture : newIcon.texture;</span><br><span class="line">            </span><br><span class="line">            itemListView.Rebuild();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710212637616.png" alt="image-20230710212637616"></p>
+<h2 id="15-实现ListView添加删除同步信息功能"><a href="#15-实现ListView添加删除同步信息功能" class="headerlink" title="15.实现ListView添加删除同步信息功能"></a>15.实现ListView添加删除同步信息功能</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">region</span> 按键事件</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnDeleteClicked</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        itemList.Remove(activeItem);</span><br><span class="line">        itemListView.Rebuild();</span><br><span class="line">        itemDetailSection.visible = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnAddItemClicked</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ItemDetails newItem = <span class="keyword">new</span> ItemDetails();</span><br><span class="line">        newItem.itemName = <span class="string">&quot;NEW ITEM&quot;</span>;</span><br><span class="line">        newItem.itemID = <span class="number">1000</span> + itemList.Count;</span><br><span class="line">        itemList.Add(newItem);</span><br><span class="line">        itemListView.Rebuild();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br></pre></td></tr></table></figure>
+
+]]></content>
   </entry>
   <entry>
     <title>SSM框架</title>
@@ -153,6 +148,11 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Hexo+阿里云+github搭建博客</title>
+    <url>/wang666-bot.github.io/post/a6f5b56e.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
   </entry>
   <entry>
     <title>伙伴匹配系统</title>
@@ -210,6 +210,322 @@
 ]]></content>
       <tags>
         <tag>Vue Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用户中心项目分享</title>
+    <url>/wang666-bot.github.io/post/ac2907d5.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="用户中心（上）"><a href="#用户中心（上）" class="headerlink" title="用户中心（上）"></a>用户中心（上）</h1><p>需求分析 &#x3D;》设计（概要设计、详细设计）&#x3D;》技术选型&#x3D;》初始化&#x2F;引入需要的技术&#x3D;&gt;写Demo&#x3D;》写代码（实现业务逻辑）&#x3D;》测试（单元测试）&#x3D;》代码提交 &#x2F; 代码评审 &#x3D;》部署 &#x3D;》发布</p>
+<h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><p>1.登陆&#x2F;注册</p>
+<p>2.用户管理（管理员可见）对用户的查询或者修改</p>
+<p>3.用户校验</p>
+<h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><p>前端：三件套 + React + 组件库Ant Design + Umi + Ant Design Pro（现成的管理系统）</p>
+<p>后端： Java + SSM+mysql </p>
+<p>部署： 服务器&#x2F;容器（平台）</p>
+<p>1.1初始化项目</p>
+<p>​	前端初始化</p>
+<p>​		初始化项目</p>
+<p>​		引入组件</p>
+<p>​		框架介绍&#x2F;项目瘦身</p>
+<p>​	后端初始化</p>
+<p>​		准备环境（MySQL）</p>
+<p>​		引入框架</p>
+<p>1.2登录&#x2F;注册</p>
+<p>​	前端</p>
+<p>​	后端</p>
+<p>1.4用户管理</p>
+<p>​	前端</p>
+<p>​	后端</p>
+<p>yarn包管理器，比npm下载更快（并行下载）</p>
+<p>初始化Java项目的方式</p>
+<p>1.Github搜现成的代码</p>
+<p>2.SprintBoot官方的模板生成器 <a href="https://start.spring.io/">https://start.spring.io/</a></p>
+<p>3.直接在IDEA开发工具生成（推荐）</p>
+<h1 id="用户中心（中）"><a href="#用户中心（中）" class="headerlink" title="用户中心（中）"></a>用户中心（中）</h1><p>数据库的设计：根据需求场景判断有哪些表（模型）？表里有哪些字段 ？字段的类型？给数据库字段添加索引？</p>
+<p>表与表之间的关联</p>
+<p>用户表：</p>
+<p>id（主键）  bigint</p>
+<p>username 昵称  varchar</p>
+<p>登陆账号 account</p>
+<p>avatarUrl 头像 varchar</p>
+<p>gender 性别 tinyint</p>
+<p>password 密码 varchar</p>
+<p>phone电话 varchar</p>
+<p>email 邮箱 varchar</p>
+<p>isVaild是否有效 tinyint 0&#x2F;1</p>
+<p>createTime 创建时间（数据插入时间）datetime</p>
+<p>updateTime 更新时间（数据更新时间） datetime</p>
+<p>isDelete 是否删除 （逻辑删除）tinyint</p>
+<p>userRole  用户角色 0 普通用户 1 管理员</p>
+<p>建表语句</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table user</span><br><span class="line">(</span><br><span class="line">    id           bigint auto_increment comment &#x27;id</span><br><span class="line">&#x27;</span><br><span class="line">        primary key,</span><br><span class="line">    username     varchar(256)                        null comment &#x27;用户名称&#x27;,</span><br><span class="line">    userAccount  varchar(256)                        null comment &#x27;登录账号&#x27;,</span><br><span class="line">    avatarUrl    varchar(1024)                       null comment &#x27;用户头像&#x27;,</span><br><span class="line">    gender       tinyint                             null comment &#x27;性别&#x27;,</span><br><span class="line">    phone        varchar(128)                        null comment &#x27;电话&#x27;,</span><br><span class="line">    userpassword varchar(512)                        not null comment &#x27;密码&#x27;,</span><br><span class="line">    email           varchar(512)                        null comment &#x27;邮箱&#x27;,</span><br><span class="line">    userstatus   int       default 0                 null comment &#x27;状态&#x27;,</span><br><span class="line">    createTime   datetime  default CURRENT_TIMESTAMP not null comment &#x27;创建时间&#x27;,</span><br><span class="line">    updateTime   timestamp default CURRENT_TIMESTAMP null comment &#x27;更新时间&#x27;,</span><br><span class="line">    isDelete     tinyint   default 0                 not null comment &#x27;是否删除&#x27;</span><br><span class="line">)</span><br><span class="line">    comment &#x27;用户&#x27;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>实现登陆注册功能</p>
+<p>​	后端：</p>
+<p>​		1.规整项目目录</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.htm/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB/image-20230510225949131.png" alt="01"></p>
+<p>​		controller：控制层，专门用于接收请求</p>
+<p>​		mapper：数据访问层（从数据库中查询数据）</p>
+<p>​		model：定义和数据库相对应的模型、封装类等</p>
+<p>​		service：编写业务逻辑（登陆注册等）</p>
+<p>​		utils：存放工具类（加密，格式转化等）</p>
+<p>​		2.实现基本数据库操作（操作user表）</p>
+<p>​					目的：模型user对象  &#x3D;》 和数据库的字段关联，自动生成（MybatisX插件）</p>
+<p>​					MybatisX插件：自动根据数据库生成domain实体对象、mapper（操作数据库的对象）、mapper.xml（定义了mapper对象和					数据库的关联，可以在里面自己写SQL）、service（包含常用的增删改查）、service实现类</p>
+<p>​		实现注册逻辑：</p>
+<p>​					1.用户在前端输入账户和密码、以及校验码</p>
+<p>​					2.校验用户的账户、密码、校验密码是否符合规则</p>
+<p>​										账户不小于4位</p>
+<p>​										密码不小于8位</p>
+<p>​										账户不能重复</p>
+<p>​										密码和校验密码相同</p>
+<p>​					3.对密码进行加密（密码千万不能直接以明文存储到数据库中）</p>
+<p>​					4.向数据库插入用户数据</p>
+<h1 id="用户中心（下）"><a href="#用户中心（下）" class="headerlink" title="用户中心（下）"></a>用户中心（下）</h1><p>1.开发完成后端登录功能</p>
+<p>2.开发后端用户的管理接口</p>
+<p>3.开发前端用户登录注册功能</p>
+<p>4.讨论如何校验用户（限制使用人）</p>
+<h3 id="登录逻辑"><a href="#登录逻辑" class="headerlink" title="登录逻辑"></a>登录逻辑</h3><p>接收参数：用户账户、密码</p>
+<p>请求类型：POST</p>
+<p>请求体： JSON格式的数据</p>
+<p>​		请求参数很长时不建议用get</p>
+<p>返回值：用户信息（脱敏）</p>
+<p>逻辑：</p>
+<p>​	1.校验用户账户和密码是否合法</p>
+<p>​			非空</p>
+<p>​			账户不小于4位</p>
+<p>​			密码不小于8位</p>
+<p>​			密码和校验密码相同</p>
+<p>2.校验密码是否输入正确，要和数据库中的密文密码取对比</p>
+<p>3.用户信息脱敏，隐藏敏感信息，防止数据库中的字段泄漏</p>
+<p>4.我们要记录用户的登陆状态（session），将其存到服务器上（用后端SpringBoot框架封装的服务器tomcat去记录）</p>
+<p>5.返回安全的脱敏后的用户信息</p>
+<p>控制层Controller封装请求</p>
+<p>application.yml 指定接口全局api</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">servlet:</span><br><span class="line">  context-path: /api</span><br></pre></td></tr></table></figure>
+
+<p>@RestController适用于编写restful风格的api，返回值默认为json类型</p>
+<p>controller层倾向于对请求参数本身的校验，不涉及业务逻辑本身（越少越好）</p>
+<p>service层是对业务逻辑的校验（有可能贝controller之外的业务逻辑调用）</p>
+<p>如何直到是哪个用户登陆了</p>
+<p>​	1.连接服务器端后，得到一个session状态（匿名会话），返回给前端</p>
+<p>​	2.登陆成功后，得到了登陆成功的session，并且给session设置一些值（比如用户信息）返回给前端一个设置cookie 的”命令“</p>
+<p>​	3.前端接收到后端的命令后，设置cookie，保存到浏览器内</p>
+<p>​	4.前端再次请求后端的时候（相同的域名），在请求头中带上cookie去请求</p>
+<p>​	5.后端拿到前端传来的cookie，找到对应的session</p>
+<p>​	6.后端从session中取出基于该session存储的变量（用户的登录信息、登录名）</p>
+<h2 id="用户管理接口"><a href="#用户管理接口" class="headerlink" title="用户管理接口"></a>用户管理接口</h2><p>！！！必须鉴权</p>
+<p>1.查询用户</p>
+<p>​		根据用户名查询</p>
+<p>2.删除用户</p>
+<p>先做设计</p>
+<p>代码实现</p>
+<p>持续优化！！！（复用代码、提取公共逻辑&#x2F;常量）</p>
+<h2 id="前后端交互"><a href="#前后端交互" class="headerlink" title="前后端交互"></a>前后端交互</h2><p>前端需要向后端发送请求</p>
+<p>前端ajax来请求后端</p>
+<p>axios封装ajax</p>
+<p>request是ant design项目又封装了axios</p>
+<p>追踪request源码：用到了umi的插件，requestConfig是一个插件</p>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>正向代理：替客户端向服务端发送请求，</p>
+<p>反向代理：替服务器接收请求</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.htm/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB/image-20230514212035624.png" alt="image-20230514212035624"></p>
+<p>怎么搞代理</p>
+<p>Nginx服务器</p>
+<p>Node.js服务器</p>
+<p>原本请求：<a href="http://localhost:8000/api/user/login">http://localhost:8000/api/user/login</a></p>
+<h1 id="用户中心（终）"><a href="#用户中心（终）" class="headerlink" title="用户中心（终）"></a>用户中心（终）</h1><p>1.完成注册功能的前端开发</p>
+<p>2.获取用户的登录态，获取当前登录用户信息接口</p>
+<p>3.完成用户管理后台的前端开发</p>
+<p>4.前端代码瘦身&amp;优化</p>
+<p>5.后端代码优化</p>
+<p>6.新需求-用户校验</p>
+<p>7.项目扩展思路</p>
+<p>Ant Design Pro（Umi框架）</p>
+<p>app.tsx项目全局入口文件，定义了整个项目中使用的公共数据（比如用户信息）</p>
+<p>access.ts控制用户的访问权限</p>
+<p>首次访问页面（刷新页面），进入app.tsx，执行getInitialState方法，该方法的返回值就是全局可用的状态值</p>
+<p>ProComponents高级表单</p>
+<p>1.通过columns定义表格有哪些列</p>
+<p>2.columns里的属性</p>
+<p>​	dataIndex对应返回数据对象的属性</p>
+<p>​	title表格列名</p>
+<p>​	copyable ： 是否允许复制</p>
+<p>​	ellipsis ： 是否允许缩略</p>
+<p>​	valueType：用于声明这一列的类型</p>
+<p>MFSU：前端编译优化（联邦模块编译）</p>
+<p>Ant Design 组件库 &#x3D;&gt; React</p>
+<p>Ant Design Pro  components &#x3D;&gt; Ant Design 业务组件</p>
+<p>Ant Design Pro 后台管理系统 &#x3D;&gt; Ant Design 、React 、Ant Design Pro  components、其他的库</p>
+<p>用户中心（末）</p>
+<p>1.开发用户注销  前端&#x2F;后端</p>
+<p>2.补充用户注册校验逻辑 前端&#x2F;后端</p>
+<p>3.后端代码优化</p>
+<p>4.前端代码优化</p>
+<p>5.项目部署上线</p>
+<p>​	1.原生部署</p>
+<p>​	2.容器部署</p>
+<p>​	3.绑定域名</p>
+<p>用户校验</p>
+<p>​	仅适用于用户可信的情况</p>
+<p>让用户自己填：2-5位编号</p>
+<p>后台补充对编号的校验：长度校验、唯一性校验</p>
+<p>前端补充输入框，适配后端</p>
+<p>后期拉去星球数据，定期清理违规用户</p>
+<h2 id="后端优化"><a href="#后端优化" class="headerlink" title="后端优化"></a>后端优化</h2><p>1.通用返回对象，给对象补充一些信息</p>
+<p>​	目的：给对象补充一些信息，告诉前端这个请求在业务层面上是成功还是失败</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;name&quot;:&quot;wang&quot;</span><br><span class="line">&#125;</span><br><span class="line">//成功</span><br><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 0 //业务状态码</span><br><span class="line">	&quot;data&quot;:&#123;</span><br><span class="line">		&quot;name&quot;:&quot;wang&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;message&quot;:&quot;ok&quot;</span><br><span class="line">&#125;</span><br><span class="line">//错误</span><br><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 50001 //业务状态码</span><br><span class="line">	&quot;data&quot;:null</span><br><span class="line">	&quot;message&quot;:&quot;用户操作异常&quot;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	自定义错误码</p>
+<p>​	返回类支持返回正常和错误</p>
+<p>2.封装全局异常处理</p>
+<p>​	1.定义业务异常类</p>
+<p>​		1.相对于java的异常类，支持更多字段</p>
+<p>​		2.自定义构造函数，更灵活 &#x2F; 快捷的设置字段</p>
+<p>​	2.编写全局异常处理器</p>
+<p>​		作用：</p>
+<p>​		1.捕获代码中所有的异常，内部消化，集中处理，让前端得到更详细的业务报错&#x2F;信息</p>
+<p>​		2.同时屏蔽掉项目框架本身的异常（不暴露服务器内部状态）</p>
+<p>​		3.集中处理，比如记录日志</p>
+<p>​		实现：</p>
+<p>​		1.Spring AOP：在调用方法前后进行额外的处理</p>
+<p>3.全局请求日志和登录校验	</p>
+<p>​	</p>
+<p>​	前端优化</p>
+<p>​	1.对接后端的返回值，取data</p>
+<p>​	2.全局响应处理 <a href="https://blog.csdn.net/huantai3334/article/details/116780020">https://blog.csdn.net/huantai3334/article/details/116780020</a></p>
+<p>​		1.应用场景：我们需要对接口的通用响应进行统一处理，比如从response中取出data， 或者根据code去集中处理错误，比如用户未登录、没权限之类的</p>
+<p>​		2.优势：不用在每个接口请求中都去写相同的逻辑</p>
+<p>​		3.实现：参考使用的请求封装工具的官方文档，比如umi-request</p>
+<p>​		如果使用axios，参考axios的文档，创建新的文件，在该文件中配置一个全局请求类，在发送请求时，使用我们自己的定义的全局请求类</p>
+<h1 id="用户中心（部署）"><a href="#用户中心（部署）" class="headerlink" title="用户中心（部署）"></a>用户中心（部署）</h1><p>1.多环境</p>
+<p>2.项目部署上线</p>
+<p>​	原始前端&#x2F;后端项目</p>
+<p>​	宝塔Linux</p>
+<p>​	容器</p>
+<p>​	容器平台</p>
+<p>3.前后端的联调</p>
+<p>4.用户中心项目扩展和规划</p>
+<h2 id="多环境"><a href="#多环境" class="headerlink" title="多环境"></a>多环境</h2><p>参考文章<a href="https://blog.csdn.net/weixin_41701290/article/details/120173283">https://blog.csdn.net/weixin_41701290/article/details/120173283</a></p>
+<p>本地开发localhost（127.0.0.1）</p>
+<p>多环境：指同一套项目代码在不同的阶段需要根据实际情况来部署到不同的机器上，并且要调整配置</p>
+<p>为什么需要？</p>
+<p>​	1.每个环境互不影响</p>
+<p>​	2.为了区分不同的阶段：开发&#x2F;测试&#x2F;生产</p>
+<p>​	3.对项目进行优化：</p>
+<p>​		1.本地日志级别</p>
+<p>​		2.精简依赖，减少项目体积</p>
+<p>​		3.项目的环境&#x2F;参数可以调整，比如JVM参数</p>
+<p>针对不同环境做不同的事情</p>
+<p>多环境分类：</p>
+<p>​	1.本地环境（自己的电脑）localhost</p>
+<p>​	2.开发环境（远程开发）大家连同一台机器，为了大家开发方便</p>
+<p>​	3.测试环境（测试）开发&#x2F;测试&#x2F;产品，单元测试 &#x2F; 性能测试 &#x2F; 功能测试 &#x2F;系统集成测试，独立的数据库，独立的服务器</p>
+<p>​	4.预发布环境（体验服）：和正式环境一致，正式数据库，可以更严谨，查出更多问题</p>
+<p>​	5.正式环境（线上，公开对外访问的项目）：尽量不要改动，保证上线前的代码是完美运行</p>
+<p>​	6.沙箱环境（实验环境）：为了做实验</p>
+<p>​	</p>
+<h2 id="前端多环境实战"><a href="#前端多环境实战" class="headerlink" title="前端多环境实战"></a>前端多环境实战</h2><p>请求地址</p>
+<p>​			开发环境：localhost:8000</p>
+<p>​			线上环境：备案的域名</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">startFront</span>(<span class="params">env</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span>(env === <span class="string">&#x27;prod&#x27;</span>)&#123;</span><br><span class="line">        <span class="comment">//不输出注释</span></span><br><span class="line">        <span class="comment">//项目优化</span></span><br><span class="line">        <span class="comment">//修改请求地址</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//保持本地开发逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用了umi框架，build时会自动传入NODE_ENV &#x3D;&#x3D; production参数， start NODE_ENV参数为 development</p>
+<p>启动方式</p>
+<p>​	开发环境：npm run start（本地启动，监听端口，自动更新）</p>
+<p>​	线上环境：npm  run build（项目构建打包），可以使用serve工具启动（npm i -g serve）</p>
+<p>项目的配置</p>
+<p>不同的项目框架都有不同的配置文件，umi的配置文件是config</p>
+<p>​	可以在配置文化后添加对应的环境名称后缀来区分开发环境和生产环境，参考文档umi的部署</p>
+<p>​	开发环境：config.dev.ts</p>
+<p>​	生产环境：config.prod.ts</p>
+<p>​	公共配置：config.ts不带后缀</p>
+<h2 id="后端多环境实战"><a href="#后端多环境实战" class="headerlink" title="后端多环境实战"></a>后端多环境实战</h2><p>​	SpringBoot项目，通过application.yml添加不同的后缀来区分配置文件，可以在启动项目时传入环境变量：</p>
+<p>主要是改依赖的环境地址：</p>
+<p>​	数据库地址</p>
+<p>​	缓存地址</p>
+<p>​	消息队列地址</p>
+<p>​	项目端口号</p>
+<p>服务器配置</p>
+<p>项目部署</p>
+<p>需要Linux服务器（建议CnetOS8 +&#x2F;7.6以上）</p>
+<p>原始部署</p>
+<p>什么都自己装</p>
+<p>前端</p>
+<p>需要web服务器：nginx，apache、tomcat</p>
+<p>安装nginx服务器</p>
+<p>​	1.用系统自带的软件包管理器快速安装 比如centos的yum</p>
+<p>​	2.自己到官网（参考文章<a href="https://zhuanlan.zhihu.com/p/425790769%EF%BC%89">https://zhuanlan.zhihu.com/p/425790769）</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> curl -o nginx-1.24.0 http://nginx.org/download/nginx-1.24.0.tar.gz</span><br><span class="line"> tar -zxvf nginx-1.24.0</span><br><span class="line"> cd nginx-1.24.0</span><br><span class="line">  ./configure</span><br><span class="line">yum install openssl openssl-devel -y</span><br><span class="line"> ./configure --with-http_ssl_module --with-http_v2_module --with-stream</span><br><span class="line"> make</span><br><span class="line">  make install</span><br><span class="line"> ls</span><br><span class="line">  ls /usr/local/nginx/sbin/nginx</span><br><span class="line"> vim /etc/profile</span><br><span class="line">在最后一行添加export PATH=$PATH:/usr/local/nginx/sbin			</span><br></pre></td></tr></table></figure>
+
+<p>注意权限</p>
+<p>部署后端</p>
+<p>java、maven</p>
+<p>宝塔Linux部署</p>
+<p>linux运维面板</p>
+<p>Docker部署</p>
+<p>docker是容器，可以将项目的环境（比如java，nginx）和项目的代码仪器打包成镜像，所有同学都能下载镜像，更容易分发和移植</p>
+<p>再启动项目时，不需要敲一大堆命令，而是直接下载镜像、启动镜像就可以了</p>
+<p>docker可以理解为软件安装包</p>
+<p>dockfile</p>
+<p>FROM依赖的基础镜像</p>
+<p>WORKDIR工作目录</p>
+<p>COPY从本机复制文件</p>
+<p>RUN执行命令</p>
+<p>CMD&#x2F;ENTRYPOINT（附加额外参数）指定运行容器时默认执行的命令</p>
+<p>根据Dockerfile构建镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker build -t </span><br></pre></td></tr></table></figure>
+
+<p>Docker构建优化：减少尺寸、减少构建时间（比如多阶段构建，可以丢弃之前阶段不需要的内容）</p>
+<p>docker run启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 80：80 -v /data：/data -d nginx：latest</span><br></pre></td></tr></table></figure>
+
+<p>虚拟化：</p>
+<p>​	1.端口映射：把本机的资源和容器内部的资源进行关联</p>
+<p>​	2.目录映射：把本机的端口和容器应用的端口进行关联</p>
+<p>前端部署方式</p>
+<p>前端webfiy web应用托管（比容器化更傻瓜式，不需要自己写构建应用的命令，就能启动前端项目）</p>
+<p>小缺点：需要将代码放到代码托管平台上</p>
+<p>优势：不用写命令、代码更新时自动构建</p>
+<p>Docker平台部署</p>
+<p>1.云服务商的容器平台（腾讯云、阿里云）</p>
+<p>2.面向某个领域的容器平台（前端webify、后端微信云托管）</p>
+<p>容器平台的好处：</p>
+<p>​	1.不用输命令来操作，更方便省事</p>
+<p>​	2.不用在控制台操作，更傻瓜式、更简单</p>
+<p>​	3.大厂运维，比自己运维更省心</p>
+<p>​	4.额外的能力，比如监控、告警、其他（存储、负载均衡、自动扩缩容、流水线）</p>
+<h1 id="用户中心（上线）"><a href="#用户中心（上线）" class="headerlink" title="用户中心（上线）"></a>用户中心（上线）</h1><h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>前端项目访问：用户输入网址&#x3D;&gt; 域名解析服务器（把网址解析为ip地址&#x2F;交给其他的域名解析服务器）&#x3D;&gt; 服务器&#x3D;&gt;（ 防火墙）&#x3D;&gt; nginx接收请求，找到对应的文件，返回文件给前端&#x3D;&gt; 前端加载文件到浏览器中(js\css) &#x3D;&gt; 渲染页面</p>
+<p>后端项目访问：用户输入网址 &#x3D;&gt; 域名解析服务器 &#x3D;&gt; 服务器 &#x3D;&gt;nginx接受请求&#x3D;&gt;  后端项目(比如8080端口)</p>
+<p>nginx反向代理：替服务器接收请求，转发请求</p>
+<p>跨域问题解决</p>
+<p>浏览器为了用户的安全，仅允许向<strong>同域名、同端口</strong>的服务器发送请求</p>
+<p>如何解决跨域</p>
+<p>​	1.把端口、域名改成相同的</p>
+<p>让服务器告诉浏览器：允许跨域（返回cross-origin-allow响应头）</p>
+<p>​	2.网关支持（Nginx网关）</p>
+<p>​	3.修改后端服务</p>
+<p>​			1.配置@CrossOrigin注解</p>
+<p>​			2.添加web全局请求拦截器</p>
+<p>​			3.定义新的corsFilter Bean</p>
+<p>项目优化点：</p>
+<p>​	1.功能扩充</p>
+<p>​		1.管理员创建用户】修改用户信息、删除用户</p>
+<p>​		2.上传头像</p>
+<p>​		3.按照更多的条件去查询用户</p>
+<p>​		4.更改权限</p>
+<p>2.修改Bug</p>
+<p>3.项目登录改为分布式session（单点登录）</p>
+<p>4.通用性</p>
+<p>​	1.set-cookie domain域名更通用，比如改为*.xxx.com</p>
+<p>​	2.把用户管理系统 &#x3D;&gt; 用户中心（之后所有的服务都请求这个后端）</p>
+<p>4.后台添加全局请求拦截器（统一去判断用户权限、统一记录请求日志）</p>
+]]></content>
+      <tags>
+        <tag>用户管理系统 Java 前端 后端</tag>
       </tags>
   </entry>
   <entry>
@@ -967,456 +1283,6 @@
       </tags>
   </entry>
   <entry>
-    <title>用户中心项目分享</title>
-    <url>/wang666-bot.github.io/post/ac2907d5.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="用户中心（上）"><a href="#用户中心（上）" class="headerlink" title="用户中心（上）"></a>用户中心（上）</h1><p>需求分析 &#x3D;》设计（概要设计、详细设计）&#x3D;》技术选型&#x3D;》初始化&#x2F;引入需要的技术&#x3D;&gt;写Demo&#x3D;》写代码（实现业务逻辑）&#x3D;》测试（单元测试）&#x3D;》代码提交 &#x2F; 代码评审 &#x3D;》部署 &#x3D;》发布</p>
-<h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><p>1.登陆&#x2F;注册</p>
-<p>2.用户管理（管理员可见）对用户的查询或者修改</p>
-<p>3.用户校验</p>
-<h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><p>前端：三件套 + React + 组件库Ant Design + Umi + Ant Design Pro（现成的管理系统）</p>
-<p>后端： Java + SSM+mysql </p>
-<p>部署： 服务器&#x2F;容器（平台）</p>
-<p>1.1初始化项目</p>
-<p>​	前端初始化</p>
-<p>​		初始化项目</p>
-<p>​		引入组件</p>
-<p>​		框架介绍&#x2F;项目瘦身</p>
-<p>​	后端初始化</p>
-<p>​		准备环境（MySQL）</p>
-<p>​		引入框架</p>
-<p>1.2登录&#x2F;注册</p>
-<p>​	前端</p>
-<p>​	后端</p>
-<p>1.4用户管理</p>
-<p>​	前端</p>
-<p>​	后端</p>
-<p>yarn包管理器，比npm下载更快（并行下载）</p>
-<p>初始化Java项目的方式</p>
-<p>1.Github搜现成的代码</p>
-<p>2.SprintBoot官方的模板生成器 <a href="https://start.spring.io/">https://start.spring.io/</a></p>
-<p>3.直接在IDEA开发工具生成（推荐）</p>
-<h1 id="用户中心（中）"><a href="#用户中心（中）" class="headerlink" title="用户中心（中）"></a>用户中心（中）</h1><p>数据库的设计：根据需求场景判断有哪些表（模型）？表里有哪些字段 ？字段的类型？给数据库字段添加索引？</p>
-<p>表与表之间的关联</p>
-<p>用户表：</p>
-<p>id（主键）  bigint</p>
-<p>username 昵称  varchar</p>
-<p>登陆账号 account</p>
-<p>avatarUrl 头像 varchar</p>
-<p>gender 性别 tinyint</p>
-<p>password 密码 varchar</p>
-<p>phone电话 varchar</p>
-<p>email 邮箱 varchar</p>
-<p>isVaild是否有效 tinyint 0&#x2F;1</p>
-<p>createTime 创建时间（数据插入时间）datetime</p>
-<p>updateTime 更新时间（数据更新时间） datetime</p>
-<p>isDelete 是否删除 （逻辑删除）tinyint</p>
-<p>userRole  用户角色 0 普通用户 1 管理员</p>
-<p>建表语句</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table user</span><br><span class="line">(</span><br><span class="line">    id           bigint auto_increment comment &#x27;id</span><br><span class="line">&#x27;</span><br><span class="line">        primary key,</span><br><span class="line">    username     varchar(256)                        null comment &#x27;用户名称&#x27;,</span><br><span class="line">    userAccount  varchar(256)                        null comment &#x27;登录账号&#x27;,</span><br><span class="line">    avatarUrl    varchar(1024)                       null comment &#x27;用户头像&#x27;,</span><br><span class="line">    gender       tinyint                             null comment &#x27;性别&#x27;,</span><br><span class="line">    phone        varchar(128)                        null comment &#x27;电话&#x27;,</span><br><span class="line">    userpassword varchar(512)                        not null comment &#x27;密码&#x27;,</span><br><span class="line">    email           varchar(512)                        null comment &#x27;邮箱&#x27;,</span><br><span class="line">    userstatus   int       default 0                 null comment &#x27;状态&#x27;,</span><br><span class="line">    createTime   datetime  default CURRENT_TIMESTAMP not null comment &#x27;创建时间&#x27;,</span><br><span class="line">    updateTime   timestamp default CURRENT_TIMESTAMP null comment &#x27;更新时间&#x27;,</span><br><span class="line">    isDelete     tinyint   default 0                 not null comment &#x27;是否删除&#x27;</span><br><span class="line">)</span><br><span class="line">    comment &#x27;用户&#x27;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>实现登陆注册功能</p>
-<p>​	后端：</p>
-<p>​		1.规整项目目录</p>
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.htm/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB/image-20230510225949131.png" alt="01"></p>
-<p>​		controller：控制层，专门用于接收请求</p>
-<p>​		mapper：数据访问层（从数据库中查询数据）</p>
-<p>​		model：定义和数据库相对应的模型、封装类等</p>
-<p>​		service：编写业务逻辑（登陆注册等）</p>
-<p>​		utils：存放工具类（加密，格式转化等）</p>
-<p>​		2.实现基本数据库操作（操作user表）</p>
-<p>​					目的：模型user对象  &#x3D;》 和数据库的字段关联，自动生成（MybatisX插件）</p>
-<p>​					MybatisX插件：自动根据数据库生成domain实体对象、mapper（操作数据库的对象）、mapper.xml（定义了mapper对象和					数据库的关联，可以在里面自己写SQL）、service（包含常用的增删改查）、service实现类</p>
-<p>​		实现注册逻辑：</p>
-<p>​					1.用户在前端输入账户和密码、以及校验码</p>
-<p>​					2.校验用户的账户、密码、校验密码是否符合规则</p>
-<p>​										账户不小于4位</p>
-<p>​										密码不小于8位</p>
-<p>​										账户不能重复</p>
-<p>​										密码和校验密码相同</p>
-<p>​					3.对密码进行加密（密码千万不能直接以明文存储到数据库中）</p>
-<p>​					4.向数据库插入用户数据</p>
-<h1 id="用户中心（下）"><a href="#用户中心（下）" class="headerlink" title="用户中心（下）"></a>用户中心（下）</h1><p>1.开发完成后端登录功能</p>
-<p>2.开发后端用户的管理接口</p>
-<p>3.开发前端用户登录注册功能</p>
-<p>4.讨论如何校验用户（限制使用人）</p>
-<h3 id="登录逻辑"><a href="#登录逻辑" class="headerlink" title="登录逻辑"></a>登录逻辑</h3><p>接收参数：用户账户、密码</p>
-<p>请求类型：POST</p>
-<p>请求体： JSON格式的数据</p>
-<p>​		请求参数很长时不建议用get</p>
-<p>返回值：用户信息（脱敏）</p>
-<p>逻辑：</p>
-<p>​	1.校验用户账户和密码是否合法</p>
-<p>​			非空</p>
-<p>​			账户不小于4位</p>
-<p>​			密码不小于8位</p>
-<p>​			密码和校验密码相同</p>
-<p>2.校验密码是否输入正确，要和数据库中的密文密码取对比</p>
-<p>3.用户信息脱敏，隐藏敏感信息，防止数据库中的字段泄漏</p>
-<p>4.我们要记录用户的登陆状态（session），将其存到服务器上（用后端SpringBoot框架封装的服务器tomcat去记录）</p>
-<p>5.返回安全的脱敏后的用户信息</p>
-<p>控制层Controller封装请求</p>
-<p>application.yml 指定接口全局api</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">servlet:</span><br><span class="line">  context-path: /api</span><br></pre></td></tr></table></figure>
-
-<p>@RestController适用于编写restful风格的api，返回值默认为json类型</p>
-<p>controller层倾向于对请求参数本身的校验，不涉及业务逻辑本身（越少越好）</p>
-<p>service层是对业务逻辑的校验（有可能贝controller之外的业务逻辑调用）</p>
-<p>如何直到是哪个用户登陆了</p>
-<p>​	1.连接服务器端后，得到一个session状态（匿名会话），返回给前端</p>
-<p>​	2.登陆成功后，得到了登陆成功的session，并且给session设置一些值（比如用户信息）返回给前端一个设置cookie 的”命令“</p>
-<p>​	3.前端接收到后端的命令后，设置cookie，保存到浏览器内</p>
-<p>​	4.前端再次请求后端的时候（相同的域名），在请求头中带上cookie去请求</p>
-<p>​	5.后端拿到前端传来的cookie，找到对应的session</p>
-<p>​	6.后端从session中取出基于该session存储的变量（用户的登录信息、登录名）</p>
-<h2 id="用户管理接口"><a href="#用户管理接口" class="headerlink" title="用户管理接口"></a>用户管理接口</h2><p>！！！必须鉴权</p>
-<p>1.查询用户</p>
-<p>​		根据用户名查询</p>
-<p>2.删除用户</p>
-<p>先做设计</p>
-<p>代码实现</p>
-<p>持续优化！！！（复用代码、提取公共逻辑&#x2F;常量）</p>
-<h2 id="前后端交互"><a href="#前后端交互" class="headerlink" title="前后端交互"></a>前后端交互</h2><p>前端需要向后端发送请求</p>
-<p>前端ajax来请求后端</p>
-<p>axios封装ajax</p>
-<p>request是ant design项目又封装了axios</p>
-<p>追踪request源码：用到了umi的插件，requestConfig是一个插件</p>
-<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>正向代理：替客户端向服务端发送请求，</p>
-<p>反向代理：替服务器接收请求</p>
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.htm/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB/image-20230514212035624.png" alt="image-20230514212035624"></p>
-<p>怎么搞代理</p>
-<p>Nginx服务器</p>
-<p>Node.js服务器</p>
-<p>原本请求：<a href="http://localhost:8000/api/user/login">http://localhost:8000/api/user/login</a></p>
-<h1 id="用户中心（终）"><a href="#用户中心（终）" class="headerlink" title="用户中心（终）"></a>用户中心（终）</h1><p>1.完成注册功能的前端开发</p>
-<p>2.获取用户的登录态，获取当前登录用户信息接口</p>
-<p>3.完成用户管理后台的前端开发</p>
-<p>4.前端代码瘦身&amp;优化</p>
-<p>5.后端代码优化</p>
-<p>6.新需求-用户校验</p>
-<p>7.项目扩展思路</p>
-<p>Ant Design Pro（Umi框架）</p>
-<p>app.tsx项目全局入口文件，定义了整个项目中使用的公共数据（比如用户信息）</p>
-<p>access.ts控制用户的访问权限</p>
-<p>首次访问页面（刷新页面），进入app.tsx，执行getInitialState方法，该方法的返回值就是全局可用的状态值</p>
-<p>ProComponents高级表单</p>
-<p>1.通过columns定义表格有哪些列</p>
-<p>2.columns里的属性</p>
-<p>​	dataIndex对应返回数据对象的属性</p>
-<p>​	title表格列名</p>
-<p>​	copyable ： 是否允许复制</p>
-<p>​	ellipsis ： 是否允许缩略</p>
-<p>​	valueType：用于声明这一列的类型</p>
-<p>MFSU：前端编译优化（联邦模块编译）</p>
-<p>Ant Design 组件库 &#x3D;&gt; React</p>
-<p>Ant Design Pro  components &#x3D;&gt; Ant Design 业务组件</p>
-<p>Ant Design Pro 后台管理系统 &#x3D;&gt; Ant Design 、React 、Ant Design Pro  components、其他的库</p>
-<p>用户中心（末）</p>
-<p>1.开发用户注销  前端&#x2F;后端</p>
-<p>2.补充用户注册校验逻辑 前端&#x2F;后端</p>
-<p>3.后端代码优化</p>
-<p>4.前端代码优化</p>
-<p>5.项目部署上线</p>
-<p>​	1.原生部署</p>
-<p>​	2.容器部署</p>
-<p>​	3.绑定域名</p>
-<p>用户校验</p>
-<p>​	仅适用于用户可信的情况</p>
-<p>让用户自己填：2-5位编号</p>
-<p>后台补充对编号的校验：长度校验、唯一性校验</p>
-<p>前端补充输入框，适配后端</p>
-<p>后期拉去星球数据，定期清理违规用户</p>
-<h2 id="后端优化"><a href="#后端优化" class="headerlink" title="后端优化"></a>后端优化</h2><p>1.通用返回对象，给对象补充一些信息</p>
-<p>​	目的：给对象补充一些信息，告诉前端这个请求在业务层面上是成功还是失败</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;name&quot;:&quot;wang&quot;</span><br><span class="line">&#125;</span><br><span class="line">//成功</span><br><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 0 //业务状态码</span><br><span class="line">	&quot;data&quot;:&#123;</span><br><span class="line">		&quot;name&quot;:&quot;wang&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;message&quot;:&quot;ok&quot;</span><br><span class="line">&#125;</span><br><span class="line">//错误</span><br><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 50001 //业务状态码</span><br><span class="line">	&quot;data&quot;:null</span><br><span class="line">	&quot;message&quot;:&quot;用户操作异常&quot;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	自定义错误码</p>
-<p>​	返回类支持返回正常和错误</p>
-<p>2.封装全局异常处理</p>
-<p>​	1.定义业务异常类</p>
-<p>​		1.相对于java的异常类，支持更多字段</p>
-<p>​		2.自定义构造函数，更灵活 &#x2F; 快捷的设置字段</p>
-<p>​	2.编写全局异常处理器</p>
-<p>​		作用：</p>
-<p>​		1.捕获代码中所有的异常，内部消化，集中处理，让前端得到更详细的业务报错&#x2F;信息</p>
-<p>​		2.同时屏蔽掉项目框架本身的异常（不暴露服务器内部状态）</p>
-<p>​		3.集中处理，比如记录日志</p>
-<p>​		实现：</p>
-<p>​		1.Spring AOP：在调用方法前后进行额外的处理</p>
-<p>3.全局请求日志和登录校验	</p>
-<p>​	</p>
-<p>​	前端优化</p>
-<p>​	1.对接后端的返回值，取data</p>
-<p>​	2.全局响应处理 <a href="https://blog.csdn.net/huantai3334/article/details/116780020">https://blog.csdn.net/huantai3334/article/details/116780020</a></p>
-<p>​		1.应用场景：我们需要对接口的通用响应进行统一处理，比如从response中取出data， 或者根据code去集中处理错误，比如用户未登录、没权限之类的</p>
-<p>​		2.优势：不用在每个接口请求中都去写相同的逻辑</p>
-<p>​		3.实现：参考使用的请求封装工具的官方文档，比如umi-request</p>
-<p>​		如果使用axios，参考axios的文档，创建新的文件，在该文件中配置一个全局请求类，在发送请求时，使用我们自己的定义的全局请求类</p>
-<h1 id="用户中心（部署）"><a href="#用户中心（部署）" class="headerlink" title="用户中心（部署）"></a>用户中心（部署）</h1><p>1.多环境</p>
-<p>2.项目部署上线</p>
-<p>​	原始前端&#x2F;后端项目</p>
-<p>​	宝塔Linux</p>
-<p>​	容器</p>
-<p>​	容器平台</p>
-<p>3.前后端的联调</p>
-<p>4.用户中心项目扩展和规划</p>
-<h2 id="多环境"><a href="#多环境" class="headerlink" title="多环境"></a>多环境</h2><p>参考文章<a href="https://blog.csdn.net/weixin_41701290/article/details/120173283">https://blog.csdn.net/weixin_41701290/article/details/120173283</a></p>
-<p>本地开发localhost（127.0.0.1）</p>
-<p>多环境：指同一套项目代码在不同的阶段需要根据实际情况来部署到不同的机器上，并且要调整配置</p>
-<p>为什么需要？</p>
-<p>​	1.每个环境互不影响</p>
-<p>​	2.为了区分不同的阶段：开发&#x2F;测试&#x2F;生产</p>
-<p>​	3.对项目进行优化：</p>
-<p>​		1.本地日志级别</p>
-<p>​		2.精简依赖，减少项目体积</p>
-<p>​		3.项目的环境&#x2F;参数可以调整，比如JVM参数</p>
-<p>针对不同环境做不同的事情</p>
-<p>多环境分类：</p>
-<p>​	1.本地环境（自己的电脑）localhost</p>
-<p>​	2.开发环境（远程开发）大家连同一台机器，为了大家开发方便</p>
-<p>​	3.测试环境（测试）开发&#x2F;测试&#x2F;产品，单元测试 &#x2F; 性能测试 &#x2F; 功能测试 &#x2F;系统集成测试，独立的数据库，独立的服务器</p>
-<p>​	4.预发布环境（体验服）：和正式环境一致，正式数据库，可以更严谨，查出更多问题</p>
-<p>​	5.正式环境（线上，公开对外访问的项目）：尽量不要改动，保证上线前的代码是完美运行</p>
-<p>​	6.沙箱环境（实验环境）：为了做实验</p>
-<p>​	</p>
-<h2 id="前端多环境实战"><a href="#前端多环境实战" class="headerlink" title="前端多环境实战"></a>前端多环境实战</h2><p>请求地址</p>
-<p>​			开发环境：localhost:8000</p>
-<p>​			线上环境：备案的域名</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">startFront</span>(<span class="params">env</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span>(env === <span class="string">&#x27;prod&#x27;</span>)&#123;</span><br><span class="line">        <span class="comment">//不输出注释</span></span><br><span class="line">        <span class="comment">//项目优化</span></span><br><span class="line">        <span class="comment">//修改请求地址</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//保持本地开发逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>用了umi框架，build时会自动传入NODE_ENV &#x3D;&#x3D; production参数， start NODE_ENV参数为 development</p>
-<p>启动方式</p>
-<p>​	开发环境：npm run start（本地启动，监听端口，自动更新）</p>
-<p>​	线上环境：npm  run build（项目构建打包），可以使用serve工具启动（npm i -g serve）</p>
-<p>项目的配置</p>
-<p>不同的项目框架都有不同的配置文件，umi的配置文件是config</p>
-<p>​	可以在配置文化后添加对应的环境名称后缀来区分开发环境和生产环境，参考文档umi的部署</p>
-<p>​	开发环境：config.dev.ts</p>
-<p>​	生产环境：config.prod.ts</p>
-<p>​	公共配置：config.ts不带后缀</p>
-<h2 id="后端多环境实战"><a href="#后端多环境实战" class="headerlink" title="后端多环境实战"></a>后端多环境实战</h2><p>​	SpringBoot项目，通过application.yml添加不同的后缀来区分配置文件，可以在启动项目时传入环境变量：</p>
-<p>主要是改依赖的环境地址：</p>
-<p>​	数据库地址</p>
-<p>​	缓存地址</p>
-<p>​	消息队列地址</p>
-<p>​	项目端口号</p>
-<p>服务器配置</p>
-<p>项目部署</p>
-<p>需要Linux服务器（建议CnetOS8 +&#x2F;7.6以上）</p>
-<p>原始部署</p>
-<p>什么都自己装</p>
-<p>前端</p>
-<p>需要web服务器：nginx，apache、tomcat</p>
-<p>安装nginx服务器</p>
-<p>​	1.用系统自带的软件包管理器快速安装 比如centos的yum</p>
-<p>​	2.自己到官网（参考文章<a href="https://zhuanlan.zhihu.com/p/425790769%EF%BC%89">https://zhuanlan.zhihu.com/p/425790769）</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> curl -o nginx-1.24.0 http://nginx.org/download/nginx-1.24.0.tar.gz</span><br><span class="line"> tar -zxvf nginx-1.24.0</span><br><span class="line"> cd nginx-1.24.0</span><br><span class="line">  ./configure</span><br><span class="line">yum install openssl openssl-devel -y</span><br><span class="line"> ./configure --with-http_ssl_module --with-http_v2_module --with-stream</span><br><span class="line"> make</span><br><span class="line">  make install</span><br><span class="line"> ls</span><br><span class="line">  ls /usr/local/nginx/sbin/nginx</span><br><span class="line"> vim /etc/profile</span><br><span class="line">在最后一行添加export PATH=$PATH:/usr/local/nginx/sbin			</span><br></pre></td></tr></table></figure>
-
-<p>注意权限</p>
-<p>部署后端</p>
-<p>java、maven</p>
-<p>宝塔Linux部署</p>
-<p>linux运维面板</p>
-<p>Docker部署</p>
-<p>docker是容器，可以将项目的环境（比如java，nginx）和项目的代码仪器打包成镜像，所有同学都能下载镜像，更容易分发和移植</p>
-<p>再启动项目时，不需要敲一大堆命令，而是直接下载镜像、启动镜像就可以了</p>
-<p>docker可以理解为软件安装包</p>
-<p>dockfile</p>
-<p>FROM依赖的基础镜像</p>
-<p>WORKDIR工作目录</p>
-<p>COPY从本机复制文件</p>
-<p>RUN执行命令</p>
-<p>CMD&#x2F;ENTRYPOINT（附加额外参数）指定运行容器时默认执行的命令</p>
-<p>根据Dockerfile构建镜像</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker build -t </span><br></pre></td></tr></table></figure>
-
-<p>Docker构建优化：减少尺寸、减少构建时间（比如多阶段构建，可以丢弃之前阶段不需要的内容）</p>
-<p>docker run启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 80：80 -v /data：/data -d nginx：latest</span><br></pre></td></tr></table></figure>
-
-<p>虚拟化：</p>
-<p>​	1.端口映射：把本机的资源和容器内部的资源进行关联</p>
-<p>​	2.目录映射：把本机的端口和容器应用的端口进行关联</p>
-<p>前端部署方式</p>
-<p>前端webfiy web应用托管（比容器化更傻瓜式，不需要自己写构建应用的命令，就能启动前端项目）</p>
-<p>小缺点：需要将代码放到代码托管平台上</p>
-<p>优势：不用写命令、代码更新时自动构建</p>
-<p>Docker平台部署</p>
-<p>1.云服务商的容器平台（腾讯云、阿里云）</p>
-<p>2.面向某个领域的容器平台（前端webify、后端微信云托管）</p>
-<p>容器平台的好处：</p>
-<p>​	1.不用输命令来操作，更方便省事</p>
-<p>​	2.不用在控制台操作，更傻瓜式、更简单</p>
-<p>​	3.大厂运维，比自己运维更省心</p>
-<p>​	4.额外的能力，比如监控、告警、其他（存储、负载均衡、自动扩缩容、流水线）</p>
-<h1 id="用户中心（上线）"><a href="#用户中心（上线）" class="headerlink" title="用户中心（上线）"></a>用户中心（上线）</h1><h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>前端项目访问：用户输入网址&#x3D;&gt; 域名解析服务器（把网址解析为ip地址&#x2F;交给其他的域名解析服务器）&#x3D;&gt; 服务器&#x3D;&gt;（ 防火墙）&#x3D;&gt; nginx接收请求，找到对应的文件，返回文件给前端&#x3D;&gt; 前端加载文件到浏览器中(js\css) &#x3D;&gt; 渲染页面</p>
-<p>后端项目访问：用户输入网址 &#x3D;&gt; 域名解析服务器 &#x3D;&gt; 服务器 &#x3D;&gt;nginx接受请求&#x3D;&gt;  后端项目(比如8080端口)</p>
-<p>nginx反向代理：替服务器接收请求，转发请求</p>
-<p>跨域问题解决</p>
-<p>浏览器为了用户的安全，仅允许向<strong>同域名、同端口</strong>的服务器发送请求</p>
-<p>如何解决跨域</p>
-<p>​	1.把端口、域名改成相同的</p>
-<p>让服务器告诉浏览器：允许跨域（返回cross-origin-allow响应头）</p>
-<p>​	2.网关支持（Nginx网关）</p>
-<p>​	3.修改后端服务</p>
-<p>​			1.配置@CrossOrigin注解</p>
-<p>​			2.添加web全局请求拦截器</p>
-<p>​			3.定义新的corsFilter Bean</p>
-<p>项目优化点：</p>
-<p>​	1.功能扩充</p>
-<p>​		1.管理员创建用户】修改用户信息、删除用户</p>
-<p>​		2.上传头像</p>
-<p>​		3.按照更多的条件去查询用户</p>
-<p>​		4.更改权限</p>
-<p>2.修改Bug</p>
-<p>3.项目登录改为分布式session（单点登录）</p>
-<p>4.通用性</p>
-<p>​	1.set-cookie domain域名更通用，比如改为*.xxx.com</p>
-<p>​	2.把用户管理系统 &#x3D;&gt; 用户中心（之后所有的服务都请求这个后端）</p>
-<p>4.后台添加全局请求拦截器（统一去判断用户权限、统一记录请求日志）</p>
-]]></content>
-      <tags>
-        <tag>用户管理系统 Java 前端 后端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法与数据结构学习（2）</title>
-    <url>/wang666-bot.github.io/post/2746a893.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>复杂度O(NlogN)</p>
-<p><strong>merge过程</strong>：左部分有序，右部分有序，准备一个辅助数组，左边一个指针，右边一个指针，谁小拷贝谁 O(N)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">mergeSort1</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="literal">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		process(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 请把arr[L..R]排有序</span></span><br><span class="line">	<span class="comment">// l...r N</span></span><br><span class="line">	<span class="comment">// T(N) = 2 * T(N / 2) + O(N)</span></span><br><span class="line">	<span class="comment">// O(N * logN)</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> L, <span class="type">int</span> R)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (L == R) &#123; <span class="comment">// base case</span></span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> L + ((R - L) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		process(arr, L, mid);</span><br><span class="line">		process(arr, mid + <span class="number">1</span>, R);</span><br><span class="line">		merge(arr, L, mid, R);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> L, <span class="type">int</span> M, <span class="type">int</span> R)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] help = <span class="keyword">new</span> <span class="title class_">int</span>[R - L + <span class="number">1</span>];</span><br><span class="line">		<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p1</span> <span class="operator">=</span> L;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p2</span> <span class="operator">=</span> M + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= M &amp;&amp; p2 &lt;= R) &#123;</span><br><span class="line">			help[i++] = arr[p1] &lt;= arr[p2] ? arr[p1++] : arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 要么p1越界了，要么p2越界了</span></span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= M) &#123;</span><br><span class="line">			help[i++] = arr[p1++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p2 &lt;= R) &#123;</span><br><span class="line">			help[i++] = arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; help.length; i++) &#123;</span><br><span class="line">			arr[L + i] = help[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 非递归方法实现</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">mergeSort2</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="literal">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> arr.length;</span><br><span class="line">		<span class="comment">// 步长</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">mergeSize</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (mergeSize &lt; N) &#123; <span class="comment">// log N</span></span><br><span class="line">			<span class="comment">// 当前左组的，第一个位置</span></span><br><span class="line">			<span class="type">int</span> <span class="variable">L</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span> (L &lt; N) &#123;</span><br><span class="line">				<span class="keyword">if</span> (mergeSize &gt;= N - L) &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="type">int</span> <span class="variable">M</span> <span class="operator">=</span> L + mergeSize - <span class="number">1</span>;</span><br><span class="line">				<span class="type">int</span> <span class="variable">R</span> <span class="operator">=</span> M + Math.min(mergeSize, N - M - <span class="number">1</span>);</span><br><span class="line">				merge(arr, L, M, R);</span><br><span class="line">				L = R + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 防止溢出</span></span><br><span class="line">			<span class="keyword">if</span> (mergeSize &gt; N / <span class="number">2</span>) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			mergeSize &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p>O(N^2)的排序大量浪费比较行为</p>
-<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><h3 id="（1）小和问题"><a href="#（1）小和问题" class="headerlink" title="（1）小和问题"></a>（1）小和问题</h3><p>​	给一个数组，给出所有比arr[i]左边比他小的数的和，所有都累加起来    O(NlogN)</p>
-<p>​	</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">smallSum</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="literal">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> process(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// arr[L..R]既要排好序，也要求小和返回</span></span><br><span class="line">	<span class="comment">// 所有merge时，产生的小和，累加</span></span><br><span class="line">	<span class="comment">// 左 排序   merge</span></span><br><span class="line">	<span class="comment">// 右 排序  merge</span></span><br><span class="line">	<span class="comment">// merge</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">process</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> l, <span class="type">int</span> r)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// l &lt; r</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> l + ((r - l) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">return</span> </span><br><span class="line">				process(arr, l, mid) </span><br><span class="line">				+ </span><br><span class="line">				process(arr, mid + <span class="number">1</span>, r) </span><br><span class="line">				+ </span><br><span class="line">				merge(arr, l, mid, r);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> L, <span class="type">int</span> m, <span class="type">int</span> r)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] help = <span class="keyword">new</span> <span class="title class_">int</span>[r - L + <span class="number">1</span>];</span><br><span class="line">		<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p1</span> <span class="operator">=</span> L;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p2</span> <span class="operator">=</span> m + <span class="number">1</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= m &amp;&amp; p2 &lt;= r) &#123;</span><br><span class="line">			res += arr[p1] &lt; arr[p2] ? (r - p2 + <span class="number">1</span>) * arr[p1] : <span class="number">0</span>;</span><br><span class="line">			help[i++] = arr[p1] &lt; arr[p2] ? arr[p1++] : arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= m) &#123;</span><br><span class="line">			help[i++] = arr[p1++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p2 &lt;= r) &#123;</span><br><span class="line">			help[i++] = arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; help.length; i++) &#123;</span><br><span class="line">			arr[L + i] = help[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>​	</p>
-<p>归并排序过程中，merge的时候计算小和，相等的时候先拷贝右组</p>
-<h3 id="（2）逆序对问题"><a href="#（2）逆序对问题" class="headerlink" title="（2）逆序对问题"></a>（2）逆序对问题</h3><p>求一个数组中有多少逆序对</p>
-<h3 id="（3）num的右边有多少个数-2之后依然小于num"><a href="#（3）num的右边有多少个数-2之后依然小于num" class="headerlink" title="（3）num的右边有多少个数*2之后依然小于num"></a>（3）num的右边有多少个数*2之后依然小于num</h3><p><strong>不回退技巧</strong></p>
-<p>给定一个数组，值无序，有正有负有0</p>
-<p>方法getSum(arr,i,j)</p>
-<p>前缀和数组方法，前缀和数组相减</p>
-<p>先根据arr数组得出preSum数组</p>
-<h3 id="补充题目：leetcode-count-of-range-sum"><a href="#补充题目：leetcode-count-of-range-sum" class="headerlink" title="补充题目：leetcode count of range sum"></a>补充题目：leetcode count of range sum</h3><p>给定一个数组，求有多少子数组的累加和在给定的区间大小范围内，O(NlogN)</p>
-<p>思路：必须以0位置结尾的数组，有几个达标</p>
-<p>​		  必须以1位置结尾的数组，有几个达标</p>
-<p>​		  。。。。。</p>
-<p>​	      最后把所有的累加起来就是答案</p>
-<p>假设0-i位置整体累加和是X，题目目标是[L, UP],求必须以i位置结尾的子数组，目标有多少个在[L,UP]范围上</p>
-<p>等同于去求i之前的所有前缀和中有多少个前缀和在[X-UP,X-L]上</p>
-<h3 id="荷兰国旗问题-（快排）"><a href="#荷兰国旗问题-（快排）" class="headerlink" title="荷兰国旗问题 - （快排）"></a>荷兰国旗问题 - （快排）</h3><p>1）数组小于x放左，大于x放右</p>
-<p>思路：设计一个小于等于区域</p>
-<p>​	1）当前数小于等于目标数，当前数和小于等于区域的下一个数交换，小于等于区域往右跳</p>
-<p>​	2）当前数大于目标，跳下一个</p>
-<p>2）小于放左 等于中间 大于放右边</p>
-<p>思路：</p>
-<p>​	1）当前数&lt; 目标数 和小于区的下一个数交换，小于区往右扩</p>
-<p>​	2）当前数&#x3D;目标数 当前数直接跳</p>
-<p>​	3）当前数&gt;目标数	当前数和大于区前一个数交换，大于区向左扩，继续当前数</p>
-<p>快排</p>
-<p>在荷兰国旗2）的基础上目标的选取是随机的</p>
-<p>快排的额外空间复杂度O(logN)，时间复杂度O(NlogN)</p>
-]]></content>
-      <tags>
-        <tag>Java 数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法与数据结构学习（3）</title>
-    <url>/wang666-bot.github.io/post/9ffacff6.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h1><p>任何比较器的compare原则遵循一个统一规范：</p>
-<p>​		返回负数的时候，认为第一个参数应该排在前面</p>
-<p>​		返回正数的时候，认为第二个参数应该排在前面</p>
-<p>​		返回0的时候，任务无所谓谁放前面</p>
-<p>treeMap中：相等的比较，会认为是重复的，不会覆盖</p>
-<h1 id="堆（优先级队列）"><a href="#堆（优先级队列）" class="headerlink" title="堆（优先级队列）"></a>堆（优先级队列）</h1><p>完全二叉树（要么是满的，要么在从左往右依次变满的过程中）</p>
-<p>数组中i位置的数</p>
-<p>左节点2*i + 1</p>
-<p>右节点2*i + 2</p>
-<p>父 （i-1）&#x2F; 2</p>
-<p>大根堆：每棵子数的最大值是头节点</p>
-<p>小根堆：每棵子数的最小值是头节点</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 新加进来的数，现在停在了index位置，请依次往上移动，</span></span><br><span class="line"><span class="comment">// 移动到0位置，或者干不掉自己的父亲了，停！</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">heapInsert</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">	<span class="comment">// [index] [index-1]/2</span></span><br><span class="line">	<span class="comment">// index == 0</span></span><br><span class="line">	<span class="keyword">while</span> (arr[index] &gt; arr[(index - <span class="number">1</span>) / <span class="number">2</span>]) &#123;</span><br><span class="line">		swap(arr, index, (index - <span class="number">1</span>) / <span class="number">2</span>);</span><br><span class="line">		index = (index - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>删掉堆上的max，把大根堆上0位置和heap最后的位置的数交换，heapSize–</p>
-<p>复杂度的估计：</p>
-<p>第一步可能需要遍历高度log1， 第二步高度log2….. 第N步高度logN</p>
-<p>上限N*logN</p>
-<p>当数据量为2N的时候，时间复杂度的下限是N*logN</p>
-<p>堆排序</p>
-<p>1，先让整个数组都变成大根堆结构，建立堆的过程: </p>
-<p>  1)从上到下的方法，时间复杂度为O(N*logN) </p>
-<p>  2)从下到上的方法，时间复杂度为O(N) </p>
-<p>2，把堆的最大值和堆末尾的值交换，然后减少堆的大小之后，再去调整堆，一直周而复始，时间复杂度为O(N*logN) </p>
-<p>3，堆的大小减小成0之后，排序完成</p>
-<p>实际问题</p>
-<p>1.最小K范围</p>
-<p>2.最大线段重合问题</p>
-<p>找到min开和max结</p>
-<p>1）暴力方法：在[min开， max结]遍历求出每个.5的值，求出最大值    O((max - min) * N)</p>
-<p>2）优化方法：每个位置按开始位置从小到大排序（比较器），准备一个小根堆，每个数结尾位置放进去</p>
-<p>每个线段以自己的起点为起点，求最大的重合线段数目  O(NlogN）</p>
-<p>手动改写堆</p>
-<p>改动内部属性后，系统原始的堆无法识别，且没有内部反向索引表</p>
-<p>问题：得奖问题</p>
-<h1 id="前缀树（Prefix-tree-trie）"><a href="#前缀树（Prefix-tree-trie）" class="headerlink" title="前缀树（Prefix tree   trie）"></a>前缀树（Prefix tree   trie）</h1><p>1)单个字符串中，字符从前到后额加到一颗多叉树上</p>
-<p>2）字符放在路上，节点上有专属的数据项（常见的是pass和end值）</p>
-<p>3）所有样本都这样添加，如果没有路就新建，如有路就复用</p>
-<p>4）沿途节点的pass值增加1，每个字符串结束时来到的节点end值增加1</p>
-<p>注：哈希表增删改查 O(1)，但单样本长度过大，则O(单样本平均长度)</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Node</span> &#123;</span><br><span class="line">			<span class="keyword">public</span> <span class="built_in">int</span> pass;</span><br><span class="line">			<span class="keyword">public</span> <span class="built_in">int</span> end;</span><br><span class="line">			<span class="keyword">public</span> Node[] nexts;</span><br><span class="line"></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="title">Node</span>()</span> &#123;</span><br><span class="line">				pass = <span class="number">0</span>;</span><br><span class="line">				end = <span class="number">0</span>;</span><br><span class="line">				nexts = <span class="keyword">new</span> Node[<span class="number">26</span>];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> Node root;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Trie</span>()</span> &#123;</span><br><span class="line">			root = <span class="keyword">new</span> Node();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span>(<span class="params">String word</span>)</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (word == <span class="literal">null</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">char</span>[] str = word.toCharArray();</span><br><span class="line">			Node node = root;</span><br><span class="line">			node.pass++;</span><br><span class="line">			<span class="built_in">int</span> path = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123; <span class="comment">// 从左往右遍历字符</span></span><br><span class="line">				path = str[i] - <span class="string">&#x27;a&#x27;</span>; <span class="comment">// 由字符，对应成走向哪条路</span></span><br><span class="line">				<span class="keyword">if</span> (node.nexts[path] == <span class="literal">null</span>) &#123;</span><br><span class="line">					node.nexts[path] = <span class="keyword">new</span> Node();</span><br><span class="line">				&#125;</span><br><span class="line">				node = node.nexts[path];</span><br><span class="line">				node.pass++;</span><br><span class="line">			&#125;</span><br><span class="line">			node.end++;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">erase</span>(<span class="params">String word</span>)</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (countWordsEqualTo(word) != <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="built_in">char</span>[] chs = word.toCharArray();</span><br><span class="line">				Node node = root;</span><br><span class="line">				node.pass--;</span><br><span class="line">				<span class="built_in">int</span> path = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; chs.length; i++) &#123;</span><br><span class="line">					path = chs[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">					<span class="keyword">if</span> (--node.nexts[path].pass == <span class="number">0</span>) &#123;</span><br><span class="line">						node.nexts[path] = <span class="literal">null</span>;</span><br><span class="line">						<span class="keyword">return</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					node = node.nexts[path];</span><br><span class="line">				&#125;</span><br><span class="line">				node.end--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">countWordsEqualTo</span>(<span class="params">String word</span>)</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (word == <span class="literal">null</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">char</span>[] chs = word.toCharArray();</span><br><span class="line">			Node node = root;</span><br><span class="line">			<span class="built_in">int</span> index = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; chs.length; i++) &#123;</span><br><span class="line">				index = chs[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">				<span class="keyword">if</span> (node.nexts[index] == <span class="literal">null</span>) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				node = node.nexts[index];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> node.end;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">countWordsStartingWith</span>(<span class="params">String pre</span>)</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (pre == <span class="literal">null</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">char</span>[] chs = pre.toCharArray();</span><br><span class="line">			Node node = root;</span><br><span class="line">			<span class="built_in">int</span> index = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; chs.length; i++) &#123;</span><br><span class="line">				index = chs[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">				<span class="keyword">if</span> (node.nexts[index] == <span class="literal">null</span>) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				node = node.nexts[index];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> node.pass;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="不基于比较的排序"><a href="#不基于比较的排序" class="headerlink" title="不基于比较的排序"></a>不基于比较的排序</h1><h2 id="计数排序（桶排序）——-容器思想O-N"><a href="#计数排序（桶排序）——-容器思想O-N" class="headerlink" title="计数排序（桶排序）—— 容器思想O(N)"></a>计数排序（桶排序）—— 容器思想O(N)</h2><h2 id="基数排序（非负，十进制来表示）——-先根据个位数排序，先进先出倒出桶，从左往右，再根据十位数倒入桶……"><a href="#基数排序（非负，十进制来表示）——-先根据个位数排序，先进先出倒出桶，从左往右，再根据十位数倒入桶……" class="headerlink" title="基数排序（非负，十进制来表示）—— 先根据个位数排序，先进先出倒出桶，从左往右，再根据十位数倒入桶……."></a>基数排序（非负，十进制来表示）—— 先根据个位数排序，先进先出倒出桶，从左往右，再根据十位数倒入桶…….</h2><h2 id="排序算法的稳定性"><a href="#排序算法的稳定性" class="headerlink" title="排序算法的稳定性"></a>排序算法的稳定性</h2><p>稳定性是指同样大小的样本在排序之后不会改变相对次序（对非基础类型重要）</p>
-<p>工程上对排序的改进</p>
-<p>1）稳定性的考虑   Java的Arrays.sort针对基础类型使用快排，非基础类型使用归并保证稳定性</p>
-<p>2）充分利用O(NlogN)大样本和O(N^2)小样本排序各自的优势</p>
-<h1 id="链表问题"><a href="#链表问题" class="headerlink" title="链表问题"></a>链表问题</h1><p>1.快慢指针</p>
-<p>2.笔试的链表都使用容器</p>
-<p>2.面试，时间复杂度放在第一位，快慢指针</p>
-<p>面试题：</p>
-<p>1.判断回文结构</p>
-<p>容器方法：遍历一遍，放入栈中，在遍历一遍，栈中弹出，判断是否一致，弹出的顺序就是逆序</p>
-<p>指针：找到中点，中点之后的链表逆序，两个指针，L， R，判断是否一样</p>
-<p>2.链表的L1R1L2R2排序</p>
-<p>指针方法：在1题的基础上，串起来</p>
-<p>3.单向链表按某值划分成左大中间相等右边大的形式</p>
-<p>容器方法：放到数组，然后快排</p>
-<p>指针方法：分成小头小尾区域，等头等尾区域，大头大尾区域</p>
-<p>4.拷贝链表random指针问题</p>
-<p>容器方法：map，key是老节点，value是新节点</p>
-<p>指针方法：生成新节点插在原始节点和其next节点之间，新节点的random节点就是原始节点的random的next，最后分离新老结构</p>
-<p>5.给定两个可能无环有环的链表相交的点</p>
-<p>判断有无环：快慢指针</p>
-<p>容器方法：HashSet，最后能否null</p>
-<p>判断相交：分情况</p>
-<p>1）都无环</p>
-<p>容器方法：HashSet</p>
-<p>指针方法：长度相减，快慢指针</p>
-<p>2）一个有环一个无环</p>
-<p>不可能相交</p>
-<p>3）都有环</p>
-<p>  1.不相交</p>
-<p>  2.相交的点在入环节点前</p>
-<p>  3.相交的点在环上（不是同一个入环节点）</p>
-<p>容器方法：比较入环节点的地址，判断是否是2</p>
-<p>第一个入环节点一直next，看能否遇到第二个入环节点分辨出1和3</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>算法与数据结构学习（1）</title>
     <url>/wang666-bot.github.io/post/35f3077d.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><p><strong>时间复杂度</strong></p>
@@ -1580,6 +1446,50 @@
       </tags>
   </entry>
   <entry>
+    <title>算法与数据结构学习（2）</title>
+    <url>/wang666-bot.github.io/post/2746a893.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>复杂度O(NlogN)</p>
+<p><strong>merge过程</strong>：左部分有序，右部分有序，准备一个辅助数组，左边一个指针，右边一个指针，谁小拷贝谁 O(N)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">mergeSort1</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="literal">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		process(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 请把arr[L..R]排有序</span></span><br><span class="line">	<span class="comment">// l...r N</span></span><br><span class="line">	<span class="comment">// T(N) = 2 * T(N / 2) + O(N)</span></span><br><span class="line">	<span class="comment">// O(N * logN)</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> L, <span class="type">int</span> R)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (L == R) &#123; <span class="comment">// base case</span></span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> L + ((R - L) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		process(arr, L, mid);</span><br><span class="line">		process(arr, mid + <span class="number">1</span>, R);</span><br><span class="line">		merge(arr, L, mid, R);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> L, <span class="type">int</span> M, <span class="type">int</span> R)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] help = <span class="keyword">new</span> <span class="title class_">int</span>[R - L + <span class="number">1</span>];</span><br><span class="line">		<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p1</span> <span class="operator">=</span> L;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p2</span> <span class="operator">=</span> M + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= M &amp;&amp; p2 &lt;= R) &#123;</span><br><span class="line">			help[i++] = arr[p1] &lt;= arr[p2] ? arr[p1++] : arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 要么p1越界了，要么p2越界了</span></span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= M) &#123;</span><br><span class="line">			help[i++] = arr[p1++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p2 &lt;= R) &#123;</span><br><span class="line">			help[i++] = arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; help.length; i++) &#123;</span><br><span class="line">			arr[L + i] = help[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 非递归方法实现</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">mergeSort2</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="literal">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> arr.length;</span><br><span class="line">		<span class="comment">// 步长</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">mergeSize</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (mergeSize &lt; N) &#123; <span class="comment">// log N</span></span><br><span class="line">			<span class="comment">// 当前左组的，第一个位置</span></span><br><span class="line">			<span class="type">int</span> <span class="variable">L</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span> (L &lt; N) &#123;</span><br><span class="line">				<span class="keyword">if</span> (mergeSize &gt;= N - L) &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="type">int</span> <span class="variable">M</span> <span class="operator">=</span> L + mergeSize - <span class="number">1</span>;</span><br><span class="line">				<span class="type">int</span> <span class="variable">R</span> <span class="operator">=</span> M + Math.min(mergeSize, N - M - <span class="number">1</span>);</span><br><span class="line">				merge(arr, L, M, R);</span><br><span class="line">				L = R + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 防止溢出</span></span><br><span class="line">			<span class="keyword">if</span> (mergeSize &gt; N / <span class="number">2</span>) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			mergeSize &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>O(N^2)的排序大量浪费比较行为</p>
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><h3 id="（1）小和问题"><a href="#（1）小和问题" class="headerlink" title="（1）小和问题"></a>（1）小和问题</h3><p>​	给一个数组，给出所有比arr[i]左边比他小的数的和，所有都累加起来    O(NlogN)</p>
+<p>​	</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">smallSum</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="literal">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> process(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// arr[L..R]既要排好序，也要求小和返回</span></span><br><span class="line">	<span class="comment">// 所有merge时，产生的小和，累加</span></span><br><span class="line">	<span class="comment">// 左 排序   merge</span></span><br><span class="line">	<span class="comment">// 右 排序  merge</span></span><br><span class="line">	<span class="comment">// merge</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">process</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> l, <span class="type">int</span> r)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// l &lt; r</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> l + ((r - l) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">return</span> </span><br><span class="line">				process(arr, l, mid) </span><br><span class="line">				+ </span><br><span class="line">				process(arr, mid + <span class="number">1</span>, r) </span><br><span class="line">				+ </span><br><span class="line">				merge(arr, l, mid, r);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> L, <span class="type">int</span> m, <span class="type">int</span> r)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] help = <span class="keyword">new</span> <span class="title class_">int</span>[r - L + <span class="number">1</span>];</span><br><span class="line">		<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p1</span> <span class="operator">=</span> L;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p2</span> <span class="operator">=</span> m + <span class="number">1</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= m &amp;&amp; p2 &lt;= r) &#123;</span><br><span class="line">			res += arr[p1] &lt; arr[p2] ? (r - p2 + <span class="number">1</span>) * arr[p1] : <span class="number">0</span>;</span><br><span class="line">			help[i++] = arr[p1] &lt; arr[p2] ? arr[p1++] : arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= m) &#123;</span><br><span class="line">			help[i++] = arr[p1++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p2 &lt;= r) &#123;</span><br><span class="line">			help[i++] = arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; help.length; i++) &#123;</span><br><span class="line">			arr[L + i] = help[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​	</p>
+<p>归并排序过程中，merge的时候计算小和，相等的时候先拷贝右组</p>
+<h3 id="（2）逆序对问题"><a href="#（2）逆序对问题" class="headerlink" title="（2）逆序对问题"></a>（2）逆序对问题</h3><p>求一个数组中有多少逆序对</p>
+<h3 id="（3）num的右边有多少个数-2之后依然小于num"><a href="#（3）num的右边有多少个数-2之后依然小于num" class="headerlink" title="（3）num的右边有多少个数*2之后依然小于num"></a>（3）num的右边有多少个数*2之后依然小于num</h3><p><strong>不回退技巧</strong></p>
+<p>给定一个数组，值无序，有正有负有0</p>
+<p>方法getSum(arr,i,j)</p>
+<p>前缀和数组方法，前缀和数组相减</p>
+<p>先根据arr数组得出preSum数组</p>
+<h3 id="补充题目：leetcode-count-of-range-sum"><a href="#补充题目：leetcode-count-of-range-sum" class="headerlink" title="补充题目：leetcode count of range sum"></a>补充题目：leetcode count of range sum</h3><p>给定一个数组，求有多少子数组的累加和在给定的区间大小范围内，O(NlogN)</p>
+<p>思路：必须以0位置结尾的数组，有几个达标</p>
+<p>​		  必须以1位置结尾的数组，有几个达标</p>
+<p>​		  。。。。。</p>
+<p>​	      最后把所有的累加起来就是答案</p>
+<p>假设0-i位置整体累加和是X，题目目标是[L, UP],求必须以i位置结尾的子数组，目标有多少个在[L,UP]范围上</p>
+<p>等同于去求i之前的所有前缀和中有多少个前缀和在[X-UP,X-L]上</p>
+<h3 id="荷兰国旗问题-（快排）"><a href="#荷兰国旗问题-（快排）" class="headerlink" title="荷兰国旗问题 - （快排）"></a>荷兰国旗问题 - （快排）</h3><p>1）数组小于x放左，大于x放右</p>
+<p>思路：设计一个小于等于区域</p>
+<p>​	1）当前数小于等于目标数，当前数和小于等于区域的下一个数交换，小于等于区域往右跳</p>
+<p>​	2）当前数大于目标，跳下一个</p>
+<p>2）小于放左 等于中间 大于放右边</p>
+<p>思路：</p>
+<p>​	1）当前数&lt; 目标数 和小于区的下一个数交换，小于区往右扩</p>
+<p>​	2）当前数&#x3D;目标数 当前数直接跳</p>
+<p>​	3）当前数&gt;目标数	当前数和大于区前一个数交换，大于区向左扩，继续当前数</p>
+<p>快排</p>
+<p>在荷兰国旗2）的基础上目标的选取是随机的</p>
+<p>快排的额外空间复杂度O(logN)，时间复杂度O(NlogN)</p>
+]]></content>
+      <tags>
+        <tag>Java 数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法与数据结构学习（4）</title>
     <url>/wang666-bot.github.io/post/22df74f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><p>先序遍历：头左右</p>
@@ -1668,6 +1578,147 @@
 ]]></content>
   </entry>
   <entry>
+    <title>算法与数据结构学习（3）</title>
+    <url>/wang666-bot.github.io/post/9ffacff6.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h1><p>任何比较器的compare原则遵循一个统一规范：</p>
+<p>​		返回负数的时候，认为第一个参数应该排在前面</p>
+<p>​		返回正数的时候，认为第二个参数应该排在前面</p>
+<p>​		返回0的时候，任务无所谓谁放前面</p>
+<p>treeMap中：相等的比较，会认为是重复的，不会覆盖</p>
+<h1 id="堆（优先级队列）"><a href="#堆（优先级队列）" class="headerlink" title="堆（优先级队列）"></a>堆（优先级队列）</h1><p>完全二叉树（要么是满的，要么在从左往右依次变满的过程中）</p>
+<p>数组中i位置的数</p>
+<p>左节点2*i + 1</p>
+<p>右节点2*i + 2</p>
+<p>父 （i-1）&#x2F; 2</p>
+<p>大根堆：每棵子数的最大值是头节点</p>
+<p>小根堆：每棵子数的最小值是头节点</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 新加进来的数，现在停在了index位置，请依次往上移动，</span></span><br><span class="line"><span class="comment">// 移动到0位置，或者干不掉自己的父亲了，停！</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">heapInsert</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">	<span class="comment">// [index] [index-1]/2</span></span><br><span class="line">	<span class="comment">// index == 0</span></span><br><span class="line">	<span class="keyword">while</span> (arr[index] &gt; arr[(index - <span class="number">1</span>) / <span class="number">2</span>]) &#123;</span><br><span class="line">		swap(arr, index, (index - <span class="number">1</span>) / <span class="number">2</span>);</span><br><span class="line">		index = (index - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>删掉堆上的max，把大根堆上0位置和heap最后的位置的数交换，heapSize–</p>
+<p>复杂度的估计：</p>
+<p>第一步可能需要遍历高度log1， 第二步高度log2….. 第N步高度logN</p>
+<p>上限N*logN</p>
+<p>当数据量为2N的时候，时间复杂度的下限是N*logN</p>
+<p>堆排序</p>
+<p>1，先让整个数组都变成大根堆结构，建立堆的过程: </p>
+<p>  1)从上到下的方法，时间复杂度为O(N*logN) </p>
+<p>  2)从下到上的方法，时间复杂度为O(N) </p>
+<p>2，把堆的最大值和堆末尾的值交换，然后减少堆的大小之后，再去调整堆，一直周而复始，时间复杂度为O(N*logN) </p>
+<p>3，堆的大小减小成0之后，排序完成</p>
+<p>实际问题</p>
+<p>1.最小K范围</p>
+<p>2.最大线段重合问题</p>
+<p>找到min开和max结</p>
+<p>1）暴力方法：在[min开， max结]遍历求出每个.5的值，求出最大值    O((max - min) * N)</p>
+<p>2）优化方法：每个位置按开始位置从小到大排序（比较器），准备一个小根堆，每个数结尾位置放进去</p>
+<p>每个线段以自己的起点为起点，求最大的重合线段数目  O(NlogN）</p>
+<p>手动改写堆</p>
+<p>改动内部属性后，系统原始的堆无法识别，且没有内部反向索引表</p>
+<p>问题：得奖问题</p>
+<h1 id="前缀树（Prefix-tree-trie）"><a href="#前缀树（Prefix-tree-trie）" class="headerlink" title="前缀树（Prefix tree   trie）"></a>前缀树（Prefix tree   trie）</h1><p>1)单个字符串中，字符从前到后额加到一颗多叉树上</p>
+<p>2）字符放在路上，节点上有专属的数据项（常见的是pass和end值）</p>
+<p>3）所有样本都这样添加，如果没有路就新建，如有路就复用</p>
+<p>4）沿途节点的pass值增加1，每个字符串结束时来到的节点end值增加1</p>
+<p>注：哈希表增删改查 O(1)，但单样本长度过大，则O(单样本平均长度)</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Node</span> &#123;</span><br><span class="line">			<span class="keyword">public</span> <span class="built_in">int</span> pass;</span><br><span class="line">			<span class="keyword">public</span> <span class="built_in">int</span> end;</span><br><span class="line">			<span class="keyword">public</span> Node[] nexts;</span><br><span class="line"></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="title">Node</span>()</span> &#123;</span><br><span class="line">				pass = <span class="number">0</span>;</span><br><span class="line">				end = <span class="number">0</span>;</span><br><span class="line">				nexts = <span class="keyword">new</span> Node[<span class="number">26</span>];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> Node root;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Trie</span>()</span> &#123;</span><br><span class="line">			root = <span class="keyword">new</span> Node();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span>(<span class="params">String word</span>)</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (word == <span class="literal">null</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">char</span>[] str = word.toCharArray();</span><br><span class="line">			Node node = root;</span><br><span class="line">			node.pass++;</span><br><span class="line">			<span class="built_in">int</span> path = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123; <span class="comment">// 从左往右遍历字符</span></span><br><span class="line">				path = str[i] - <span class="string">&#x27;a&#x27;</span>; <span class="comment">// 由字符，对应成走向哪条路</span></span><br><span class="line">				<span class="keyword">if</span> (node.nexts[path] == <span class="literal">null</span>) &#123;</span><br><span class="line">					node.nexts[path] = <span class="keyword">new</span> Node();</span><br><span class="line">				&#125;</span><br><span class="line">				node = node.nexts[path];</span><br><span class="line">				node.pass++;</span><br><span class="line">			&#125;</span><br><span class="line">			node.end++;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">erase</span>(<span class="params">String word</span>)</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (countWordsEqualTo(word) != <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="built_in">char</span>[] chs = word.toCharArray();</span><br><span class="line">				Node node = root;</span><br><span class="line">				node.pass--;</span><br><span class="line">				<span class="built_in">int</span> path = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; chs.length; i++) &#123;</span><br><span class="line">					path = chs[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">					<span class="keyword">if</span> (--node.nexts[path].pass == <span class="number">0</span>) &#123;</span><br><span class="line">						node.nexts[path] = <span class="literal">null</span>;</span><br><span class="line">						<span class="keyword">return</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					node = node.nexts[path];</span><br><span class="line">				&#125;</span><br><span class="line">				node.end--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">countWordsEqualTo</span>(<span class="params">String word</span>)</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (word == <span class="literal">null</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">char</span>[] chs = word.toCharArray();</span><br><span class="line">			Node node = root;</span><br><span class="line">			<span class="built_in">int</span> index = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; chs.length; i++) &#123;</span><br><span class="line">				index = chs[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">				<span class="keyword">if</span> (node.nexts[index] == <span class="literal">null</span>) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				node = node.nexts[index];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> node.end;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">countWordsStartingWith</span>(<span class="params">String pre</span>)</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (pre == <span class="literal">null</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">char</span>[] chs = pre.toCharArray();</span><br><span class="line">			Node node = root;</span><br><span class="line">			<span class="built_in">int</span> index = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; chs.length; i++) &#123;</span><br><span class="line">				index = chs[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">				<span class="keyword">if</span> (node.nexts[index] == <span class="literal">null</span>) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				node = node.nexts[index];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> node.pass;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="不基于比较的排序"><a href="#不基于比较的排序" class="headerlink" title="不基于比较的排序"></a>不基于比较的排序</h1><h2 id="计数排序（桶排序）——-容器思想O-N"><a href="#计数排序（桶排序）——-容器思想O-N" class="headerlink" title="计数排序（桶排序）—— 容器思想O(N)"></a>计数排序（桶排序）—— 容器思想O(N)</h2><h2 id="基数排序（非负，十进制来表示）——-先根据个位数排序，先进先出倒出桶，从左往右，再根据十位数倒入桶……"><a href="#基数排序（非负，十进制来表示）——-先根据个位数排序，先进先出倒出桶，从左往右，再根据十位数倒入桶……" class="headerlink" title="基数排序（非负，十进制来表示）—— 先根据个位数排序，先进先出倒出桶，从左往右，再根据十位数倒入桶……."></a>基数排序（非负，十进制来表示）—— 先根据个位数排序，先进先出倒出桶，从左往右，再根据十位数倒入桶…….</h2><h2 id="排序算法的稳定性"><a href="#排序算法的稳定性" class="headerlink" title="排序算法的稳定性"></a>排序算法的稳定性</h2><p>稳定性是指同样大小的样本在排序之后不会改变相对次序（对非基础类型重要）</p>
+<p>工程上对排序的改进</p>
+<p>1）稳定性的考虑   Java的Arrays.sort针对基础类型使用快排，非基础类型使用归并保证稳定性</p>
+<p>2）充分利用O(NlogN)大样本和O(N^2)小样本排序各自的优势</p>
+<h1 id="链表问题"><a href="#链表问题" class="headerlink" title="链表问题"></a>链表问题</h1><p>1.快慢指针</p>
+<p>2.笔试的链表都使用容器</p>
+<p>2.面试，时间复杂度放在第一位，快慢指针</p>
+<p>面试题：</p>
+<p>1.判断回文结构</p>
+<p>容器方法：遍历一遍，放入栈中，在遍历一遍，栈中弹出，判断是否一致，弹出的顺序就是逆序</p>
+<p>指针：找到中点，中点之后的链表逆序，两个指针，L， R，判断是否一样</p>
+<p>2.链表的L1R1L2R2排序</p>
+<p>指针方法：在1题的基础上，串起来</p>
+<p>3.单向链表按某值划分成左大中间相等右边大的形式</p>
+<p>容器方法：放到数组，然后快排</p>
+<p>指针方法：分成小头小尾区域，等头等尾区域，大头大尾区域</p>
+<p>4.拷贝链表random指针问题</p>
+<p>容器方法：map，key是老节点，value是新节点</p>
+<p>指针方法：生成新节点插在原始节点和其next节点之间，新节点的random节点就是原始节点的random的next，最后分离新老结构</p>
+<p>5.给定两个可能无环有环的链表相交的点</p>
+<p>判断有无环：快慢指针</p>
+<p>容器方法：HashSet，最后能否null</p>
+<p>判断相交：分情况</p>
+<p>1）都无环</p>
+<p>容器方法：HashSet</p>
+<p>指针方法：长度相减，快慢指针</p>
+<p>2）一个有环一个无环</p>
+<p>不可能相交</p>
+<p>3）都有环</p>
+<p>  1.不相交</p>
+<p>  2.相交的点在入环节点前</p>
+<p>  3.相交的点在环上（不是同一个入环节点）</p>
+<p>容器方法：比较入环节点的地址，判断是否是2</p>
+<p>第一个入环节点一直next，看能否遇到第二个入环节点分辨出1和3</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>聚合搜索平台</title>
+    <url>/wang666-bot.github.io/post/9f02e53a.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>一个聚合搜索平台，<strong>可以让用户在同一个入口（同一个页面）集中搜索出不同来源、不同类型的内容</strong></p>
+<p>用户：提升用户的检索效率、提升用户体验</p>
+<p>企业：无需针对每一个项目都去开发一个搜索功能，当有新的内容、新的网站，可以复用同一套搜索系统，提升开发效率</p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p><strong>前端：</strong></p>
+<p>​	Vue</p>
+<p>​	Ant Design Vue</p>
+<p>​	Lodash</p>
+<p><strong>后端</strong></p>
+<p>​	Spring Boot</p>
+<p>​	MySQL</p>
+<p>​	Elasticsearch（Elastic Stack）搜索引擎</p>
+<p>​	数据抓取</p>
+<p>​	数据同步（4种方法）</p>
+<p>​		logstash</p>
+<p>​		Canal</p>
+<p>​	Guava Retrying</p>
+<p>​	怎么保证API的稳定性</p>
+<h2 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h2><p>​	1.先得到各种不同分类的资源</p>
+<p>​	2.提供一个搜索页面（单一搜索 + 聚合搜索），支持搜索</p>
+<p>​	3.（可以去做一些优化，比如关键词高亮、防抖节流）</p>
+<h1 id="6-28"><a href="#6-28" class="headerlink" title="6.28"></a>6.28</h1><p>前端后端项目初始化</p>
+<p>前端搜索页面开发完成</p>
+<p>后端基本搜索接口开发</p>
+<p>用url记录页面搜索状态，当用户刷新页面时，能够从url还原之前的搜索状态</p>
+<p>url &lt; &#x3D; &gt; 页面状态</p>
+<p>技巧：把同步状态改成单向，即只允许url来改变页面状态，不允许反向</p>
+<p>​	1.让用户在操作的时候，改变url地址（点击搜索框，搜索内容填充到url上，切换tab时，也要填充）</p>
+<p>​	2.当url改变的时候，去改变页面状态（监听url的改变）</p>
+<h1 id="6-29"><a href="#6-29" class="headerlink" title="6.29"></a>6.29</h1><p>1.获取多种不同类型的数据源</p>
+<p>​	a.文章（内部）</p>
+<p>​	b.用户（内部）</p>
+<p>​	c.图片（外部，不是自己的项目、自己的用户生产的数据）</p>
+<p>2.前后端单独搜索接口联调，跑通整个页面</p>
+<p>3.分析现有项目的问题 &#x3D;&gt; 优化，聚合接口的开发</p>
+<p>4.安装ES</p>
+<h3 id="获取不同类型的数据源"><a href="#获取不同类型的数据源" class="headerlink" title="获取不同类型的数据源"></a>获取不同类型的数据源</h3><p>1.获取文章</p>
+<p>内部没有，就只能从互联网上获取基础数据  &#x3D;&gt; 爬虫</p>
+<p>数据抓取的几种方式：</p>
+<p>1.直接请求数据结构（最方便）HttpClient、OKHttp、RestTemplate、Hutool</p>
+<p>2.等网页渲染出明文内容，从前端页面的内容抓取</p>
+<p>3.有一些网站可能是动态请求的，他不会一次性加载所有的数据，而是要点某个按钮、输入某个验证码才会显示出数据&#x3D;&gt; 无头浏览器</p>
+<p>selenum、puppeteer</p>
+<p>hutool：<a href="https://doc.hutool.cn/pages/index/">https://doc.hutool.cn/pages/index/</a></p>
+]]></content>
+      <tags>
+        <tag>Vue Java 搜索平台</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法与数据结构学习（6）</title>
     <url>/wang666-bot.github.io/post/a8243fc4.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="暴力递归"><a href="#暴力递归" class="headerlink" title="暴力递归"></a>暴力递归</h1><p>1.汉诺塔问题</p>
@@ -1741,57 +1792,6 @@
 <p>四维数组</p>
 <p>思路：建一个小根堆（什么时间，还要多久）进行排序（时间+多久）</p>
 <h1 id="暴力递归转动态规划（4）"><a href="#暴力递归转动态规划（4）" class="headerlink" title="暴力递归转动态规划（4）"></a>暴力递归转动态规划（4）</h1><h1 id="暴力递归转动态规划（5）"><a href="#暴力递归转动态规划（5）" class="headerlink" title="暴力递归转动态规划（5）"></a>暴力递归转动态规划（5）</h1><h1 id="暴力递归转动态规划（6）"><a href="#暴力递归转动态规划（6）" class="headerlink" title="暴力递归转动态规划（6）"></a>暴力递归转动态规划（6）</h1>]]></content>
-  </entry>
-  <entry>
-    <title>聚合搜索平台</title>
-    <url>/wang666-bot.github.io/post/9f02e53a.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>一个聚合搜索平台，<strong>可以让用户在同一个入口（同一个页面）集中搜索出不同来源、不同类型的内容</strong></p>
-<p>用户：提升用户的检索效率、提升用户体验</p>
-<p>企业：无需针对每一个项目都去开发一个搜索功能，当有新的内容、新的网站，可以复用同一套搜索系统，提升开发效率</p>
-<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p><strong>前端：</strong></p>
-<p>​	Vue</p>
-<p>​	Ant Design Vue</p>
-<p>​	Lodash</p>
-<p><strong>后端</strong></p>
-<p>​	Spring Boot</p>
-<p>​	MySQL</p>
-<p>​	Elasticsearch（Elastic Stack）搜索引擎</p>
-<p>​	数据抓取</p>
-<p>​	数据同步（4种方法）</p>
-<p>​		logstash</p>
-<p>​		Canal</p>
-<p>​	Guava Retrying</p>
-<p>​	怎么保证API的稳定性</p>
-<h2 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h2><p>​	1.先得到各种不同分类的资源</p>
-<p>​	2.提供一个搜索页面（单一搜索 + 聚合搜索），支持搜索</p>
-<p>​	3.（可以去做一些优化，比如关键词高亮、防抖节流）</p>
-<h1 id="6-28"><a href="#6-28" class="headerlink" title="6.28"></a>6.28</h1><p>前端后端项目初始化</p>
-<p>前端搜索页面开发完成</p>
-<p>后端基本搜索接口开发</p>
-<p>用url记录页面搜索状态，当用户刷新页面时，能够从url还原之前的搜索状态</p>
-<p>url &lt; &#x3D; &gt; 页面状态</p>
-<p>技巧：把同步状态改成单向，即只允许url来改变页面状态，不允许反向</p>
-<p>​	1.让用户在操作的时候，改变url地址（点击搜索框，搜索内容填充到url上，切换tab时，也要填充）</p>
-<p>​	2.当url改变的时候，去改变页面状态（监听url的改变）</p>
-<h1 id="6-29"><a href="#6-29" class="headerlink" title="6.29"></a>6.29</h1><p>1.获取多种不同类型的数据源</p>
-<p>​	a.文章（内部）</p>
-<p>​	b.用户（内部）</p>
-<p>​	c.图片（外部，不是自己的项目、自己的用户生产的数据）</p>
-<p>2.前后端单独搜索接口联调，跑通整个页面</p>
-<p>3.分析现有项目的问题 &#x3D;&gt; 优化，聚合接口的开发</p>
-<p>4.安装ES</p>
-<h3 id="获取不同类型的数据源"><a href="#获取不同类型的数据源" class="headerlink" title="获取不同类型的数据源"></a>获取不同类型的数据源</h3><p>1.获取文章</p>
-<p>内部没有，就只能从互联网上获取基础数据  &#x3D;&gt; 爬虫</p>
-<p>数据抓取的几种方式：</p>
-<p>1.直接请求数据结构（最方便）HttpClient、OKHttp、RestTemplate、Hutool</p>
-<p>2.等网页渲染出明文内容，从前端页面的内容抓取</p>
-<p>3.有一些网站可能是动态请求的，他不会一次性加载所有的数据，而是要点某个按钮、输入某个验证码才会显示出数据&#x3D;&gt; 无头浏览器</p>
-<p>selenum、puppeteer</p>
-<p>hutool：<a href="https://doc.hutool.cn/pages/index/">https://doc.hutool.cn/pages/index/</a></p>
-]]></content>
-      <tags>
-        <tag>Vue Java 搜索平台</tag>
-      </tags>
   </entry>
   <entry>
     <title>设计模式</title>
