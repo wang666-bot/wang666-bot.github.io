@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SSM框架</title>
+    <url>/wang666-bot.github.io/post/766433e0.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="spring"><a href="#spring" class="headerlink" title="spring"></a>spring</h1><h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><p>Core Container:核心容器</p>
+<p>AOP：面向切面编程</p>
+<p>Aspects：AOP思想实现</p>
+<p>Data Access：数据访问</p>
+<p>Data Integration：数据集成</p>
+<p>Web：Web开发</p>
+<p>Test：单元测试与集成测试</p>
+]]></content>
+  </entry>
+  <entry>
     <title>2D游戏开发（1）</title>
     <url>/wang666-bot.github.io/post/b238e0b7.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1.创建项目"></a>1.创建项目</h2><p>选择Unity版本2021.3.20</p>
@@ -120,18 +132,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>SSM框架</title>
-    <url>/wang666-bot.github.io/post/766433e0.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="spring"><a href="#spring" class="headerlink" title="spring"></a>spring</h1><h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><p>Core Container:核心容器</p>
-<p>AOP：面向切面编程</p>
-<p>Aspects：AOP思想实现</p>
-<p>Data Access：数据访问</p>
-<p>Data Integration：数据集成</p>
-<p>Web：Web开发</p>
-<p>Test：单元测试与集成测试</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/wang666-bot.github.io/post/4a17b156.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -210,322 +210,6 @@
 ]]></content>
       <tags>
         <tag>Vue Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用户中心项目分享</title>
-    <url>/wang666-bot.github.io/post/ac2907d5.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="用户中心（上）"><a href="#用户中心（上）" class="headerlink" title="用户中心（上）"></a>用户中心（上）</h1><p>需求分析 &#x3D;》设计（概要设计、详细设计）&#x3D;》技术选型&#x3D;》初始化&#x2F;引入需要的技术&#x3D;&gt;写Demo&#x3D;》写代码（实现业务逻辑）&#x3D;》测试（单元测试）&#x3D;》代码提交 &#x2F; 代码评审 &#x3D;》部署 &#x3D;》发布</p>
-<h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><p>1.登陆&#x2F;注册</p>
-<p>2.用户管理（管理员可见）对用户的查询或者修改</p>
-<p>3.用户校验</p>
-<h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><p>前端：三件套 + React + 组件库Ant Design + Umi + Ant Design Pro（现成的管理系统）</p>
-<p>后端： Java + SSM+mysql </p>
-<p>部署： 服务器&#x2F;容器（平台）</p>
-<p>1.1初始化项目</p>
-<p>​	前端初始化</p>
-<p>​		初始化项目</p>
-<p>​		引入组件</p>
-<p>​		框架介绍&#x2F;项目瘦身</p>
-<p>​	后端初始化</p>
-<p>​		准备环境（MySQL）</p>
-<p>​		引入框架</p>
-<p>1.2登录&#x2F;注册</p>
-<p>​	前端</p>
-<p>​	后端</p>
-<p>1.4用户管理</p>
-<p>​	前端</p>
-<p>​	后端</p>
-<p>yarn包管理器，比npm下载更快（并行下载）</p>
-<p>初始化Java项目的方式</p>
-<p>1.Github搜现成的代码</p>
-<p>2.SprintBoot官方的模板生成器 <a href="https://start.spring.io/">https://start.spring.io/</a></p>
-<p>3.直接在IDEA开发工具生成（推荐）</p>
-<h1 id="用户中心（中）"><a href="#用户中心（中）" class="headerlink" title="用户中心（中）"></a>用户中心（中）</h1><p>数据库的设计：根据需求场景判断有哪些表（模型）？表里有哪些字段 ？字段的类型？给数据库字段添加索引？</p>
-<p>表与表之间的关联</p>
-<p>用户表：</p>
-<p>id（主键）  bigint</p>
-<p>username 昵称  varchar</p>
-<p>登陆账号 account</p>
-<p>avatarUrl 头像 varchar</p>
-<p>gender 性别 tinyint</p>
-<p>password 密码 varchar</p>
-<p>phone电话 varchar</p>
-<p>email 邮箱 varchar</p>
-<p>isVaild是否有效 tinyint 0&#x2F;1</p>
-<p>createTime 创建时间（数据插入时间）datetime</p>
-<p>updateTime 更新时间（数据更新时间） datetime</p>
-<p>isDelete 是否删除 （逻辑删除）tinyint</p>
-<p>userRole  用户角色 0 普通用户 1 管理员</p>
-<p>建表语句</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table user</span><br><span class="line">(</span><br><span class="line">    id           bigint auto_increment comment &#x27;id</span><br><span class="line">&#x27;</span><br><span class="line">        primary key,</span><br><span class="line">    username     varchar(256)                        null comment &#x27;用户名称&#x27;,</span><br><span class="line">    userAccount  varchar(256)                        null comment &#x27;登录账号&#x27;,</span><br><span class="line">    avatarUrl    varchar(1024)                       null comment &#x27;用户头像&#x27;,</span><br><span class="line">    gender       tinyint                             null comment &#x27;性别&#x27;,</span><br><span class="line">    phone        varchar(128)                        null comment &#x27;电话&#x27;,</span><br><span class="line">    userpassword varchar(512)                        not null comment &#x27;密码&#x27;,</span><br><span class="line">    email           varchar(512)                        null comment &#x27;邮箱&#x27;,</span><br><span class="line">    userstatus   int       default 0                 null comment &#x27;状态&#x27;,</span><br><span class="line">    createTime   datetime  default CURRENT_TIMESTAMP not null comment &#x27;创建时间&#x27;,</span><br><span class="line">    updateTime   timestamp default CURRENT_TIMESTAMP null comment &#x27;更新时间&#x27;,</span><br><span class="line">    isDelete     tinyint   default 0                 not null comment &#x27;是否删除&#x27;</span><br><span class="line">)</span><br><span class="line">    comment &#x27;用户&#x27;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>实现登陆注册功能</p>
-<p>​	后端：</p>
-<p>​		1.规整项目目录</p>
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.htm/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB/image-20230510225949131.png" alt="01"></p>
-<p>​		controller：控制层，专门用于接收请求</p>
-<p>​		mapper：数据访问层（从数据库中查询数据）</p>
-<p>​		model：定义和数据库相对应的模型、封装类等</p>
-<p>​		service：编写业务逻辑（登陆注册等）</p>
-<p>​		utils：存放工具类（加密，格式转化等）</p>
-<p>​		2.实现基本数据库操作（操作user表）</p>
-<p>​					目的：模型user对象  &#x3D;》 和数据库的字段关联，自动生成（MybatisX插件）</p>
-<p>​					MybatisX插件：自动根据数据库生成domain实体对象、mapper（操作数据库的对象）、mapper.xml（定义了mapper对象和					数据库的关联，可以在里面自己写SQL）、service（包含常用的增删改查）、service实现类</p>
-<p>​		实现注册逻辑：</p>
-<p>​					1.用户在前端输入账户和密码、以及校验码</p>
-<p>​					2.校验用户的账户、密码、校验密码是否符合规则</p>
-<p>​										账户不小于4位</p>
-<p>​										密码不小于8位</p>
-<p>​										账户不能重复</p>
-<p>​										密码和校验密码相同</p>
-<p>​					3.对密码进行加密（密码千万不能直接以明文存储到数据库中）</p>
-<p>​					4.向数据库插入用户数据</p>
-<h1 id="用户中心（下）"><a href="#用户中心（下）" class="headerlink" title="用户中心（下）"></a>用户中心（下）</h1><p>1.开发完成后端登录功能</p>
-<p>2.开发后端用户的管理接口</p>
-<p>3.开发前端用户登录注册功能</p>
-<p>4.讨论如何校验用户（限制使用人）</p>
-<h3 id="登录逻辑"><a href="#登录逻辑" class="headerlink" title="登录逻辑"></a>登录逻辑</h3><p>接收参数：用户账户、密码</p>
-<p>请求类型：POST</p>
-<p>请求体： JSON格式的数据</p>
-<p>​		请求参数很长时不建议用get</p>
-<p>返回值：用户信息（脱敏）</p>
-<p>逻辑：</p>
-<p>​	1.校验用户账户和密码是否合法</p>
-<p>​			非空</p>
-<p>​			账户不小于4位</p>
-<p>​			密码不小于8位</p>
-<p>​			密码和校验密码相同</p>
-<p>2.校验密码是否输入正确，要和数据库中的密文密码取对比</p>
-<p>3.用户信息脱敏，隐藏敏感信息，防止数据库中的字段泄漏</p>
-<p>4.我们要记录用户的登陆状态（session），将其存到服务器上（用后端SpringBoot框架封装的服务器tomcat去记录）</p>
-<p>5.返回安全的脱敏后的用户信息</p>
-<p>控制层Controller封装请求</p>
-<p>application.yml 指定接口全局api</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">servlet:</span><br><span class="line">  context-path: /api</span><br></pre></td></tr></table></figure>
-
-<p>@RestController适用于编写restful风格的api，返回值默认为json类型</p>
-<p>controller层倾向于对请求参数本身的校验，不涉及业务逻辑本身（越少越好）</p>
-<p>service层是对业务逻辑的校验（有可能贝controller之外的业务逻辑调用）</p>
-<p>如何直到是哪个用户登陆了</p>
-<p>​	1.连接服务器端后，得到一个session状态（匿名会话），返回给前端</p>
-<p>​	2.登陆成功后，得到了登陆成功的session，并且给session设置一些值（比如用户信息）返回给前端一个设置cookie 的”命令“</p>
-<p>​	3.前端接收到后端的命令后，设置cookie，保存到浏览器内</p>
-<p>​	4.前端再次请求后端的时候（相同的域名），在请求头中带上cookie去请求</p>
-<p>​	5.后端拿到前端传来的cookie，找到对应的session</p>
-<p>​	6.后端从session中取出基于该session存储的变量（用户的登录信息、登录名）</p>
-<h2 id="用户管理接口"><a href="#用户管理接口" class="headerlink" title="用户管理接口"></a>用户管理接口</h2><p>！！！必须鉴权</p>
-<p>1.查询用户</p>
-<p>​		根据用户名查询</p>
-<p>2.删除用户</p>
-<p>先做设计</p>
-<p>代码实现</p>
-<p>持续优化！！！（复用代码、提取公共逻辑&#x2F;常量）</p>
-<h2 id="前后端交互"><a href="#前后端交互" class="headerlink" title="前后端交互"></a>前后端交互</h2><p>前端需要向后端发送请求</p>
-<p>前端ajax来请求后端</p>
-<p>axios封装ajax</p>
-<p>request是ant design项目又封装了axios</p>
-<p>追踪request源码：用到了umi的插件，requestConfig是一个插件</p>
-<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>正向代理：替客户端向服务端发送请求，</p>
-<p>反向代理：替服务器接收请求</p>
-<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.htm/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB/image-20230514212035624.png" alt="image-20230514212035624"></p>
-<p>怎么搞代理</p>
-<p>Nginx服务器</p>
-<p>Node.js服务器</p>
-<p>原本请求：<a href="http://localhost:8000/api/user/login">http://localhost:8000/api/user/login</a></p>
-<h1 id="用户中心（终）"><a href="#用户中心（终）" class="headerlink" title="用户中心（终）"></a>用户中心（终）</h1><p>1.完成注册功能的前端开发</p>
-<p>2.获取用户的登录态，获取当前登录用户信息接口</p>
-<p>3.完成用户管理后台的前端开发</p>
-<p>4.前端代码瘦身&amp;优化</p>
-<p>5.后端代码优化</p>
-<p>6.新需求-用户校验</p>
-<p>7.项目扩展思路</p>
-<p>Ant Design Pro（Umi框架）</p>
-<p>app.tsx项目全局入口文件，定义了整个项目中使用的公共数据（比如用户信息）</p>
-<p>access.ts控制用户的访问权限</p>
-<p>首次访问页面（刷新页面），进入app.tsx，执行getInitialState方法，该方法的返回值就是全局可用的状态值</p>
-<p>ProComponents高级表单</p>
-<p>1.通过columns定义表格有哪些列</p>
-<p>2.columns里的属性</p>
-<p>​	dataIndex对应返回数据对象的属性</p>
-<p>​	title表格列名</p>
-<p>​	copyable ： 是否允许复制</p>
-<p>​	ellipsis ： 是否允许缩略</p>
-<p>​	valueType：用于声明这一列的类型</p>
-<p>MFSU：前端编译优化（联邦模块编译）</p>
-<p>Ant Design 组件库 &#x3D;&gt; React</p>
-<p>Ant Design Pro  components &#x3D;&gt; Ant Design 业务组件</p>
-<p>Ant Design Pro 后台管理系统 &#x3D;&gt; Ant Design 、React 、Ant Design Pro  components、其他的库</p>
-<p>用户中心（末）</p>
-<p>1.开发用户注销  前端&#x2F;后端</p>
-<p>2.补充用户注册校验逻辑 前端&#x2F;后端</p>
-<p>3.后端代码优化</p>
-<p>4.前端代码优化</p>
-<p>5.项目部署上线</p>
-<p>​	1.原生部署</p>
-<p>​	2.容器部署</p>
-<p>​	3.绑定域名</p>
-<p>用户校验</p>
-<p>​	仅适用于用户可信的情况</p>
-<p>让用户自己填：2-5位编号</p>
-<p>后台补充对编号的校验：长度校验、唯一性校验</p>
-<p>前端补充输入框，适配后端</p>
-<p>后期拉去星球数据，定期清理违规用户</p>
-<h2 id="后端优化"><a href="#后端优化" class="headerlink" title="后端优化"></a>后端优化</h2><p>1.通用返回对象，给对象补充一些信息</p>
-<p>​	目的：给对象补充一些信息，告诉前端这个请求在业务层面上是成功还是失败</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;name&quot;:&quot;wang&quot;</span><br><span class="line">&#125;</span><br><span class="line">//成功</span><br><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 0 //业务状态码</span><br><span class="line">	&quot;data&quot;:&#123;</span><br><span class="line">		&quot;name&quot;:&quot;wang&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;message&quot;:&quot;ok&quot;</span><br><span class="line">&#125;</span><br><span class="line">//错误</span><br><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 50001 //业务状态码</span><br><span class="line">	&quot;data&quot;:null</span><br><span class="line">	&quot;message&quot;:&quot;用户操作异常&quot;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	自定义错误码</p>
-<p>​	返回类支持返回正常和错误</p>
-<p>2.封装全局异常处理</p>
-<p>​	1.定义业务异常类</p>
-<p>​		1.相对于java的异常类，支持更多字段</p>
-<p>​		2.自定义构造函数，更灵活 &#x2F; 快捷的设置字段</p>
-<p>​	2.编写全局异常处理器</p>
-<p>​		作用：</p>
-<p>​		1.捕获代码中所有的异常，内部消化，集中处理，让前端得到更详细的业务报错&#x2F;信息</p>
-<p>​		2.同时屏蔽掉项目框架本身的异常（不暴露服务器内部状态）</p>
-<p>​		3.集中处理，比如记录日志</p>
-<p>​		实现：</p>
-<p>​		1.Spring AOP：在调用方法前后进行额外的处理</p>
-<p>3.全局请求日志和登录校验	</p>
-<p>​	</p>
-<p>​	前端优化</p>
-<p>​	1.对接后端的返回值，取data</p>
-<p>​	2.全局响应处理 <a href="https://blog.csdn.net/huantai3334/article/details/116780020">https://blog.csdn.net/huantai3334/article/details/116780020</a></p>
-<p>​		1.应用场景：我们需要对接口的通用响应进行统一处理，比如从response中取出data， 或者根据code去集中处理错误，比如用户未登录、没权限之类的</p>
-<p>​		2.优势：不用在每个接口请求中都去写相同的逻辑</p>
-<p>​		3.实现：参考使用的请求封装工具的官方文档，比如umi-request</p>
-<p>​		如果使用axios，参考axios的文档，创建新的文件，在该文件中配置一个全局请求类，在发送请求时，使用我们自己的定义的全局请求类</p>
-<h1 id="用户中心（部署）"><a href="#用户中心（部署）" class="headerlink" title="用户中心（部署）"></a>用户中心（部署）</h1><p>1.多环境</p>
-<p>2.项目部署上线</p>
-<p>​	原始前端&#x2F;后端项目</p>
-<p>​	宝塔Linux</p>
-<p>​	容器</p>
-<p>​	容器平台</p>
-<p>3.前后端的联调</p>
-<p>4.用户中心项目扩展和规划</p>
-<h2 id="多环境"><a href="#多环境" class="headerlink" title="多环境"></a>多环境</h2><p>参考文章<a href="https://blog.csdn.net/weixin_41701290/article/details/120173283">https://blog.csdn.net/weixin_41701290/article/details/120173283</a></p>
-<p>本地开发localhost（127.0.0.1）</p>
-<p>多环境：指同一套项目代码在不同的阶段需要根据实际情况来部署到不同的机器上，并且要调整配置</p>
-<p>为什么需要？</p>
-<p>​	1.每个环境互不影响</p>
-<p>​	2.为了区分不同的阶段：开发&#x2F;测试&#x2F;生产</p>
-<p>​	3.对项目进行优化：</p>
-<p>​		1.本地日志级别</p>
-<p>​		2.精简依赖，减少项目体积</p>
-<p>​		3.项目的环境&#x2F;参数可以调整，比如JVM参数</p>
-<p>针对不同环境做不同的事情</p>
-<p>多环境分类：</p>
-<p>​	1.本地环境（自己的电脑）localhost</p>
-<p>​	2.开发环境（远程开发）大家连同一台机器，为了大家开发方便</p>
-<p>​	3.测试环境（测试）开发&#x2F;测试&#x2F;产品，单元测试 &#x2F; 性能测试 &#x2F; 功能测试 &#x2F;系统集成测试，独立的数据库，独立的服务器</p>
-<p>​	4.预发布环境（体验服）：和正式环境一致，正式数据库，可以更严谨，查出更多问题</p>
-<p>​	5.正式环境（线上，公开对外访问的项目）：尽量不要改动，保证上线前的代码是完美运行</p>
-<p>​	6.沙箱环境（实验环境）：为了做实验</p>
-<p>​	</p>
-<h2 id="前端多环境实战"><a href="#前端多环境实战" class="headerlink" title="前端多环境实战"></a>前端多环境实战</h2><p>请求地址</p>
-<p>​			开发环境：localhost:8000</p>
-<p>​			线上环境：备案的域名</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">startFront</span>(<span class="params">env</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span>(env === <span class="string">&#x27;prod&#x27;</span>)&#123;</span><br><span class="line">        <span class="comment">//不输出注释</span></span><br><span class="line">        <span class="comment">//项目优化</span></span><br><span class="line">        <span class="comment">//修改请求地址</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//保持本地开发逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>用了umi框架，build时会自动传入NODE_ENV &#x3D;&#x3D; production参数， start NODE_ENV参数为 development</p>
-<p>启动方式</p>
-<p>​	开发环境：npm run start（本地启动，监听端口，自动更新）</p>
-<p>​	线上环境：npm  run build（项目构建打包），可以使用serve工具启动（npm i -g serve）</p>
-<p>项目的配置</p>
-<p>不同的项目框架都有不同的配置文件，umi的配置文件是config</p>
-<p>​	可以在配置文化后添加对应的环境名称后缀来区分开发环境和生产环境，参考文档umi的部署</p>
-<p>​	开发环境：config.dev.ts</p>
-<p>​	生产环境：config.prod.ts</p>
-<p>​	公共配置：config.ts不带后缀</p>
-<h2 id="后端多环境实战"><a href="#后端多环境实战" class="headerlink" title="后端多环境实战"></a>后端多环境实战</h2><p>​	SpringBoot项目，通过application.yml添加不同的后缀来区分配置文件，可以在启动项目时传入环境变量：</p>
-<p>主要是改依赖的环境地址：</p>
-<p>​	数据库地址</p>
-<p>​	缓存地址</p>
-<p>​	消息队列地址</p>
-<p>​	项目端口号</p>
-<p>服务器配置</p>
-<p>项目部署</p>
-<p>需要Linux服务器（建议CnetOS8 +&#x2F;7.6以上）</p>
-<p>原始部署</p>
-<p>什么都自己装</p>
-<p>前端</p>
-<p>需要web服务器：nginx，apache、tomcat</p>
-<p>安装nginx服务器</p>
-<p>​	1.用系统自带的软件包管理器快速安装 比如centos的yum</p>
-<p>​	2.自己到官网（参考文章<a href="https://zhuanlan.zhihu.com/p/425790769%EF%BC%89">https://zhuanlan.zhihu.com/p/425790769）</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> curl -o nginx-1.24.0 http://nginx.org/download/nginx-1.24.0.tar.gz</span><br><span class="line"> tar -zxvf nginx-1.24.0</span><br><span class="line"> cd nginx-1.24.0</span><br><span class="line">  ./configure</span><br><span class="line">yum install openssl openssl-devel -y</span><br><span class="line"> ./configure --with-http_ssl_module --with-http_v2_module --with-stream</span><br><span class="line"> make</span><br><span class="line">  make install</span><br><span class="line"> ls</span><br><span class="line">  ls /usr/local/nginx/sbin/nginx</span><br><span class="line"> vim /etc/profile</span><br><span class="line">在最后一行添加export PATH=$PATH:/usr/local/nginx/sbin			</span><br></pre></td></tr></table></figure>
-
-<p>注意权限</p>
-<p>部署后端</p>
-<p>java、maven</p>
-<p>宝塔Linux部署</p>
-<p>linux运维面板</p>
-<p>Docker部署</p>
-<p>docker是容器，可以将项目的环境（比如java，nginx）和项目的代码仪器打包成镜像，所有同学都能下载镜像，更容易分发和移植</p>
-<p>再启动项目时，不需要敲一大堆命令，而是直接下载镜像、启动镜像就可以了</p>
-<p>docker可以理解为软件安装包</p>
-<p>dockfile</p>
-<p>FROM依赖的基础镜像</p>
-<p>WORKDIR工作目录</p>
-<p>COPY从本机复制文件</p>
-<p>RUN执行命令</p>
-<p>CMD&#x2F;ENTRYPOINT（附加额外参数）指定运行容器时默认执行的命令</p>
-<p>根据Dockerfile构建镜像</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker build -t </span><br></pre></td></tr></table></figure>
-
-<p>Docker构建优化：减少尺寸、减少构建时间（比如多阶段构建，可以丢弃之前阶段不需要的内容）</p>
-<p>docker run启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 80：80 -v /data：/data -d nginx：latest</span><br></pre></td></tr></table></figure>
-
-<p>虚拟化：</p>
-<p>​	1.端口映射：把本机的资源和容器内部的资源进行关联</p>
-<p>​	2.目录映射：把本机的端口和容器应用的端口进行关联</p>
-<p>前端部署方式</p>
-<p>前端webfiy web应用托管（比容器化更傻瓜式，不需要自己写构建应用的命令，就能启动前端项目）</p>
-<p>小缺点：需要将代码放到代码托管平台上</p>
-<p>优势：不用写命令、代码更新时自动构建</p>
-<p>Docker平台部署</p>
-<p>1.云服务商的容器平台（腾讯云、阿里云）</p>
-<p>2.面向某个领域的容器平台（前端webify、后端微信云托管）</p>
-<p>容器平台的好处：</p>
-<p>​	1.不用输命令来操作，更方便省事</p>
-<p>​	2.不用在控制台操作，更傻瓜式、更简单</p>
-<p>​	3.大厂运维，比自己运维更省心</p>
-<p>​	4.额外的能力，比如监控、告警、其他（存储、负载均衡、自动扩缩容、流水线）</p>
-<h1 id="用户中心（上线）"><a href="#用户中心（上线）" class="headerlink" title="用户中心（上线）"></a>用户中心（上线）</h1><h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>前端项目访问：用户输入网址&#x3D;&gt; 域名解析服务器（把网址解析为ip地址&#x2F;交给其他的域名解析服务器）&#x3D;&gt; 服务器&#x3D;&gt;（ 防火墙）&#x3D;&gt; nginx接收请求，找到对应的文件，返回文件给前端&#x3D;&gt; 前端加载文件到浏览器中(js\css) &#x3D;&gt; 渲染页面</p>
-<p>后端项目访问：用户输入网址 &#x3D;&gt; 域名解析服务器 &#x3D;&gt; 服务器 &#x3D;&gt;nginx接受请求&#x3D;&gt;  后端项目(比如8080端口)</p>
-<p>nginx反向代理：替服务器接收请求，转发请求</p>
-<p>跨域问题解决</p>
-<p>浏览器为了用户的安全，仅允许向<strong>同域名、同端口</strong>的服务器发送请求</p>
-<p>如何解决跨域</p>
-<p>​	1.把端口、域名改成相同的</p>
-<p>让服务器告诉浏览器：允许跨域（返回cross-origin-allow响应头）</p>
-<p>​	2.网关支持（Nginx网关）</p>
-<p>​	3.修改后端服务</p>
-<p>​			1.配置@CrossOrigin注解</p>
-<p>​			2.添加web全局请求拦截器</p>
-<p>​			3.定义新的corsFilter Bean</p>
-<p>项目优化点：</p>
-<p>​	1.功能扩充</p>
-<p>​		1.管理员创建用户】修改用户信息、删除用户</p>
-<p>​		2.上传头像</p>
-<p>​		3.按照更多的条件去查询用户</p>
-<p>​		4.更改权限</p>
-<p>2.修改Bug</p>
-<p>3.项目登录改为分布式session（单点登录）</p>
-<p>4.通用性</p>
-<p>​	1.set-cookie domain域名更通用，比如改为*.xxx.com</p>
-<p>​	2.把用户管理系统 &#x3D;&gt; 用户中心（之后所有的服务都请求这个后端）</p>
-<p>4.后台添加全局请求拦截器（统一去判断用户权限、统一记录请求日志）</p>
-]]></content>
-      <tags>
-        <tag>用户管理系统 Java 前端 后端</tag>
       </tags>
   </entry>
   <entry>
@@ -1446,6 +1130,322 @@
       </tags>
   </entry>
   <entry>
+    <title>用户中心项目分享</title>
+    <url>/wang666-bot.github.io/post/ac2907d5.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="用户中心（上）"><a href="#用户中心（上）" class="headerlink" title="用户中心（上）"></a>用户中心（上）</h1><p>需求分析 &#x3D;》设计（概要设计、详细设计）&#x3D;》技术选型&#x3D;》初始化&#x2F;引入需要的技术&#x3D;&gt;写Demo&#x3D;》写代码（实现业务逻辑）&#x3D;》测试（单元测试）&#x3D;》代码提交 &#x2F; 代码评审 &#x3D;》部署 &#x3D;》发布</p>
+<h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><p>1.登陆&#x2F;注册</p>
+<p>2.用户管理（管理员可见）对用户的查询或者修改</p>
+<p>3.用户校验</p>
+<h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><p>前端：三件套 + React + 组件库Ant Design + Umi + Ant Design Pro（现成的管理系统）</p>
+<p>后端： Java + SSM+mysql </p>
+<p>部署： 服务器&#x2F;容器（平台）</p>
+<p>1.1初始化项目</p>
+<p>​	前端初始化</p>
+<p>​		初始化项目</p>
+<p>​		引入组件</p>
+<p>​		框架介绍&#x2F;项目瘦身</p>
+<p>​	后端初始化</p>
+<p>​		准备环境（MySQL）</p>
+<p>​		引入框架</p>
+<p>1.2登录&#x2F;注册</p>
+<p>​	前端</p>
+<p>​	后端</p>
+<p>1.4用户管理</p>
+<p>​	前端</p>
+<p>​	后端</p>
+<p>yarn包管理器，比npm下载更快（并行下载）</p>
+<p>初始化Java项目的方式</p>
+<p>1.Github搜现成的代码</p>
+<p>2.SprintBoot官方的模板生成器 <a href="https://start.spring.io/">https://start.spring.io/</a></p>
+<p>3.直接在IDEA开发工具生成（推荐）</p>
+<h1 id="用户中心（中）"><a href="#用户中心（中）" class="headerlink" title="用户中心（中）"></a>用户中心（中）</h1><p>数据库的设计：根据需求场景判断有哪些表（模型）？表里有哪些字段 ？字段的类型？给数据库字段添加索引？</p>
+<p>表与表之间的关联</p>
+<p>用户表：</p>
+<p>id（主键）  bigint</p>
+<p>username 昵称  varchar</p>
+<p>登陆账号 account</p>
+<p>avatarUrl 头像 varchar</p>
+<p>gender 性别 tinyint</p>
+<p>password 密码 varchar</p>
+<p>phone电话 varchar</p>
+<p>email 邮箱 varchar</p>
+<p>isVaild是否有效 tinyint 0&#x2F;1</p>
+<p>createTime 创建时间（数据插入时间）datetime</p>
+<p>updateTime 更新时间（数据更新时间） datetime</p>
+<p>isDelete 是否删除 （逻辑删除）tinyint</p>
+<p>userRole  用户角色 0 普通用户 1 管理员</p>
+<p>建表语句</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table user</span><br><span class="line">(</span><br><span class="line">    id           bigint auto_increment comment &#x27;id</span><br><span class="line">&#x27;</span><br><span class="line">        primary key,</span><br><span class="line">    username     varchar(256)                        null comment &#x27;用户名称&#x27;,</span><br><span class="line">    userAccount  varchar(256)                        null comment &#x27;登录账号&#x27;,</span><br><span class="line">    avatarUrl    varchar(1024)                       null comment &#x27;用户头像&#x27;,</span><br><span class="line">    gender       tinyint                             null comment &#x27;性别&#x27;,</span><br><span class="line">    phone        varchar(128)                        null comment &#x27;电话&#x27;,</span><br><span class="line">    userpassword varchar(512)                        not null comment &#x27;密码&#x27;,</span><br><span class="line">    email           varchar(512)                        null comment &#x27;邮箱&#x27;,</span><br><span class="line">    userstatus   int       default 0                 null comment &#x27;状态&#x27;,</span><br><span class="line">    createTime   datetime  default CURRENT_TIMESTAMP not null comment &#x27;创建时间&#x27;,</span><br><span class="line">    updateTime   timestamp default CURRENT_TIMESTAMP null comment &#x27;更新时间&#x27;,</span><br><span class="line">    isDelete     tinyint   default 0                 not null comment &#x27;是否删除&#x27;</span><br><span class="line">)</span><br><span class="line">    comment &#x27;用户&#x27;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>实现登陆注册功能</p>
+<p>​	后端：</p>
+<p>​		1.规整项目目录</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.htm/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB/image-20230510225949131.png" alt="01"></p>
+<p>​		controller：控制层，专门用于接收请求</p>
+<p>​		mapper：数据访问层（从数据库中查询数据）</p>
+<p>​		model：定义和数据库相对应的模型、封装类等</p>
+<p>​		service：编写业务逻辑（登陆注册等）</p>
+<p>​		utils：存放工具类（加密，格式转化等）</p>
+<p>​		2.实现基本数据库操作（操作user表）</p>
+<p>​					目的：模型user对象  &#x3D;》 和数据库的字段关联，自动生成（MybatisX插件）</p>
+<p>​					MybatisX插件：自动根据数据库生成domain实体对象、mapper（操作数据库的对象）、mapper.xml（定义了mapper对象和					数据库的关联，可以在里面自己写SQL）、service（包含常用的增删改查）、service实现类</p>
+<p>​		实现注册逻辑：</p>
+<p>​					1.用户在前端输入账户和密码、以及校验码</p>
+<p>​					2.校验用户的账户、密码、校验密码是否符合规则</p>
+<p>​										账户不小于4位</p>
+<p>​										密码不小于8位</p>
+<p>​										账户不能重复</p>
+<p>​										密码和校验密码相同</p>
+<p>​					3.对密码进行加密（密码千万不能直接以明文存储到数据库中）</p>
+<p>​					4.向数据库插入用户数据</p>
+<h1 id="用户中心（下）"><a href="#用户中心（下）" class="headerlink" title="用户中心（下）"></a>用户中心（下）</h1><p>1.开发完成后端登录功能</p>
+<p>2.开发后端用户的管理接口</p>
+<p>3.开发前端用户登录注册功能</p>
+<p>4.讨论如何校验用户（限制使用人）</p>
+<h3 id="登录逻辑"><a href="#登录逻辑" class="headerlink" title="登录逻辑"></a>登录逻辑</h3><p>接收参数：用户账户、密码</p>
+<p>请求类型：POST</p>
+<p>请求体： JSON格式的数据</p>
+<p>​		请求参数很长时不建议用get</p>
+<p>返回值：用户信息（脱敏）</p>
+<p>逻辑：</p>
+<p>​	1.校验用户账户和密码是否合法</p>
+<p>​			非空</p>
+<p>​			账户不小于4位</p>
+<p>​			密码不小于8位</p>
+<p>​			密码和校验密码相同</p>
+<p>2.校验密码是否输入正确，要和数据库中的密文密码取对比</p>
+<p>3.用户信息脱敏，隐藏敏感信息，防止数据库中的字段泄漏</p>
+<p>4.我们要记录用户的登陆状态（session），将其存到服务器上（用后端SpringBoot框架封装的服务器tomcat去记录）</p>
+<p>5.返回安全的脱敏后的用户信息</p>
+<p>控制层Controller封装请求</p>
+<p>application.yml 指定接口全局api</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">servlet:</span><br><span class="line">  context-path: /api</span><br></pre></td></tr></table></figure>
+
+<p>@RestController适用于编写restful风格的api，返回值默认为json类型</p>
+<p>controller层倾向于对请求参数本身的校验，不涉及业务逻辑本身（越少越好）</p>
+<p>service层是对业务逻辑的校验（有可能贝controller之外的业务逻辑调用）</p>
+<p>如何直到是哪个用户登陆了</p>
+<p>​	1.连接服务器端后，得到一个session状态（匿名会话），返回给前端</p>
+<p>​	2.登陆成功后，得到了登陆成功的session，并且给session设置一些值（比如用户信息）返回给前端一个设置cookie 的”命令“</p>
+<p>​	3.前端接收到后端的命令后，设置cookie，保存到浏览器内</p>
+<p>​	4.前端再次请求后端的时候（相同的域名），在请求头中带上cookie去请求</p>
+<p>​	5.后端拿到前端传来的cookie，找到对应的session</p>
+<p>​	6.后端从session中取出基于该session存储的变量（用户的登录信息、登录名）</p>
+<h2 id="用户管理接口"><a href="#用户管理接口" class="headerlink" title="用户管理接口"></a>用户管理接口</h2><p>！！！必须鉴权</p>
+<p>1.查询用户</p>
+<p>​		根据用户名查询</p>
+<p>2.删除用户</p>
+<p>先做设计</p>
+<p>代码实现</p>
+<p>持续优化！！！（复用代码、提取公共逻辑&#x2F;常量）</p>
+<h2 id="前后端交互"><a href="#前后端交互" class="headerlink" title="前后端交互"></a>前后端交互</h2><p>前端需要向后端发送请求</p>
+<p>前端ajax来请求后端</p>
+<p>axios封装ajax</p>
+<p>request是ant design项目又封装了axios</p>
+<p>追踪request源码：用到了umi的插件，requestConfig是一个插件</p>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>正向代理：替客户端向服务端发送请求，</p>
+<p>反向代理：替服务器接收请求</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.htm/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB/image-20230514212035624.png" alt="image-20230514212035624"></p>
+<p>怎么搞代理</p>
+<p>Nginx服务器</p>
+<p>Node.js服务器</p>
+<p>原本请求：<a href="http://localhost:8000/api/user/login">http://localhost:8000/api/user/login</a></p>
+<h1 id="用户中心（终）"><a href="#用户中心（终）" class="headerlink" title="用户中心（终）"></a>用户中心（终）</h1><p>1.完成注册功能的前端开发</p>
+<p>2.获取用户的登录态，获取当前登录用户信息接口</p>
+<p>3.完成用户管理后台的前端开发</p>
+<p>4.前端代码瘦身&amp;优化</p>
+<p>5.后端代码优化</p>
+<p>6.新需求-用户校验</p>
+<p>7.项目扩展思路</p>
+<p>Ant Design Pro（Umi框架）</p>
+<p>app.tsx项目全局入口文件，定义了整个项目中使用的公共数据（比如用户信息）</p>
+<p>access.ts控制用户的访问权限</p>
+<p>首次访问页面（刷新页面），进入app.tsx，执行getInitialState方法，该方法的返回值就是全局可用的状态值</p>
+<p>ProComponents高级表单</p>
+<p>1.通过columns定义表格有哪些列</p>
+<p>2.columns里的属性</p>
+<p>​	dataIndex对应返回数据对象的属性</p>
+<p>​	title表格列名</p>
+<p>​	copyable ： 是否允许复制</p>
+<p>​	ellipsis ： 是否允许缩略</p>
+<p>​	valueType：用于声明这一列的类型</p>
+<p>MFSU：前端编译优化（联邦模块编译）</p>
+<p>Ant Design 组件库 &#x3D;&gt; React</p>
+<p>Ant Design Pro  components &#x3D;&gt; Ant Design 业务组件</p>
+<p>Ant Design Pro 后台管理系统 &#x3D;&gt; Ant Design 、React 、Ant Design Pro  components、其他的库</p>
+<p>用户中心（末）</p>
+<p>1.开发用户注销  前端&#x2F;后端</p>
+<p>2.补充用户注册校验逻辑 前端&#x2F;后端</p>
+<p>3.后端代码优化</p>
+<p>4.前端代码优化</p>
+<p>5.项目部署上线</p>
+<p>​	1.原生部署</p>
+<p>​	2.容器部署</p>
+<p>​	3.绑定域名</p>
+<p>用户校验</p>
+<p>​	仅适用于用户可信的情况</p>
+<p>让用户自己填：2-5位编号</p>
+<p>后台补充对编号的校验：长度校验、唯一性校验</p>
+<p>前端补充输入框，适配后端</p>
+<p>后期拉去星球数据，定期清理违规用户</p>
+<h2 id="后端优化"><a href="#后端优化" class="headerlink" title="后端优化"></a>后端优化</h2><p>1.通用返回对象，给对象补充一些信息</p>
+<p>​	目的：给对象补充一些信息，告诉前端这个请求在业务层面上是成功还是失败</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;name&quot;:&quot;wang&quot;</span><br><span class="line">&#125;</span><br><span class="line">//成功</span><br><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 0 //业务状态码</span><br><span class="line">	&quot;data&quot;:&#123;</span><br><span class="line">		&quot;name&quot;:&quot;wang&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;message&quot;:&quot;ok&quot;</span><br><span class="line">&#125;</span><br><span class="line">//错误</span><br><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 50001 //业务状态码</span><br><span class="line">	&quot;data&quot;:null</span><br><span class="line">	&quot;message&quot;:&quot;用户操作异常&quot;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	自定义错误码</p>
+<p>​	返回类支持返回正常和错误</p>
+<p>2.封装全局异常处理</p>
+<p>​	1.定义业务异常类</p>
+<p>​		1.相对于java的异常类，支持更多字段</p>
+<p>​		2.自定义构造函数，更灵活 &#x2F; 快捷的设置字段</p>
+<p>​	2.编写全局异常处理器</p>
+<p>​		作用：</p>
+<p>​		1.捕获代码中所有的异常，内部消化，集中处理，让前端得到更详细的业务报错&#x2F;信息</p>
+<p>​		2.同时屏蔽掉项目框架本身的异常（不暴露服务器内部状态）</p>
+<p>​		3.集中处理，比如记录日志</p>
+<p>​		实现：</p>
+<p>​		1.Spring AOP：在调用方法前后进行额外的处理</p>
+<p>3.全局请求日志和登录校验	</p>
+<p>​	</p>
+<p>​	前端优化</p>
+<p>​	1.对接后端的返回值，取data</p>
+<p>​	2.全局响应处理 <a href="https://blog.csdn.net/huantai3334/article/details/116780020">https://blog.csdn.net/huantai3334/article/details/116780020</a></p>
+<p>​		1.应用场景：我们需要对接口的通用响应进行统一处理，比如从response中取出data， 或者根据code去集中处理错误，比如用户未登录、没权限之类的</p>
+<p>​		2.优势：不用在每个接口请求中都去写相同的逻辑</p>
+<p>​		3.实现：参考使用的请求封装工具的官方文档，比如umi-request</p>
+<p>​		如果使用axios，参考axios的文档，创建新的文件，在该文件中配置一个全局请求类，在发送请求时，使用我们自己的定义的全局请求类</p>
+<h1 id="用户中心（部署）"><a href="#用户中心（部署）" class="headerlink" title="用户中心（部署）"></a>用户中心（部署）</h1><p>1.多环境</p>
+<p>2.项目部署上线</p>
+<p>​	原始前端&#x2F;后端项目</p>
+<p>​	宝塔Linux</p>
+<p>​	容器</p>
+<p>​	容器平台</p>
+<p>3.前后端的联调</p>
+<p>4.用户中心项目扩展和规划</p>
+<h2 id="多环境"><a href="#多环境" class="headerlink" title="多环境"></a>多环境</h2><p>参考文章<a href="https://blog.csdn.net/weixin_41701290/article/details/120173283">https://blog.csdn.net/weixin_41701290/article/details/120173283</a></p>
+<p>本地开发localhost（127.0.0.1）</p>
+<p>多环境：指同一套项目代码在不同的阶段需要根据实际情况来部署到不同的机器上，并且要调整配置</p>
+<p>为什么需要？</p>
+<p>​	1.每个环境互不影响</p>
+<p>​	2.为了区分不同的阶段：开发&#x2F;测试&#x2F;生产</p>
+<p>​	3.对项目进行优化：</p>
+<p>​		1.本地日志级别</p>
+<p>​		2.精简依赖，减少项目体积</p>
+<p>​		3.项目的环境&#x2F;参数可以调整，比如JVM参数</p>
+<p>针对不同环境做不同的事情</p>
+<p>多环境分类：</p>
+<p>​	1.本地环境（自己的电脑）localhost</p>
+<p>​	2.开发环境（远程开发）大家连同一台机器，为了大家开发方便</p>
+<p>​	3.测试环境（测试）开发&#x2F;测试&#x2F;产品，单元测试 &#x2F; 性能测试 &#x2F; 功能测试 &#x2F;系统集成测试，独立的数据库，独立的服务器</p>
+<p>​	4.预发布环境（体验服）：和正式环境一致，正式数据库，可以更严谨，查出更多问题</p>
+<p>​	5.正式环境（线上，公开对外访问的项目）：尽量不要改动，保证上线前的代码是完美运行</p>
+<p>​	6.沙箱环境（实验环境）：为了做实验</p>
+<p>​	</p>
+<h2 id="前端多环境实战"><a href="#前端多环境实战" class="headerlink" title="前端多环境实战"></a>前端多环境实战</h2><p>请求地址</p>
+<p>​			开发环境：localhost:8000</p>
+<p>​			线上环境：备案的域名</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">startFront</span>(<span class="params">env</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span>(env === <span class="string">&#x27;prod&#x27;</span>)&#123;</span><br><span class="line">        <span class="comment">//不输出注释</span></span><br><span class="line">        <span class="comment">//项目优化</span></span><br><span class="line">        <span class="comment">//修改请求地址</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//保持本地开发逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用了umi框架，build时会自动传入NODE_ENV &#x3D;&#x3D; production参数， start NODE_ENV参数为 development</p>
+<p>启动方式</p>
+<p>​	开发环境：npm run start（本地启动，监听端口，自动更新）</p>
+<p>​	线上环境：npm  run build（项目构建打包），可以使用serve工具启动（npm i -g serve）</p>
+<p>项目的配置</p>
+<p>不同的项目框架都有不同的配置文件，umi的配置文件是config</p>
+<p>​	可以在配置文化后添加对应的环境名称后缀来区分开发环境和生产环境，参考文档umi的部署</p>
+<p>​	开发环境：config.dev.ts</p>
+<p>​	生产环境：config.prod.ts</p>
+<p>​	公共配置：config.ts不带后缀</p>
+<h2 id="后端多环境实战"><a href="#后端多环境实战" class="headerlink" title="后端多环境实战"></a>后端多环境实战</h2><p>​	SpringBoot项目，通过application.yml添加不同的后缀来区分配置文件，可以在启动项目时传入环境变量：</p>
+<p>主要是改依赖的环境地址：</p>
+<p>​	数据库地址</p>
+<p>​	缓存地址</p>
+<p>​	消息队列地址</p>
+<p>​	项目端口号</p>
+<p>服务器配置</p>
+<p>项目部署</p>
+<p>需要Linux服务器（建议CnetOS8 +&#x2F;7.6以上）</p>
+<p>原始部署</p>
+<p>什么都自己装</p>
+<p>前端</p>
+<p>需要web服务器：nginx，apache、tomcat</p>
+<p>安装nginx服务器</p>
+<p>​	1.用系统自带的软件包管理器快速安装 比如centos的yum</p>
+<p>​	2.自己到官网（参考文章<a href="https://zhuanlan.zhihu.com/p/425790769%EF%BC%89">https://zhuanlan.zhihu.com/p/425790769）</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> curl -o nginx-1.24.0 http://nginx.org/download/nginx-1.24.0.tar.gz</span><br><span class="line"> tar -zxvf nginx-1.24.0</span><br><span class="line"> cd nginx-1.24.0</span><br><span class="line">  ./configure</span><br><span class="line">yum install openssl openssl-devel -y</span><br><span class="line"> ./configure --with-http_ssl_module --with-http_v2_module --with-stream</span><br><span class="line"> make</span><br><span class="line">  make install</span><br><span class="line"> ls</span><br><span class="line">  ls /usr/local/nginx/sbin/nginx</span><br><span class="line"> vim /etc/profile</span><br><span class="line">在最后一行添加export PATH=$PATH:/usr/local/nginx/sbin			</span><br></pre></td></tr></table></figure>
+
+<p>注意权限</p>
+<p>部署后端</p>
+<p>java、maven</p>
+<p>宝塔Linux部署</p>
+<p>linux运维面板</p>
+<p>Docker部署</p>
+<p>docker是容器，可以将项目的环境（比如java，nginx）和项目的代码仪器打包成镜像，所有同学都能下载镜像，更容易分发和移植</p>
+<p>再启动项目时，不需要敲一大堆命令，而是直接下载镜像、启动镜像就可以了</p>
+<p>docker可以理解为软件安装包</p>
+<p>dockfile</p>
+<p>FROM依赖的基础镜像</p>
+<p>WORKDIR工作目录</p>
+<p>COPY从本机复制文件</p>
+<p>RUN执行命令</p>
+<p>CMD&#x2F;ENTRYPOINT（附加额外参数）指定运行容器时默认执行的命令</p>
+<p>根据Dockerfile构建镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker build -t </span><br></pre></td></tr></table></figure>
+
+<p>Docker构建优化：减少尺寸、减少构建时间（比如多阶段构建，可以丢弃之前阶段不需要的内容）</p>
+<p>docker run启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 80：80 -v /data：/data -d nginx：latest</span><br></pre></td></tr></table></figure>
+
+<p>虚拟化：</p>
+<p>​	1.端口映射：把本机的资源和容器内部的资源进行关联</p>
+<p>​	2.目录映射：把本机的端口和容器应用的端口进行关联</p>
+<p>前端部署方式</p>
+<p>前端webfiy web应用托管（比容器化更傻瓜式，不需要自己写构建应用的命令，就能启动前端项目）</p>
+<p>小缺点：需要将代码放到代码托管平台上</p>
+<p>优势：不用写命令、代码更新时自动构建</p>
+<p>Docker平台部署</p>
+<p>1.云服务商的容器平台（腾讯云、阿里云）</p>
+<p>2.面向某个领域的容器平台（前端webify、后端微信云托管）</p>
+<p>容器平台的好处：</p>
+<p>​	1.不用输命令来操作，更方便省事</p>
+<p>​	2.不用在控制台操作，更傻瓜式、更简单</p>
+<p>​	3.大厂运维，比自己运维更省心</p>
+<p>​	4.额外的能力，比如监控、告警、其他（存储、负载均衡、自动扩缩容、流水线）</p>
+<h1 id="用户中心（上线）"><a href="#用户中心（上线）" class="headerlink" title="用户中心（上线）"></a>用户中心（上线）</h1><h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>前端项目访问：用户输入网址&#x3D;&gt; 域名解析服务器（把网址解析为ip地址&#x2F;交给其他的域名解析服务器）&#x3D;&gt; 服务器&#x3D;&gt;（ 防火墙）&#x3D;&gt; nginx接收请求，找到对应的文件，返回文件给前端&#x3D;&gt; 前端加载文件到浏览器中(js\css) &#x3D;&gt; 渲染页面</p>
+<p>后端项目访问：用户输入网址 &#x3D;&gt; 域名解析服务器 &#x3D;&gt; 服务器 &#x3D;&gt;nginx接受请求&#x3D;&gt;  后端项目(比如8080端口)</p>
+<p>nginx反向代理：替服务器接收请求，转发请求</p>
+<p>跨域问题解决</p>
+<p>浏览器为了用户的安全，仅允许向<strong>同域名、同端口</strong>的服务器发送请求</p>
+<p>如何解决跨域</p>
+<p>​	1.把端口、域名改成相同的</p>
+<p>让服务器告诉浏览器：允许跨域（返回cross-origin-allow响应头）</p>
+<p>​	2.网关支持（Nginx网关）</p>
+<p>​	3.修改后端服务</p>
+<p>​			1.配置@CrossOrigin注解</p>
+<p>​			2.添加web全局请求拦截器</p>
+<p>​			3.定义新的corsFilter Bean</p>
+<p>项目优化点：</p>
+<p>​	1.功能扩充</p>
+<p>​		1.管理员创建用户】修改用户信息、删除用户</p>
+<p>​		2.上传头像</p>
+<p>​		3.按照更多的条件去查询用户</p>
+<p>​		4.更改权限</p>
+<p>2.修改Bug</p>
+<p>3.项目登录改为分布式session（单点登录）</p>
+<p>4.通用性</p>
+<p>​	1.set-cookie domain域名更通用，比如改为*.xxx.com</p>
+<p>​	2.把用户管理系统 &#x3D;&gt; 用户中心（之后所有的服务都请求这个后端）</p>
+<p>4.后台添加全局请求拦截器（统一去判断用户权限、统一记录请求日志）</p>
+]]></content>
+      <tags>
+        <tag>用户管理系统 Java 前端 后端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法与数据结构学习（2）</title>
     <url>/wang666-bot.github.io/post/2746a893.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>复杂度O(NlogN)</p>
@@ -1488,94 +1488,6 @@
       <tags>
         <tag>Java 数据结构</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>算法与数据结构学习（4）</title>
-    <url>/wang666-bot.github.io/post/22df74f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><p>先序遍历：头左右</p>
-<p>中序遍历：左头右</p>
-<p>后序遍历：左右头</p>
-<p>递归序：每个节点都会三次回到自己  从而  加工出先中后序</p>
-<p>题目：</p>
-<p>1.X祖先节点交集</p>
-<p>2.非递归实现先&#x2F;中&#x2F;后序遍历：</p>
-<p>1）先序：栈顶出来记作cur，有右压入右，有左压入左，先右后左</p>
-<p>2）后序：先序中把先右边后左改为先左再右边，再将弹出节点操作修改为加入栈2</p>
-<p>3）中序：当前节点cur的数整条左边界进栈，直到空，从栈中弹出节点打印，节点的右孩子为cur1，栈为空停</p>
-<p>按层遍历（宽度优先遍历）</p>
-<p>1）队列出一个cur，打印</p>
-<p>2）cur有左入左，有右入右</p>
-<p>二叉树的序列化和反序列化</p>
-<p>1）先序&#x2F;后序序列化</p>
-<h3 id="注：中序方式无法序列化"><a href="#注：中序方式无法序列化" class="headerlink" title="注：中序方式无法序列化"></a>注：中序方式无法序列化</h3><p>2）按层方式序列化</p>
-<p>按层方式遍历</p>
-<p>题目：多叉树转为二叉树 leetcode 431</p>
-<p>思路：多叉树的孩子一律放在左树右边界</p>
-<p>题目：求二叉树最宽层有多少节点</p>
-<p>思路：按层遍历，准备两个变量curend， nextend</p>
-<p>题目：给定二叉数（有左右父节点）的节点，返回后继节点</p>
-<p>思路1：中序遍历的下一个节点 O(n)</p>
-<p>思路2：情况1：节点x有右树，x树的最左孩子</p>
-<p>​			情况2：节点x无右树，往父亲节点，如果父亲节点是右树，继续往上，直到是某个父亲节点的左孩子，此时该父亲节点是后继节点</p>
-<p>题目：折纸问题</p>
-<p>思路：二叉树，头凹，左头凹，右头凸</p>
-<p>中序打印想象的节点为头的整棵树</p>
-<p> 题目：判断是否是完全二叉树</p>
-<p>思路：完全二叉树：满或者在变满的二叉树</p>
-<p>思路：二叉树的按层遍历，遵循以下原则：1）某节点有右无左，false，</p>
-<p>​																	2）第一次遇到孩子不双全的节点，之后的节点都是叶子节点</p>
-<h2 id="二叉树的递归套路"><a href="#二叉树的递归套路" class="headerlink" title="二叉树的递归套路"></a>二叉树的递归套路</h2><p>题目：判断平衡二叉树(每个节点的左右子树高度相差不超过1)</p>
-<p>思路： x左子数平衡</p>
-<p>​			x右子树平衡</p>
-<p>​			x左高-右高的差值不超过1</p>
-<p>抽象出信息：高度，是否平衡</p>
-<p>题目：是否是搜索二叉树</p>
-<p>思路：x左搜，右搜，x左的最大值，x右的最小值</p>
-<p>信息：最大值，最小值，是否是搜索二叉树  </p>
-<p>题目：给定一棵二叉树的头节点head，任何两个节点之间都存在距离，返回整颗二叉树的最大距离</p>
-<p>思路：可能性1：和head无关，左的最大距离， 右树的最大距离</p>
-<p>​		  可能性2：和head有关，x左边最远的点，右边最远的点，相加 + 1，</p>
-<p>​	在以上求max</p>
-<p>抽象出信息：最大距离，最大高度</p>
-<p>题目：是否是满二叉树</p>
-<p>思路：满二叉树节点和高度之间的关系</p>
-<p>抽象出信息：高度，节点数</p>
-<p>题目：求二叉树上最大的搜索二叉树的节点数目</p>
-<p>思路：1）不以x左头，x左的&#x2F;x右的</p>
-<p>​		2）X左是不是比BST，X右是不是BST，X左max X右min 左size + 右Size + 1</p>
-<p>是不是BST，size &#x3D;&#x3D; 总节点数</p>
-<p>信息：最大搜索二叉树的节点数，size，最大值，最小值</p>
-<h3 id="二叉树的递归套路-1"><a href="#二叉树的递归套路-1" class="headerlink" title="二叉树的递归套路"></a>二叉树的递归套路</h3><p>1）假设以X节点为头，假设可以向X左树和X右树要任何信息</p>
-<p>2）在上一步的假设下，讨论以X为头节点的树，得到答案的可能性（最重要）</p>
-<p>3）列出所有可能性后，确定到底需要向左树和右树要什么样的信息</p>
-<p>4）把左树信息和右树信息求全集，就是任何一棵子树都需要返回的信息S</p>
-<p>5）递归函数都返回S，每一棵子树都这么要求</p>
-<p>6）写代码，在代码中考虑如何把左树的信息和右树信息整合出整棵树的信息</p>
-<p>题目：判断二叉树是否是完全二叉树</p>
-<p>左满，右满，高度一致</p>
-<p>左满，右满，且左高度比右高度大1</p>
-<p>左完全，右满，且左高度比右高度大1</p>
-<p>左满，右完全，高度一致</p>
-<p>信息：满不满，是不是完全二叉树，高度</p>
-<p>题目：给定头节点head，返回这棵二叉树最大的二叉搜索子数的头节点</p>
-<p>题目：返回节点a和b的最低公共祖先</p>
-<p>可能性1：汇聚点和x有关：左有答案，右有答案，a b不全</p>
-<p>可能性2：汇聚点和x无关，a，b一个在左一个在右， x本身就是a或者b</p>
-<p>信息：findA， findB， ans</p>
-<p>题目：最大快乐值</p>
-<p>可能性1：x来，0 + max（子节点来，不来）</p>
-<p>可能性2：x不来，x的值+其子节点不来的max</p>
-<p>信息：来，不来的最大快乐值</p>
-<p>二叉树的递归套路在于讨论可能性</p>
-<h3 id="二叉树的递归遍历（leetcode-144，-145，-94）"><a href="#二叉树的递归遍历（leetcode-144，-145，-94）" class="headerlink" title="二叉树的递归遍历（leetcode 144， 145， 94）"></a>二叉树的递归遍历（leetcode 144， 145， 94）</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line"></span><br><span class="line">    TreeNode() &#123;&#125;</span><br><span class="line">    TreeNode(<span class="type">int</span> val) &#123; <span class="built_in">this</span>.val = val; &#125;</span><br><span class="line">    TreeNode(<span class="type">int</span> val, TreeNode left, TreeNode right) &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">        <span class="built_in">this</span>.left = left;</span><br><span class="line">        <span class="built_in">this</span>.right = right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">traversal</span><span class="params">(TreeNode head)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(head == <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//print(head.val)  先序</span></span><br><span class="line">    traversal(head.left);</span><br><span class="line">    <span class="comment">//print(head.val) 中序</span></span><br><span class="line">    traversal(head.right);</span><br><span class="line">    <span class="comment">//print(head.val) 后序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-]]></content>
   </entry>
   <entry>
     <title>算法与数据结构学习（3）</title>
@@ -1668,55 +1580,92 @@
       </tags>
   </entry>
   <entry>
-    <title>聚合搜索平台</title>
-    <url>/wang666-bot.github.io/post/9f02e53a.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>一个聚合搜索平台，<strong>可以让用户在同一个入口（同一个页面）集中搜索出不同来源、不同类型的内容</strong></p>
-<p>用户：提升用户的检索效率、提升用户体验</p>
-<p>企业：无需针对每一个项目都去开发一个搜索功能，当有新的内容、新的网站，可以复用同一套搜索系统，提升开发效率</p>
-<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p><strong>前端：</strong></p>
-<p>​	Vue</p>
-<p>​	Ant Design Vue</p>
-<p>​	Lodash</p>
-<p><strong>后端</strong></p>
-<p>​	Spring Boot</p>
-<p>​	MySQL</p>
-<p>​	Elasticsearch（Elastic Stack）搜索引擎</p>
-<p>​	数据抓取</p>
-<p>​	数据同步（4种方法）</p>
-<p>​		logstash</p>
-<p>​		Canal</p>
-<p>​	Guava Retrying</p>
-<p>​	怎么保证API的稳定性</p>
-<h2 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h2><p>​	1.先得到各种不同分类的资源</p>
-<p>​	2.提供一个搜索页面（单一搜索 + 聚合搜索），支持搜索</p>
-<p>​	3.（可以去做一些优化，比如关键词高亮、防抖节流）</p>
-<h1 id="6-28"><a href="#6-28" class="headerlink" title="6.28"></a>6.28</h1><p>前端后端项目初始化</p>
-<p>前端搜索页面开发完成</p>
-<p>后端基本搜索接口开发</p>
-<p>用url记录页面搜索状态，当用户刷新页面时，能够从url还原之前的搜索状态</p>
-<p>url &lt; &#x3D; &gt; 页面状态</p>
-<p>技巧：把同步状态改成单向，即只允许url来改变页面状态，不允许反向</p>
-<p>​	1.让用户在操作的时候，改变url地址（点击搜索框，搜索内容填充到url上，切换tab时，也要填充）</p>
-<p>​	2.当url改变的时候，去改变页面状态（监听url的改变）</p>
-<h1 id="6-29"><a href="#6-29" class="headerlink" title="6.29"></a>6.29</h1><p>1.获取多种不同类型的数据源</p>
-<p>​	a.文章（内部）</p>
-<p>​	b.用户（内部）</p>
-<p>​	c.图片（外部，不是自己的项目、自己的用户生产的数据）</p>
-<p>2.前后端单独搜索接口联调，跑通整个页面</p>
-<p>3.分析现有项目的问题 &#x3D;&gt; 优化，聚合接口的开发</p>
-<p>4.安装ES</p>
-<h3 id="获取不同类型的数据源"><a href="#获取不同类型的数据源" class="headerlink" title="获取不同类型的数据源"></a>获取不同类型的数据源</h3><p>1.获取文章</p>
-<p>内部没有，就只能从互联网上获取基础数据  &#x3D;&gt; 爬虫</p>
-<p>数据抓取的几种方式：</p>
-<p>1.直接请求数据结构（最方便）HttpClient、OKHttp、RestTemplate、Hutool</p>
-<p>2.等网页渲染出明文内容，从前端页面的内容抓取</p>
-<p>3.有一些网站可能是动态请求的，他不会一次性加载所有的数据，而是要点某个按钮、输入某个验证码才会显示出数据&#x3D;&gt; 无头浏览器</p>
-<p>selenum、puppeteer</p>
-<p>hutool：<a href="https://doc.hutool.cn/pages/index/">https://doc.hutool.cn/pages/index/</a></p>
+    <title>算法与数据结构学习（4）</title>
+    <url>/wang666-bot.github.io/post/22df74f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><p>先序遍历：头左右</p>
+<p>中序遍历：左头右</p>
+<p>后序遍历：左右头</p>
+<p>递归序：每个节点都会三次回到自己  从而  加工出先中后序</p>
+<p>题目：</p>
+<p>1.X祖先节点交集</p>
+<p>2.非递归实现先&#x2F;中&#x2F;后序遍历：</p>
+<p>1）先序：栈顶出来记作cur，有右压入右，有左压入左，先右后左</p>
+<p>2）后序：先序中把先右边后左改为先左再右边，再将弹出节点操作修改为加入栈2</p>
+<p>3）中序：当前节点cur的数整条左边界进栈，直到空，从栈中弹出节点打印，节点的右孩子为cur1，栈为空停</p>
+<p>按层遍历（宽度优先遍历）</p>
+<p>1）队列出一个cur，打印</p>
+<p>2）cur有左入左，有右入右</p>
+<p>二叉树的序列化和反序列化</p>
+<p>1）先序&#x2F;后序序列化</p>
+<h3 id="注：中序方式无法序列化"><a href="#注：中序方式无法序列化" class="headerlink" title="注：中序方式无法序列化"></a>注：中序方式无法序列化</h3><p>2）按层方式序列化</p>
+<p>按层方式遍历</p>
+<p>题目：多叉树转为二叉树 leetcode 431</p>
+<p>思路：多叉树的孩子一律放在左树右边界</p>
+<p>题目：求二叉树最宽层有多少节点</p>
+<p>思路：按层遍历，准备两个变量curend， nextend</p>
+<p>题目：给定二叉数（有左右父节点）的节点，返回后继节点</p>
+<p>思路1：中序遍历的下一个节点 O(n)</p>
+<p>思路2：情况1：节点x有右树，x树的最左孩子</p>
+<p>​			情况2：节点x无右树，往父亲节点，如果父亲节点是右树，继续往上，直到是某个父亲节点的左孩子，此时该父亲节点是后继节点</p>
+<p>题目：折纸问题</p>
+<p>思路：二叉树，头凹，左头凹，右头凸</p>
+<p>中序打印想象的节点为头的整棵树</p>
+<p> 题目：判断是否是完全二叉树</p>
+<p>思路：完全二叉树：满或者在变满的二叉树</p>
+<p>思路：二叉树的按层遍历，遵循以下原则：1）某节点有右无左，false，</p>
+<p>​																	2）第一次遇到孩子不双全的节点，之后的节点都是叶子节点</p>
+<h2 id="二叉树的递归套路"><a href="#二叉树的递归套路" class="headerlink" title="二叉树的递归套路"></a>二叉树的递归套路</h2><p>题目：判断平衡二叉树(每个节点的左右子树高度相差不超过1)</p>
+<p>思路： x左子数平衡</p>
+<p>​			x右子树平衡</p>
+<p>​			x左高-右高的差值不超过1</p>
+<p>抽象出信息：高度，是否平衡</p>
+<p>题目：是否是搜索二叉树</p>
+<p>思路：x左搜，右搜，x左的最大值，x右的最小值</p>
+<p>信息：最大值，最小值，是否是搜索二叉树  </p>
+<p>题目：给定一棵二叉树的头节点head，任何两个节点之间都存在距离，返回整颗二叉树的最大距离</p>
+<p>思路：可能性1：和head无关，左的最大距离， 右树的最大距离</p>
+<p>​		  可能性2：和head有关，x左边最远的点，右边最远的点，相加 + 1，</p>
+<p>​	在以上求max</p>
+<p>抽象出信息：最大距离，最大高度</p>
+<p>题目：是否是满二叉树</p>
+<p>思路：满二叉树节点和高度之间的关系</p>
+<p>抽象出信息：高度，节点数</p>
+<p>题目：求二叉树上最大的搜索二叉树的节点数目</p>
+<p>思路：1）不以x左头，x左的&#x2F;x右的</p>
+<p>​		2）X左是不是比BST，X右是不是BST，X左max X右min 左size + 右Size + 1</p>
+<p>是不是BST，size &#x3D;&#x3D; 总节点数</p>
+<p>信息：最大搜索二叉树的节点数，size，最大值，最小值</p>
+<h3 id="二叉树的递归套路-1"><a href="#二叉树的递归套路-1" class="headerlink" title="二叉树的递归套路"></a>二叉树的递归套路</h3><p>1）假设以X节点为头，假设可以向X左树和X右树要任何信息</p>
+<p>2）在上一步的假设下，讨论以X为头节点的树，得到答案的可能性（最重要）</p>
+<p>3）列出所有可能性后，确定到底需要向左树和右树要什么样的信息</p>
+<p>4）把左树信息和右树信息求全集，就是任何一棵子树都需要返回的信息S</p>
+<p>5）递归函数都返回S，每一棵子树都这么要求</p>
+<p>6）写代码，在代码中考虑如何把左树的信息和右树信息整合出整棵树的信息</p>
+<p>题目：判断二叉树是否是完全二叉树</p>
+<p>左满，右满，高度一致</p>
+<p>左满，右满，且左高度比右高度大1</p>
+<p>左完全，右满，且左高度比右高度大1</p>
+<p>左满，右完全，高度一致</p>
+<p>信息：满不满，是不是完全二叉树，高度</p>
+<p>题目：给定头节点head，返回这棵二叉树最大的二叉搜索子数的头节点</p>
+<p>题目：返回节点a和b的最低公共祖先</p>
+<p>可能性1：汇聚点和x有关：左有答案，右有答案，a b不全</p>
+<p>可能性2：汇聚点和x无关，a，b一个在左一个在右， x本身就是a或者b</p>
+<p>信息：findA， findB， ans</p>
+<p>题目：最大快乐值</p>
+<p>可能性1：x来，0 + max（子节点来，不来）</p>
+<p>可能性2：x不来，x的值+其子节点不来的max</p>
+<p>信息：来，不来的最大快乐值</p>
+<p>二叉树的递归套路在于讨论可能性</p>
+<h3 id="二叉树的递归遍历（leetcode-144，-145，-94）"><a href="#二叉树的递归遍历（leetcode-144，-145，-94）" class="headerlink" title="二叉树的递归遍历（leetcode 144， 145， 94）"></a>二叉树的递归遍历（leetcode 144， 145， 94）</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line"></span><br><span class="line">    TreeNode() &#123;&#125;</span><br><span class="line">    TreeNode(<span class="type">int</span> val) &#123; <span class="built_in">this</span>.val = val; &#125;</span><br><span class="line">    TreeNode(<span class="type">int</span> val, TreeNode left, TreeNode right) &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">        <span class="built_in">this</span>.left = left;</span><br><span class="line">        <span class="built_in">this</span>.right = right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">traversal</span><span class="params">(TreeNode head)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(head == <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//print(head.val)  先序</span></span><br><span class="line">    traversal(head.left);</span><br><span class="line">    <span class="comment">//print(head.val) 中序</span></span><br><span class="line">    traversal(head.right);</span><br><span class="line">    <span class="comment">//print(head.val) 后序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 ]]></content>
-      <tags>
-        <tag>Vue Java 搜索平台</tag>
-      </tags>
   </entry>
   <entry>
     <title>算法与数据结构学习（6）</title>
@@ -1792,6 +1741,57 @@
 <p>四维数组</p>
 <p>思路：建一个小根堆（什么时间，还要多久）进行排序（时间+多久）</p>
 <h1 id="暴力递归转动态规划（4）"><a href="#暴力递归转动态规划（4）" class="headerlink" title="暴力递归转动态规划（4）"></a>暴力递归转动态规划（4）</h1><h1 id="暴力递归转动态规划（5）"><a href="#暴力递归转动态规划（5）" class="headerlink" title="暴力递归转动态规划（5）"></a>暴力递归转动态规划（5）</h1><h1 id="暴力递归转动态规划（6）"><a href="#暴力递归转动态规划（6）" class="headerlink" title="暴力递归转动态规划（6）"></a>暴力递归转动态规划（6）</h1>]]></content>
+  </entry>
+  <entry>
+    <title>聚合搜索平台</title>
+    <url>/wang666-bot.github.io/post/9f02e53a.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>一个聚合搜索平台，<strong>可以让用户在同一个入口（同一个页面）集中搜索出不同来源、不同类型的内容</strong></p>
+<p>用户：提升用户的检索效率、提升用户体验</p>
+<p>企业：无需针对每一个项目都去开发一个搜索功能，当有新的内容、新的网站，可以复用同一套搜索系统，提升开发效率</p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p><strong>前端：</strong></p>
+<p>​	Vue</p>
+<p>​	Ant Design Vue</p>
+<p>​	Lodash</p>
+<p><strong>后端</strong></p>
+<p>​	Spring Boot</p>
+<p>​	MySQL</p>
+<p>​	Elasticsearch（Elastic Stack）搜索引擎</p>
+<p>​	数据抓取</p>
+<p>​	数据同步（4种方法）</p>
+<p>​		logstash</p>
+<p>​		Canal</p>
+<p>​	Guava Retrying</p>
+<p>​	怎么保证API的稳定性</p>
+<h2 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h2><p>​	1.先得到各种不同分类的资源</p>
+<p>​	2.提供一个搜索页面（单一搜索 + 聚合搜索），支持搜索</p>
+<p>​	3.（可以去做一些优化，比如关键词高亮、防抖节流）</p>
+<h1 id="6-28"><a href="#6-28" class="headerlink" title="6.28"></a>6.28</h1><p>前端后端项目初始化</p>
+<p>前端搜索页面开发完成</p>
+<p>后端基本搜索接口开发</p>
+<p>用url记录页面搜索状态，当用户刷新页面时，能够从url还原之前的搜索状态</p>
+<p>url &lt; &#x3D; &gt; 页面状态</p>
+<p>技巧：把同步状态改成单向，即只允许url来改变页面状态，不允许反向</p>
+<p>​	1.让用户在操作的时候，改变url地址（点击搜索框，搜索内容填充到url上，切换tab时，也要填充）</p>
+<p>​	2.当url改变的时候，去改变页面状态（监听url的改变）</p>
+<h1 id="6-29"><a href="#6-29" class="headerlink" title="6.29"></a>6.29</h1><p>1.获取多种不同类型的数据源</p>
+<p>​	a.文章（内部）</p>
+<p>​	b.用户（内部）</p>
+<p>​	c.图片（外部，不是自己的项目、自己的用户生产的数据）</p>
+<p>2.前后端单独搜索接口联调，跑通整个页面</p>
+<p>3.分析现有项目的问题 &#x3D;&gt; 优化，聚合接口的开发</p>
+<p>4.安装ES</p>
+<h3 id="获取不同类型的数据源"><a href="#获取不同类型的数据源" class="headerlink" title="获取不同类型的数据源"></a>获取不同类型的数据源</h3><p>1.获取文章</p>
+<p>内部没有，就只能从互联网上获取基础数据  &#x3D;&gt; 爬虫</p>
+<p>数据抓取的几种方式：</p>
+<p>1.直接请求数据结构（最方便）HttpClient、OKHttp、RestTemplate、Hutool</p>
+<p>2.等网页渲染出明文内容，从前端页面的内容抓取</p>
+<p>3.有一些网站可能是动态请求的，他不会一次性加载所有的数据，而是要点某个按钮、输入某个验证码才会显示出数据&#x3D;&gt; 无头浏览器</p>
+<p>selenum、puppeteer</p>
+<p>hutool：<a href="https://doc.hutool.cn/pages/index/">https://doc.hutool.cn/pages/index/</a></p>
+]]></content>
+      <tags>
+        <tag>Vue Java 搜索平台</tag>
+      </tags>
   </entry>
   <entry>
     <title>设计模式</title>
