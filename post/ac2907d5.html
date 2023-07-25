@@ -1,0 +1,473 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>用户中心项目分享 | Hyrule</title><meta name="author" content="Ivey"><meta name="copyright" content="Ivey"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="用户中心（上）需求分析 &#x3D;》设计（概要设计、详细设计）&#x3D;》技术选型&#x3D;》初始化&#x2F;引入需要的技术&#x3D;&gt;写Demo&#x3D;》写代码（实现业务逻辑）&#x3D;》测试（单元测试）&#x3D;》代码提交 &#x2F; 代码评审 &#x3D;》部署 &#x3D;》发布 需求分析1.登陆&#x2F;注册 2.用户管理（管理员可见）对用户的查询或者修改 3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户中心项目分享">
+<meta property="og:url" content="https://wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.html">
+<meta property="og:site_name" content="Hyrule">
+<meta property="og:description" content="用户中心（上）需求分析 &#x3D;》设计（概要设计、详细设计）&#x3D;》技术选型&#x3D;》初始化&#x2F;引入需要的技术&#x3D;&gt;写Demo&#x3D;》写代码（实现业务逻辑）&#x3D;》测试（单元测试）&#x3D;》代码提交 &#x2F; 代码评审 &#x3D;》部署 &#x3D;》发布 需求分析1.登陆&#x2F;注册 2.用户管理（管理员可见）对用户的查询或者修改 3">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-06-18T11:38:23.000Z">
+<meta property="article:modified_time" content="2023-06-18T12:23:54.152Z">
+<meta property="article:author" content="Ivey">
+<meta property="article:tag" content="用户管理系统 Java 前端 后端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/wang666-bot.github.io/img/favicon.png"><link rel="canonical" href="https://wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/wang666-bot.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/wang666-bot.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '用户中心项目分享',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-18 20:23:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/wang666-bot.github.io/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/wang666-bot.github.io/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/wang666-bot.github.io/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/wang666-bot.github.io/" title="Hyrule"><span class="site-name">Hyrule</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">用户中心项目分享</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-18T11:38:23.000Z" title="发表于 2023-06-18 19:38:23">2023-06-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-18T12:23:54.152Z" title="更新于 2023-06-18 20:23:54">2023-06-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="用户中心项目分享"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="用户中心（上）"><a href="#用户中心（上）" class="headerlink" title="用户中心（上）"></a>用户中心（上）</h1><p>需求分析 &#x3D;》设计（概要设计、详细设计）&#x3D;》技术选型&#x3D;》初始化&#x2F;引入需要的技术&#x3D;&gt;写Demo&#x3D;》写代码（实现业务逻辑）&#x3D;》测试（单元测试）&#x3D;》代码提交 &#x2F; 代码评审 &#x3D;》部署 &#x3D;》发布</p>
+<h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><p>1.登陆&#x2F;注册</p>
+<p>2.用户管理（管理员可见）对用户的查询或者修改</p>
+<p>3.用户校验</p>
+<h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><p>前端：三件套 + React + 组件库Ant Design + Umi + Ant Design Pro（现成的管理系统）</p>
+<p>后端： Java + SSM+mysql </p>
+<p>部署： 服务器&#x2F;容器（平台）</p>
+<p>1.1初始化项目</p>
+<p>​	前端初始化</p>
+<p>​		初始化项目</p>
+<p>​		引入组件</p>
+<p>​		框架介绍&#x2F;项目瘦身</p>
+<p>​	后端初始化</p>
+<p>​		准备环境（MySQL）</p>
+<p>​		引入框架</p>
+<p>1.2登录&#x2F;注册</p>
+<p>​	前端</p>
+<p>​	后端</p>
+<p>1.4用户管理</p>
+<p>​	前端</p>
+<p>​	后端</p>
+<p>yarn包管理器，比npm下载更快（并行下载）</p>
+<p>初始化Java项目的方式</p>
+<p>1.Github搜现成的代码</p>
+<p>2.SprintBoot官方的模板生成器 <a target="_blank" rel="noopener" href="https://start.spring.io/">https://start.spring.io/</a></p>
+<p>3.直接在IDEA开发工具生成（推荐）</p>
+<h1 id="用户中心（中）"><a href="#用户中心（中）" class="headerlink" title="用户中心（中）"></a>用户中心（中）</h1><p>数据库的设计：根据需求场景判断有哪些表（模型）？表里有哪些字段 ？字段的类型？给数据库字段添加索引？</p>
+<p>表与表之间的关联</p>
+<p>用户表：</p>
+<p>id（主键）  bigint</p>
+<p>username 昵称  varchar</p>
+<p>登陆账号 account</p>
+<p>avatarUrl 头像 varchar</p>
+<p>gender 性别 tinyint</p>
+<p>password 密码 varchar</p>
+<p>phone电话 varchar</p>
+<p>email 邮箱 varchar</p>
+<p>isVaild是否有效 tinyint 0&#x2F;1</p>
+<p>createTime 创建时间（数据插入时间）datetime</p>
+<p>updateTime 更新时间（数据更新时间） datetime</p>
+<p>isDelete 是否删除 （逻辑删除）tinyint</p>
+<p>userRole  用户角色 0 普通用户 1 管理员</p>
+<p>建表语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">create table user</span><br><span class="line">(</span><br><span class="line">    id           bigint auto_increment comment &#x27;id</span><br><span class="line">&#x27;</span><br><span class="line">        primary key,</span><br><span class="line">    username     varchar(256)                        null comment &#x27;用户名称&#x27;,</span><br><span class="line">    userAccount  varchar(256)                        null comment &#x27;登录账号&#x27;,</span><br><span class="line">    avatarUrl    varchar(1024)                       null comment &#x27;用户头像&#x27;,</span><br><span class="line">    gender       tinyint                             null comment &#x27;性别&#x27;,</span><br><span class="line">    phone        varchar(128)                        null comment &#x27;电话&#x27;,</span><br><span class="line">    userpassword varchar(512)                        not null comment &#x27;密码&#x27;,</span><br><span class="line">    email           varchar(512)                        null comment &#x27;邮箱&#x27;,</span><br><span class="line">    userstatus   int       default 0                 null comment &#x27;状态&#x27;,</span><br><span class="line">    createTime   datetime  default CURRENT_TIMESTAMP not null comment &#x27;创建时间&#x27;,</span><br><span class="line">    updateTime   timestamp default CURRENT_TIMESTAMP null comment &#x27;更新时间&#x27;,</span><br><span class="line">    isDelete     tinyint   default 0                 not null comment &#x27;是否删除&#x27;</span><br><span class="line">)</span><br><span class="line">    comment &#x27;用户&#x27;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>实现登陆注册功能</p>
+<p>​	后端：</p>
+<p>​		1.规整项目目录</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.htm/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB/image-20230510225949131.png" alt="01"></p>
+<p>​		controller：控制层，专门用于接收请求</p>
+<p>​		mapper：数据访问层（从数据库中查询数据）</p>
+<p>​		model：定义和数据库相对应的模型、封装类等</p>
+<p>​		service：编写业务逻辑（登陆注册等）</p>
+<p>​		utils：存放工具类（加密，格式转化等）</p>
+<p>​		2.实现基本数据库操作（操作user表）</p>
+<p>​					目的：模型user对象  &#x3D;》 和数据库的字段关联，自动生成（MybatisX插件）</p>
+<p>​					MybatisX插件：自动根据数据库生成domain实体对象、mapper（操作数据库的对象）、mapper.xml（定义了mapper对象和					数据库的关联，可以在里面自己写SQL）、service（包含常用的增删改查）、service实现类</p>
+<p>​		实现注册逻辑：</p>
+<p>​					1.用户在前端输入账户和密码、以及校验码</p>
+<p>​					2.校验用户的账户、密码、校验密码是否符合规则</p>
+<p>​										账户不小于4位</p>
+<p>​										密码不小于8位</p>
+<p>​										账户不能重复</p>
+<p>​										密码和校验密码相同</p>
+<p>​					3.对密码进行加密（密码千万不能直接以明文存储到数据库中）</p>
+<p>​					4.向数据库插入用户数据</p>
+<h1 id="用户中心（下）"><a href="#用户中心（下）" class="headerlink" title="用户中心（下）"></a>用户中心（下）</h1><p>1.开发完成后端登录功能</p>
+<p>2.开发后端用户的管理接口</p>
+<p>3.开发前端用户登录注册功能</p>
+<p>4.讨论如何校验用户（限制使用人）</p>
+<h3 id="登录逻辑"><a href="#登录逻辑" class="headerlink" title="登录逻辑"></a>登录逻辑</h3><p>接收参数：用户账户、密码</p>
+<p>请求类型：POST</p>
+<p>请求体： JSON格式的数据</p>
+<p>​		请求参数很长时不建议用get</p>
+<p>返回值：用户信息（脱敏）</p>
+<p>逻辑：</p>
+<p>​	1.校验用户账户和密码是否合法</p>
+<p>​			非空</p>
+<p>​			账户不小于4位</p>
+<p>​			密码不小于8位</p>
+<p>​			密码和校验密码相同</p>
+<p>2.校验密码是否输入正确，要和数据库中的密文密码取对比</p>
+<p>3.用户信息脱敏，隐藏敏感信息，防止数据库中的字段泄漏</p>
+<p>4.我们要记录用户的登陆状态（session），将其存到服务器上（用后端SpringBoot框架封装的服务器tomcat去记录）</p>
+<p>5.返回安全的脱敏后的用户信息</p>
+<p>控制层Controller封装请求</p>
+<p>application.yml 指定接口全局api</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">servlet:</span><br><span class="line">  context-path: /api</span><br></pre></td></tr></table></figure>
+
+<p>@RestController适用于编写restful风格的api，返回值默认为json类型</p>
+<p>controller层倾向于对请求参数本身的校验，不涉及业务逻辑本身（越少越好）</p>
+<p>service层是对业务逻辑的校验（有可能贝controller之外的业务逻辑调用）</p>
+<p>如何直到是哪个用户登陆了</p>
+<p>​	1.连接服务器端后，得到一个session状态（匿名会话），返回给前端</p>
+<p>​	2.登陆成功后，得到了登陆成功的session，并且给session设置一些值（比如用户信息）返回给前端一个设置cookie 的”命令“</p>
+<p>​	3.前端接收到后端的命令后，设置cookie，保存到浏览器内</p>
+<p>​	4.前端再次请求后端的时候（相同的域名），在请求头中带上cookie去请求</p>
+<p>​	5.后端拿到前端传来的cookie，找到对应的session</p>
+<p>​	6.后端从session中取出基于该session存储的变量（用户的登录信息、登录名）</p>
+<h2 id="用户管理接口"><a href="#用户管理接口" class="headerlink" title="用户管理接口"></a>用户管理接口</h2><p>！！！必须鉴权</p>
+<p>1.查询用户</p>
+<p>​		根据用户名查询</p>
+<p>2.删除用户</p>
+<p>先做设计</p>
+<p>代码实现</p>
+<p>持续优化！！！（复用代码、提取公共逻辑&#x2F;常量）</p>
+<h2 id="前后端交互"><a href="#前后端交互" class="headerlink" title="前后端交互"></a>前后端交互</h2><p>前端需要向后端发送请求</p>
+<p>前端ajax来请求后端</p>
+<p>axios封装ajax</p>
+<p>request是ant design项目又封装了axios</p>
+<p>追踪request源码：用到了umi的插件，requestConfig是一个插件</p>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>正向代理：替客户端向服务端发送请求，</p>
+<p>反向代理：替服务器接收请求</p>
+<p><img src="/wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.htm/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB/image-20230514212035624.png" alt="image-20230514212035624"></p>
+<p>怎么搞代理</p>
+<p>Nginx服务器</p>
+<p>Node.js服务器</p>
+<p>原本请求：<a target="_blank" rel="noopener" href="http://localhost:8000/api/user/login">http://localhost:8000/api/user/login</a></p>
+<h1 id="用户中心（终）"><a href="#用户中心（终）" class="headerlink" title="用户中心（终）"></a>用户中心（终）</h1><p>1.完成注册功能的前端开发</p>
+<p>2.获取用户的登录态，获取当前登录用户信息接口</p>
+<p>3.完成用户管理后台的前端开发</p>
+<p>4.前端代码瘦身&amp;优化</p>
+<p>5.后端代码优化</p>
+<p>6.新需求-用户校验</p>
+<p>7.项目扩展思路</p>
+<p>Ant Design Pro（Umi框架）</p>
+<p>app.tsx项目全局入口文件，定义了整个项目中使用的公共数据（比如用户信息）</p>
+<p>access.ts控制用户的访问权限</p>
+<p>首次访问页面（刷新页面），进入app.tsx，执行getInitialState方法，该方法的返回值就是全局可用的状态值</p>
+<p>ProComponents高级表单</p>
+<p>1.通过columns定义表格有哪些列</p>
+<p>2.columns里的属性</p>
+<p>​	dataIndex对应返回数据对象的属性</p>
+<p>​	title表格列名</p>
+<p>​	copyable ： 是否允许复制</p>
+<p>​	ellipsis ： 是否允许缩略</p>
+<p>​	valueType：用于声明这一列的类型</p>
+<p>MFSU：前端编译优化（联邦模块编译）</p>
+<p>Ant Design 组件库 &#x3D;&gt; React</p>
+<p>Ant Design Pro  components &#x3D;&gt; Ant Design 业务组件</p>
+<p>Ant Design Pro 后台管理系统 &#x3D;&gt; Ant Design 、React 、Ant Design Pro  components、其他的库</p>
+<p>用户中心（末）</p>
+<p>1.开发用户注销  前端&#x2F;后端</p>
+<p>2.补充用户注册校验逻辑 前端&#x2F;后端</p>
+<p>3.后端代码优化</p>
+<p>4.前端代码优化</p>
+<p>5.项目部署上线</p>
+<p>​	1.原生部署</p>
+<p>​	2.容器部署</p>
+<p>​	3.绑定域名</p>
+<p>用户校验</p>
+<p>​	仅适用于用户可信的情况</p>
+<p>让用户自己填：2-5位编号</p>
+<p>后台补充对编号的校验：长度校验、唯一性校验</p>
+<p>前端补充输入框，适配后端</p>
+<p>后期拉去星球数据，定期清理违规用户</p>
+<h2 id="后端优化"><a href="#后端优化" class="headerlink" title="后端优化"></a>后端优化</h2><p>1.通用返回对象，给对象补充一些信息</p>
+<p>​	目的：给对象补充一些信息，告诉前端这个请求在业务层面上是成功还是失败</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;name&quot;:&quot;wang&quot;</span><br><span class="line">&#125;</span><br><span class="line">//成功</span><br><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 0 //业务状态码</span><br><span class="line">	&quot;data&quot;:&#123;</span><br><span class="line">		&quot;name&quot;:&quot;wang&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;message&quot;:&quot;ok&quot;</span><br><span class="line">&#125;</span><br><span class="line">//错误</span><br><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 50001 //业务状态码</span><br><span class="line">	&quot;data&quot;:null</span><br><span class="line">	&quot;message&quot;:&quot;用户操作异常&quot;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	自定义错误码</p>
+<p>​	返回类支持返回正常和错误</p>
+<p>2.封装全局异常处理</p>
+<p>​	1.定义业务异常类</p>
+<p>​		1.相对于java的异常类，支持更多字段</p>
+<p>​		2.自定义构造函数，更灵活 &#x2F; 快捷的设置字段</p>
+<p>​	2.编写全局异常处理器</p>
+<p>​		作用：</p>
+<p>​		1.捕获代码中所有的异常，内部消化，集中处理，让前端得到更详细的业务报错&#x2F;信息</p>
+<p>​		2.同时屏蔽掉项目框架本身的异常（不暴露服务器内部状态）</p>
+<p>​		3.集中处理，比如记录日志</p>
+<p>​		实现：</p>
+<p>​		1.Spring AOP：在调用方法前后进行额外的处理</p>
+<p>3.全局请求日志和登录校验	</p>
+<p>​	</p>
+<p>​	前端优化</p>
+<p>​	1.对接后端的返回值，取data</p>
+<p>​	2.全局响应处理 <a target="_blank" rel="noopener" href="https://blog.csdn.net/huantai3334/article/details/116780020">https://blog.csdn.net/huantai3334/article/details/116780020</a></p>
+<p>​		1.应用场景：我们需要对接口的通用响应进行统一处理，比如从response中取出data， 或者根据code去集中处理错误，比如用户未登录、没权限之类的</p>
+<p>​		2.优势：不用在每个接口请求中都去写相同的逻辑</p>
+<p>​		3.实现：参考使用的请求封装工具的官方文档，比如umi-request</p>
+<p>​		如果使用axios，参考axios的文档，创建新的文件，在该文件中配置一个全局请求类，在发送请求时，使用我们自己的定义的全局请求类</p>
+<h1 id="用户中心（部署）"><a href="#用户中心（部署）" class="headerlink" title="用户中心（部署）"></a>用户中心（部署）</h1><p>1.多环境</p>
+<p>2.项目部署上线</p>
+<p>​	原始前端&#x2F;后端项目</p>
+<p>​	宝塔Linux</p>
+<p>​	容器</p>
+<p>​	容器平台</p>
+<p>3.前后端的联调</p>
+<p>4.用户中心项目扩展和规划</p>
+<h2 id="多环境"><a href="#多环境" class="headerlink" title="多环境"></a>多环境</h2><p>参考文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41701290/article/details/120173283">https://blog.csdn.net/weixin_41701290/article/details/120173283</a></p>
+<p>本地开发localhost（127.0.0.1）</p>
+<p>多环境：指同一套项目代码在不同的阶段需要根据实际情况来部署到不同的机器上，并且要调整配置</p>
+<p>为什么需要？</p>
+<p>​	1.每个环境互不影响</p>
+<p>​	2.为了区分不同的阶段：开发&#x2F;测试&#x2F;生产</p>
+<p>​	3.对项目进行优化：</p>
+<p>​		1.本地日志级别</p>
+<p>​		2.精简依赖，减少项目体积</p>
+<p>​		3.项目的环境&#x2F;参数可以调整，比如JVM参数</p>
+<p>针对不同环境做不同的事情</p>
+<p>多环境分类：</p>
+<p>​	1.本地环境（自己的电脑）localhost</p>
+<p>​	2.开发环境（远程开发）大家连同一台机器，为了大家开发方便</p>
+<p>​	3.测试环境（测试）开发&#x2F;测试&#x2F;产品，单元测试 &#x2F; 性能测试 &#x2F; 功能测试 &#x2F;系统集成测试，独立的数据库，独立的服务器</p>
+<p>​	4.预发布环境（体验服）：和正式环境一致，正式数据库，可以更严谨，查出更多问题</p>
+<p>​	5.正式环境（线上，公开对外访问的项目）：尽量不要改动，保证上线前的代码是完美运行</p>
+<p>​	6.沙箱环境（实验环境）：为了做实验</p>
+<p>​	</p>
+<h2 id="前端多环境实战"><a href="#前端多环境实战" class="headerlink" title="前端多环境实战"></a>前端多环境实战</h2><p>请求地址</p>
+<p>​			开发环境：localhost:8000</p>
+<p>​			线上环境：备案的域名</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">startFront</span>(<span class="params">env</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span>(env === <span class="string">&#x27;prod&#x27;</span>)&#123;</span><br><span class="line">        <span class="comment">//不输出注释</span></span><br><span class="line">        <span class="comment">//项目优化</span></span><br><span class="line">        <span class="comment">//修改请求地址</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//保持本地开发逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用了umi框架，build时会自动传入NODE_ENV &#x3D;&#x3D; production参数， start NODE_ENV参数为 development</p>
+<p>启动方式</p>
+<p>​	开发环境：npm run start（本地启动，监听端口，自动更新）</p>
+<p>​	线上环境：npm  run build（项目构建打包），可以使用serve工具启动（npm i -g serve）</p>
+<p>项目的配置</p>
+<p>不同的项目框架都有不同的配置文件，umi的配置文件是config</p>
+<p>​	可以在配置文化后添加对应的环境名称后缀来区分开发环境和生产环境，参考文档umi的部署</p>
+<p>​	开发环境：config.dev.ts</p>
+<p>​	生产环境：config.prod.ts</p>
+<p>​	公共配置：config.ts不带后缀</p>
+<h2 id="后端多环境实战"><a href="#后端多环境实战" class="headerlink" title="后端多环境实战"></a>后端多环境实战</h2><p>​	SpringBoot项目，通过application.yml添加不同的后缀来区分配置文件，可以在启动项目时传入环境变量：</p>
+<p>主要是改依赖的环境地址：</p>
+<p>​	数据库地址</p>
+<p>​	缓存地址</p>
+<p>​	消息队列地址</p>
+<p>​	项目端口号</p>
+<p>服务器配置</p>
+<p>项目部署</p>
+<p>需要Linux服务器（建议CnetOS8 +&#x2F;7.6以上）</p>
+<p>原始部署</p>
+<p>什么都自己装</p>
+<p>前端</p>
+<p>需要web服务器：nginx，apache、tomcat</p>
+<p>安装nginx服务器</p>
+<p>​	1.用系统自带的软件包管理器快速安装 比如centos的yum</p>
+<p>​	2.自己到官网（参考文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/425790769%EF%BC%89">https://zhuanlan.zhihu.com/p/425790769）</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> curl -o nginx-1.24.0 http://nginx.org/download/nginx-1.24.0.tar.gz</span><br><span class="line"> tar -zxvf nginx-1.24.0</span><br><span class="line"> cd nginx-1.24.0</span><br><span class="line">  ./configure</span><br><span class="line">yum install openssl openssl-devel -y</span><br><span class="line"> ./configure --with-http_ssl_module --with-http_v2_module --with-stream</span><br><span class="line"> make</span><br><span class="line">  make install</span><br><span class="line"> ls</span><br><span class="line">  ls /usr/local/nginx/sbin/nginx</span><br><span class="line"> vim /etc/profile</span><br><span class="line">在最后一行添加export PATH=$PATH:/usr/local/nginx/sbin			</span><br></pre></td></tr></table></figure>
+
+<p>注意权限</p>
+<p>部署后端</p>
+<p>java、maven</p>
+<p>宝塔Linux部署</p>
+<p>linux运维面板</p>
+<p>Docker部署</p>
+<p>docker是容器，可以将项目的环境（比如java，nginx）和项目的代码仪器打包成镜像，所有同学都能下载镜像，更容易分发和移植</p>
+<p>再启动项目时，不需要敲一大堆命令，而是直接下载镜像、启动镜像就可以了</p>
+<p>docker可以理解为软件安装包</p>
+<p>dockfile</p>
+<p>FROM依赖的基础镜像</p>
+<p>WORKDIR工作目录</p>
+<p>COPY从本机复制文件</p>
+<p>RUN执行命令</p>
+<p>CMD&#x2F;ENTRYPOINT（附加额外参数）指定运行容器时默认执行的命令</p>
+<p>根据Dockerfile构建镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t </span><br></pre></td></tr></table></figure>
+
+<p>Docker构建优化：减少尺寸、减少构建时间（比如多阶段构建，可以丢弃之前阶段不需要的内容）</p>
+<p>docker run启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 80：80 -v /data：/data -d nginx：latest</span><br></pre></td></tr></table></figure>
+
+<p>虚拟化：</p>
+<p>​	1.端口映射：把本机的资源和容器内部的资源进行关联</p>
+<p>​	2.目录映射：把本机的端口和容器应用的端口进行关联</p>
+<p>前端部署方式</p>
+<p>前端webfiy web应用托管（比容器化更傻瓜式，不需要自己写构建应用的命令，就能启动前端项目）</p>
+<p>小缺点：需要将代码放到代码托管平台上</p>
+<p>优势：不用写命令、代码更新时自动构建</p>
+<p>Docker平台部署</p>
+<p>1.云服务商的容器平台（腾讯云、阿里云）</p>
+<p>2.面向某个领域的容器平台（前端webify、后端微信云托管）</p>
+<p>容器平台的好处：</p>
+<p>​	1.不用输命令来操作，更方便省事</p>
+<p>​	2.不用在控制台操作，更傻瓜式、更简单</p>
+<p>​	3.大厂运维，比自己运维更省心</p>
+<p>​	4.额外的能力，比如监控、告警、其他（存储、负载均衡、自动扩缩容、流水线）</p>
+<h1 id="用户中心（上线）"><a href="#用户中心（上线）" class="headerlink" title="用户中心（上线）"></a>用户中心（上线）</h1><h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>前端项目访问：用户输入网址&#x3D;&gt; 域名解析服务器（把网址解析为ip地址&#x2F;交给其他的域名解析服务器）&#x3D;&gt; 服务器&#x3D;&gt;（ 防火墙）&#x3D;&gt; nginx接收请求，找到对应的文件，返回文件给前端&#x3D;&gt; 前端加载文件到浏览器中(js\css) &#x3D;&gt; 渲染页面</p>
+<p>后端项目访问：用户输入网址 &#x3D;&gt; 域名解析服务器 &#x3D;&gt; 服务器 &#x3D;&gt;nginx接受请求&#x3D;&gt;  后端项目(比如8080端口)</p>
+<p>nginx反向代理：替服务器接收请求，转发请求</p>
+<p>跨域问题解决</p>
+<p>浏览器为了用户的安全，仅允许向<strong>同域名、同端口</strong>的服务器发送请求</p>
+<p>如何解决跨域</p>
+<p>​	1.把端口、域名改成相同的</p>
+<p>让服务器告诉浏览器：允许跨域（返回cross-origin-allow响应头）</p>
+<p>​	2.网关支持（Nginx网关）</p>
+<p>​	3.修改后端服务</p>
+<p>​			1.配置@CrossOrigin注解</p>
+<p>​			2.添加web全局请求拦截器</p>
+<p>​			3.定义新的corsFilter Bean</p>
+<p>项目优化点：</p>
+<p>​	1.功能扩充</p>
+<p>​		1.管理员创建用户】修改用户信息、删除用户</p>
+<p>​		2.上传头像</p>
+<p>​		3.按照更多的条件去查询用户</p>
+<p>​		4.更改权限</p>
+<p>2.修改Bug</p>
+<p>3.项目登录改为分布式session（单点登录）</p>
+<p>4.通用性</p>
+<p>​	1.set-cookie domain域名更通用，比如改为*.xxx.com</p>
+<p>​	2.把用户管理系统 &#x3D;&gt; 用户中心（之后所有的服务都请求这个后端）</p>
+<p>4.后台添加全局请求拦截器（统一去判断用户权限、统一记录请求日志）</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wang666-bot.github.io/wang666-bot.github.io">Ivey</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.html">https://wang666-bot.github.io/wang666-bot.github.io/post/ac2907d5.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wang666-bot.github.io/wang666-bot.github.io" target="_blank">Hyrule</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/wang666-bot.github.io/tags/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Java-%E5%89%8D%E7%AB%AF-%E5%90%8E%E7%AB%AF/">用户管理系统 Java 前端 后端</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/wang666-bot.github.io/post/364ea8cc.html" title="设计模式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">设计模式</div></div></a></div><div class="next-post pull-right"><a href="/wang666-bot.github.io/post/a6f5b56e.html" title="Hexo+阿里云+github搭建博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hexo+阿里云+github搭建博客</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/wang666-bot.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ivey</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/wang666-bot.github.io/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/wang666-bot.github.io/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/wang666-bot.github.io/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">用户中心（上）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">需求分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">技术选型</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%AD%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">用户中心（中）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%8B%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">用户中心（下）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E9%80%BB%E8%BE%91"><span class="toc-number">3.0.1.</span> <span class="toc-text">登录逻辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.1.</span> <span class="toc-text">用户管理接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92"><span class="toc-number">3.2.</span> <span class="toc-text">前后端交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86"><span class="toc-number">3.3.</span> <span class="toc-text">代理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%EF%BC%88%E7%BB%88%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">用户中心（终）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E4%BC%98%E5%8C%96"><span class="toc-number">4.1.</span> <span class="toc-text">后端优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%EF%BC%88%E9%83%A8%E7%BD%B2%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">用户中心（部署）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%8E%AF%E5%A2%83"><span class="toc-number">5.1.</span> <span class="toc-text">多环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%AE%9E%E6%88%98"><span class="toc-number">5.2.</span> <span class="toc-text">前端多环境实战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%AE%9E%E6%88%98"><span class="toc-number">5.3.</span> <span class="toc-text">后端多环境实战</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%8A%E7%BA%BF%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">用户中心（上线）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D"><span class="toc-number">6.1.</span> <span class="toc-text">绑定域名</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wang666-bot.github.io/post/a8243fc4.html" title="算法与数据结构学习（6）">算法与数据结构学习（6）</a><time datetime="2023-07-24T13:52:05.000Z" title="发表于 2023-07-24 21:52:05">2023-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wang666-bot.github.io/post/22df74f.html" title="算法与数据结构学习（4）">算法与数据结构学习（4）</a><time datetime="2023-07-12T16:47:18.000Z" title="发表于 2023-07-13 00:47:18">2023-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wang666-bot.github.io/post/a08d4f59.html" title="2D游戏开发（2）">2D游戏开发（2）</a><time datetime="2023-07-10T07:08:08.000Z" title="发表于 2023-07-10 15:08:08">2023-07-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wang666-bot.github.io/post/b238e0b7.html" title="2D游戏开发（1）">2D游戏开发（1）</a><time datetime="2023-07-09T11:35:26.000Z" title="发表于 2023-07-09 19:35:26">2023-07-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/wang666-bot.github.io/post/9ffacff6.html" title="算法与数据结构学习（3）">算法与数据结构学习（3）</a><time datetime="2023-07-06T12:29:34.000Z" title="发表于 2023-07-06 20:29:34">2023-07-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Ivey</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/wang666-bot.github.io/js/utils.js"></script><script src="/wang666-bot.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/wang666-bot.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/wang666-bot.github.io/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
