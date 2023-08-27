@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>2D游戏开发（1）</title>
-    <url>/wang666-bot.github.io/post/b238e0b7.html</url>
+    <url>/wang666-bot.github.io/b238e0b7.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1.创建项目"></a>1.创建项目</h2><p>选择Unity版本2021.3.20</p>
 <p>熟悉面板布局</p>
 <p>在Package Manager进行一些瘦身</p>
@@ -89,7 +89,7 @@
   </entry>
   <entry>
     <title>2D游戏开发（2）</title>
-    <url>/wang666-bot.github.io/post/a08d4f59.html</url>
+    <url>/wang666-bot.github.io/a08d4f59.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="11-使用UI-Toolkit-和-UIBuilder制作物品编辑器"><a href="#11-使用UI-Toolkit-和-UIBuilder制作物品编辑器" class="headerlink" title="11.使用UI Toolkit 和 UIBuilder制作物品编辑器"></a>11.使用UI Toolkit 和 UIBuilder制作物品编辑器</h2><p><img src="/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710155649772.png" alt="image-20230710155649772"></p>
 <p>文件夹下三个文件分别对应c# USS 和 Visual Tree Assert</p>
 <p><img src="/wang666-bot.github.io/post/a08d4f59.htm/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/image-20230710160931443.png" alt="image-20230710160931443"></p>
@@ -121,7 +121,7 @@
   </entry>
   <entry>
     <title>SSM框架</title>
-    <url>/wang666-bot.github.io/post/766433e0.html</url>
+    <url>/wang666-bot.github.io/766433e0.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="spring"><a href="#spring" class="headerlink" title="spring"></a>spring</h1><h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><p>Core Container:核心容器</p>
 <p>AOP：面向切面编程</p>
 <p>Aspects：AOP思想实现</p>
@@ -133,7 +133,7 @@
   </entry>
   <entry>
     <title>伙伴匹配系统</title>
-    <url>/wang666-bot.github.io/post/51334077.html</url>
+    <url>/wang666-bot.github.io/51334077.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>介绍：帮助大家找到合适的伙伴，移动端H5网页</p>
 <h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>1.用户去添加标签，标签的分类（要有哪些标签、怎么把标签进行分类）学习方向：Java&#x2F;C++，工作&#x2F;大学</p>
 <p>2.主动搜索：允许用户根据标签去搜索其他用户</p>
@@ -191,12 +191,12 @@
   </entry>
   <entry>
     <title>Hexo+阿里云+github搭建博客</title>
-    <url>/wang666-bot.github.io/post/a6f5b56e.html</url>
+    <url>/wang666-bot.github.io/a6f5b56e.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/wang666-bot.github.io/post/4a17b156.html</url>
+    <url>/wang666-bot.github.io/4a17b156.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -214,7 +214,7 @@
   </entry>
   <entry>
     <title>智能Bi项目笔记</title>
-    <url>/wang666-bot.github.io/post/266ed923.html</url>
+    <url>/wang666-bot.github.io/266ed923.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>BI商业智能： 数据可视化、报表可视化效果</p>
 <p>传统BI平台：</p>
 <ol>
@@ -968,7 +968,7 @@
   </entry>
   <entry>
     <title>用户中心项目分享</title>
-    <url>/wang666-bot.github.io/post/ac2907d5.html</url>
+    <url>/wang666-bot.github.io/ac2907d5.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="用户中心（上）"><a href="#用户中心（上）" class="headerlink" title="用户中心（上）"></a>用户中心（上）</h1><p>需求分析 &#x3D;》设计（概要设计、详细设计）&#x3D;》技术选型&#x3D;》初始化&#x2F;引入需要的技术&#x3D;&gt;写Demo&#x3D;》写代码（实现业务逻辑）&#x3D;》测试（单元测试）&#x3D;》代码提交 &#x2F; 代码评审 &#x3D;》部署 &#x3D;》发布</p>
 <h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><p>1.登陆&#x2F;注册</p>
 <p>2.用户管理（管理员可见）对用户的查询或者修改</p>
@@ -1284,7 +1284,7 @@
   </entry>
   <entry>
     <title>算法与数据结构学习（3）</title>
-    <url>/wang666-bot.github.io/post/9ffacff6.html</url>
+    <url>/wang666-bot.github.io/9ffacff6.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h1><p>任何比较器的compare原则遵循一个统一规范：</p>
 <p>​		返回负数的时候，认为第一个参数应该排在前面</p>
 <p>​		返回正数的时候，认为第二个参数应该排在前面</p>
@@ -1374,7 +1374,7 @@
   </entry>
   <entry>
     <title>算法与数据结构学习（1）</title>
-    <url>/wang666-bot.github.io/post/35f3077d.html</url>
+    <url>/wang666-bot.github.io/35f3077d.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><p><strong>时间复杂度</strong></p>
 <p>分析每个步骤的常数时间操作，再分析复杂度</p>
 <p>确定算法流程的总操作数量与样本数量之间的表达式关系</p>
@@ -1537,7 +1537,7 @@
   </entry>
   <entry>
     <title>算法与数据结构学习（2）</title>
-    <url>/wang666-bot.github.io/post/2746a893.html</url>
+    <url>/wang666-bot.github.io/2746a893.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>复杂度O(NlogN)</p>
 <p><strong>merge过程</strong>：左部分有序，右部分有序，准备一个辅助数组，左边一个指针，右边一个指针，谁小拷贝谁 O(N)</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">mergeSort1</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="literal">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		process(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 请把arr[L..R]排有序</span></span><br><span class="line">	<span class="comment">// l...r N</span></span><br><span class="line">	<span class="comment">// T(N) = 2 * T(N / 2) + O(N)</span></span><br><span class="line">	<span class="comment">// O(N * logN)</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> L, <span class="type">int</span> R)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (L == R) &#123; <span class="comment">// base case</span></span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> L + ((R - L) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		process(arr, L, mid);</span><br><span class="line">		process(arr, mid + <span class="number">1</span>, R);</span><br><span class="line">		merge(arr, L, mid, R);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> L, <span class="type">int</span> M, <span class="type">int</span> R)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] help = <span class="keyword">new</span> <span class="title class_">int</span>[R - L + <span class="number">1</span>];</span><br><span class="line">		<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p1</span> <span class="operator">=</span> L;</span><br><span class="line">		<span class="type">int</span> <span class="variable">p2</span> <span class="operator">=</span> M + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= M &amp;&amp; p2 &lt;= R) &#123;</span><br><span class="line">			help[i++] = arr[p1] &lt;= arr[p2] ? arr[p1++] : arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 要么p1越界了，要么p2越界了</span></span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= M) &#123;</span><br><span class="line">			help[i++] = arr[p1++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p2 &lt;= R) &#123;</span><br><span class="line">			help[i++] = arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; help.length; i++) &#123;</span><br><span class="line">			arr[L + i] = help[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 非递归方法实现</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">mergeSort2</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="literal">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> arr.length;</span><br><span class="line">		<span class="comment">// 步长</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">mergeSize</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (mergeSize &lt; N) &#123; <span class="comment">// log N</span></span><br><span class="line">			<span class="comment">// 当前左组的，第一个位置</span></span><br><span class="line">			<span class="type">int</span> <span class="variable">L</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span> (L &lt; N) &#123;</span><br><span class="line">				<span class="keyword">if</span> (mergeSize &gt;= N - L) &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="type">int</span> <span class="variable">M</span> <span class="operator">=</span> L + mergeSize - <span class="number">1</span>;</span><br><span class="line">				<span class="type">int</span> <span class="variable">R</span> <span class="operator">=</span> M + Math.min(mergeSize, N - M - <span class="number">1</span>);</span><br><span class="line">				merge(arr, L, M, R);</span><br><span class="line">				L = R + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 防止溢出</span></span><br><span class="line">			<span class="keyword">if</span> (mergeSize &gt; N / <span class="number">2</span>) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			mergeSize &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
@@ -1581,7 +1581,7 @@
   </entry>
   <entry>
     <title>算法与数据结构学习（4）</title>
-    <url>/wang666-bot.github.io/post/22df74f.html</url>
+    <url>/wang666-bot.github.io/22df74f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><p>先序遍历：头左右</p>
 <p>中序遍历：左头右</p>
 <p>后序遍历：左右头</p>
@@ -1669,7 +1669,7 @@
   </entry>
   <entry>
     <title>聚合搜索平台</title>
-    <url>/wang666-bot.github.io/post/9f02e53a.html</url>
+    <url>/wang666-bot.github.io/9f02e53a.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>一个聚合搜索平台，<strong>可以让用户在同一个入口（同一个页面）集中搜索出不同来源、不同类型的内容</strong></p>
 <p>用户：提升用户的检索效率、提升用户体验</p>
 <p>企业：无需针对每一个项目都去开发一个搜索功能，当有新的内容、新的网站，可以复用同一套搜索系统，提升开发效率</p>
@@ -1720,7 +1720,7 @@
   </entry>
   <entry>
     <title>算法与数据结构学习（6）</title>
-    <url>/wang666-bot.github.io/post/a8243fc4.html</url>
+    <url>/wang666-bot.github.io/a8243fc4.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="暴力递归"><a href="#暴力递归" class="headerlink" title="暴力递归"></a>暴力递归</h1><p>1.汉诺塔问题</p>
 <p>思路1：最左到最右边leftToRight 先leftToMid(n-1)，移动n，再midToRight(n-1)</p>
 <p>leftToMid(n)  leftToRight(n-1) 移动n，rightToMid(n-1)</p>
@@ -1879,7 +1879,7 @@
   </entry>
   <entry>
     <title>设计模式</title>
-    <url>/wang666-bot.github.io/post/364ea8cc.html</url>
+    <url>/wang666-bot.github.io/364ea8cc.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>是前辈们对代码开发经验的总结，是解决特定问题的一系列套路（面向对象）</p>
 <p>本质：面向对象设计原则的实际运用，是对类的封装性、继承性和多态性以及类的关联关系和组合关系的充分理解</p>
 <h2 id="设计原则（7）"><a href="#设计原则（7）" class="headerlink" title="设计原则（7）"></a>设计原则（7）</h2><p>1.单一职责原则：最简单的面向对象设计原则，用于控制类的粒度大小（一个对象应该只包含一个单一的职责，并且该职责被完整的封装在一个类中）</p>
@@ -2184,7 +2184,7 @@
   </entry>
   <entry>
     <title>Shader笔记-3</title>
-    <url>/wang666-bot.github.io/post/41d99fe.html</url>
+    <url>/wang666-bot.github.io/41d99fe.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Shader中级篇"><a href="#Shader中级篇" class="headerlink" title="Shader中级篇"></a>Shader中级篇</h1><h2 id="复杂光照"><a href="#复杂光照" class="headerlink" title="复杂光照"></a>复杂光照</h2><h3 id="渲染路径"><a href="#渲染路径" class="headerlink" title="渲染路径"></a>渲染路径</h3><p>渲染路径决定光照是如何应用到Unity Shader中的，Unity5.0之后主要分为：前向渲染路径、延迟渲染路径</p>
 <table>
 <thead>
@@ -2248,7 +2248,7 @@
   </entry>
   <entry>
     <title>算法与数据结构学习（7）</title>
-    <url>/wang666-bot.github.io/post/109858a1.html</url>
+    <url>/wang666-bot.github.io/109858a1.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="窗口最大值最小值的更新结构"><a href="#窗口最大值最小值的更新结构" class="headerlink" title="窗口最大值最小值的更新结构"></a>窗口最大值最小值的更新结构</h1><p>滑动窗口</p>
 <p>1）R++，R右动，数会从右侧进窗口</p>
 <p>2）L++，L右动，数从左侧进入窗口</p>
@@ -2315,7 +2315,7 @@
   </entry>
   <entry>
     <title>算法与数据结构学习（8）</title>
-    <url>/wang666-bot.github.io/post/48fb48f7.html</url>
+    <url>/wang666-bot.github.io/48fb48f7.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="KMP-amp-Manacher"><a href="#KMP-amp-Manacher" class="headerlink" title="KMP &amp; Manacher"></a>KMP &amp; Manacher</h1><h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p>str1是否有子串（连续的）和str2一样，有，返回最开始的位置</p>
 <p>前缀与后缀最长的匹配长度 （前后缀都不能取到整体）—- next数组</p>
 <p>求出str2的next数组，是为了匹配过程中进行加速</p>
@@ -2361,7 +2361,7 @@
   </entry>
   <entry>
     <title>算法与数据结构学习（9）</title>
-    <url>/wang666-bot.github.io/post/f0472f92.html</url>
+    <url>/wang666-bot.github.io/f0472f92.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\wang666-bot.github.io\assets\css\APlayer.min.css"><script src="\wang666-bot.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
   </entry>
 </search>
